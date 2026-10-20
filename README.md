@@ -6,7 +6,10 @@ fox called Pip.
 
 No build step, no backend, no tracking — the whole app is one `index.html`.
 
-![WordQuest home screen](assets/screenshot.png)
+<p align="center">
+  <img src="assets/screenshot.png" alt="WordQuest home screen with the continue card, daily goal ring and deck list" width="300">
+  <img src="assets/lesson.png" alt="A multiple-choice exercise with instant feedback from Pip the fox" width="300">
+</p>
 
 ## Why
 
@@ -102,7 +105,7 @@ Then click **Sample** on the home screen to try a built-in 40-word German → Se
 
 ## How it is built
 
-- Plain HTML, CSS and JavaScript in one file (~5,100 lines). No framework, no bundler, no npm.
+- Plain HTML, CSS and JavaScript in one file (~5,400 lines). No framework, no bundler, no npm.
 - The only external request is Google Fonts (Nunito) — and the app is perfectly usable without it.
 - State lives in `localStorage`: one key per profile (`wordquest.state.v1::<id>`), plus a small
   registry of profiles.
