@@ -113,5 +113,4 @@ system; the online engine covers the gaps.
 
 ## License
 
-No license has been chosen yet. If you would like to reuse the code, open an issue and we can sort
-something out.
+MIT — see [LICENSE](LICENSE). Use it, change it, ship it.
