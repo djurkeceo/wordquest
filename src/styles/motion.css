@@ -1,0 +1,10 @@
+/* WordQuest — reduced-motion overrides. Rules are copied verbatim. */
+
+/* ------------------------------------------------------ 11 reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .flip__inner{transition:none}
+}
+html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{
+  animation-duration:.001ms !important;transition-duration:.06s !important;
+}

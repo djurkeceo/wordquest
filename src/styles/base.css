@@ -1,0 +1,138 @@
+/* WordQuest — design tokens, base typography and the app shell.
+   Rules are copied verbatim from the single-file app; only the dark token
+   block lives in themes.css. */
+
+/* ---------------------------------------------------------------- 1 tokens */
+:root{
+  /* surfaces */
+  --bg:#F4F1FF;
+  --bg-grad:radial-gradient(900px 520px at 8% -8%, #EBE3FF 0%, transparent 55%),
+            radial-gradient(780px 480px at 108% 2%, #D9FBF3 0%, transparent 52%);
+  --card:#FFFFFF;
+  --card-2:#F7F4FF;
+  --text:#1F1F38;
+  --muted:#73719A;
+  --border:#E4DFF6;
+  --border-strong:#CFC8EC;
+
+  /* brand + accents */
+  --brand:#6C4BF6;
+  --brand-dark:#4A2BD1;
+  --brand-soft:#EDE7FF;
+  --brand-2:#9A79FF;
+  --teal:#00C2A8;
+  --teal-dark:#008E7C;
+  --teal-soft:#DDFBF4;
+  --gold:#FFC434;
+  --gold-dark:#B98A00;
+  --gold-soft:#FFF3D2;
+  --amber:var(--gold);
+  --danger:#FF4D6D;
+  --danger-dark:#C9284A;
+  --danger-soft:#FFE7EC;
+  --success:#22C55E;
+  --success-dark:#158F46;
+  --success-soft:#DDF6E7;
+
+  /* gradient end for the wordmark / logo badge */
+  --mark-end:var(--teal-dark);
+
+  --radius:22px;
+  --radius-sm:14px;
+  --shadow:0 2px 0 var(--border);
+  --shadow-lg:0 18px 44px rgba(31,31,56,.18);
+  --ring:0 0 0 4px rgba(108,75,246,.28);
+}
+
+/* ------------------------------------------------------------------ 2 base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  background:var(--bg);
+  background-image:var(--bg-grad);
+  background-attachment:fixed;
+  color:var(--text);
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:calc(88px + env(safe-area-inset-bottom));
+}
+h1{font-size:1.65rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin:0 0 6px}
+h2{font-size:1.1rem;font-weight:900;letter-spacing:-.01em;margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+h2::before{
+  content:'';width:7px;height:19px;border-radius:4px;flex:none;
+  background:linear-gradient(180deg,var(--brand),var(--teal));
+}
+.card h2::before,.card h1::before{display:none}
+p{margin:0 0 10px;line-height:1.55}
+.muted{color:var(--muted)}
+.small{font-size:.87rem}
+.tiny{font-size:.77rem}
+.center{text-align:center}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row--end{justify-content:flex-end}
+.grow{flex:1}
+.hidden,[hidden]{display:none !important}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:10px}
+::-webkit-scrollbar{height:10px;width:10px}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:10px}
+
+/* ---------------------------------------------------------------- 3 layout */
+#app{max-width:860px;margin:0 auto;padding:0 16px}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;
+  max-width:860px;margin:0 auto;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  background:color-mix(in srgb, var(--bg) 72%, transparent);
+}
+.brand{
+  display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.12rem;letter-spacing:-.03em;
+  border:0;background:transparent;padding:0;margin:0;cursor:pointer;color:var(--text);font-family:inherit;
+}
+.brand:hover .brand__mark{transform:rotate(-8deg) scale(1.08)}
+.brand:active .brand__mark{transform:scale(.92)}
+.brand:focus-visible{outline-offset:5px;border-radius:12px}
+.brand__mark{
+  width:36px;height:36px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--brand),var(--mark-end));
+  color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--brand-dark) 70%, transparent);
+  transition:transform .2s cubic-bezier(.3,1.6,.5,1);
+}
+.brand__mark svg{width:23px;height:23px;display:block}
+.brand__word{display:inline-block;line-height:1}
+.brand__word em{font-style:normal;color:var(--brand)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .brand__word em{
+    background:linear-gradient(120deg,var(--brand) 8%,var(--mark-end) 94%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+}
+.topbar__spacer{flex:1}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--card);border:2px solid var(--border);border-radius:14px;
+  padding:4px 11px;font-weight:900;font-size:.92rem;
+  box-shadow:0 2px 0 var(--border);
+  font-variant-numeric:tabular-nums;
+}
+#pillStreak{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 55%, transparent)}
+#pillXp{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand) 26%, transparent)}
+.pill b{font-variant-numeric:tabular-nums}
+.screen{display:none;padding:10px 0 40px}
+.screen.is-active{display:block;animation:screenIn .3s cubic-bezier(.2,.8,.3,1) both}
+.screen.is-active > *{animation:riseIn .45s cubic-bezier(.2,.8,.3,1) both}
+.screen.is-active > *:nth-child(2){animation-delay:.04s}
+.screen.is-active > *:nth-child(3){animation-delay:.08s}
+.screen.is-active > *:nth-child(4){animation-delay:.12s}
+.screen.is-active > *:nth-child(5){animation-delay:.16s}
+.screen.is-active > *:nth-child(6){animation-delay:.2s}
+.screen.is-active > *:nth-child(7){animation-delay:.24s}
+.screen.is-active > *:nth-child(n+8){animation-delay:.28s}
+@keyframes screenIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+

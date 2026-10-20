@@ -1,0 +1,49 @@
+/* WordQuest — dark theme tokens and dark-mode contrast fixes.
+   The token block is imported after the component rules; because it only
+   overrides custom properties on the same html element, computed values are
+   unchanged. */
+
+[data-theme="dark"]{
+  --bg:#12121E;
+  --bg-grad:radial-gradient(900px 520px at 8% -8%, #2A2159 0%, transparent 55%),
+            radial-gradient(780px 480px at 108% 2%, #073C35 0%, transparent 52%);
+  --card:#1B1B2C;
+  --card-2:#242438;
+  --text:#F3F2FF;
+  --muted:#A2A0C4;
+  --border:#2E2E47;
+  --border-strong:#3D3D5C;
+
+  --brand:#8E74FF;
+  --brand-dark:#4F32C9;
+  --brand-soft:#2B2354;
+  --brand-2:#B09AFF;
+  --teal:#2AD4BC;
+  --teal-dark:#0C8574;
+  --teal-soft:#0C3833;
+  --gold:#FFC94D;
+  --gold-dark:#8A6A00;
+  --gold-soft:#3A2F10;
+  --amber:var(--gold);
+  --danger:#FF6E89;
+  --danger-dark:#8E2440;
+  --danger-soft:#3A1A25;
+  --success:#3ED97A;
+  --success-dark:#17753F;
+  --success-soft:#12301F;
+
+  --mark-end:var(--teal);
+  --shadow:0 2px 0 var(--border);
+  --shadow-lg:0 18px 44px rgba(0,0,0,.6);
+  --ring:0 0 0 4px rgba(142,116,255,.35);
+}
+
+/* ------------------------------------------- 10b dark-mode contrast fixes */
+[data-theme="dark"] .opt.correct,
+[data-theme="dark"] .mem.matched{color:var(--success)}
+[data-theme="dark"] .opt.wrong,
+[data-theme="dark"] .pinErr{color:var(--danger)}
+[data-theme="dark"] .langpair__note.is-sure{color:var(--success)}
+[data-theme="dark"] .feedback.ok .feedback__title{color:var(--success)}
+[data-theme="dark"] .feedback.bad .feedback__title{color:var(--danger)}
+
