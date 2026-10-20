@@ -6,11 +6,36 @@
  * importing a screen or the router.
  */
 
-import type { ScreenName } from '../types';
+import type { ScreenName, ShowScreenOptions } from '../types';
 
 let currentScreen: ScreenName = 'home';
 let currentDeckId: string | null = null;
 const navStack: ScreenName[] = [];
+
+/**
+ * The router registers itself here. Screens call `navigate()`/`goBack()`
+ * instead of importing `ui/router.ts` back, which keeps the dependency
+ * direction router → screens while still letting every screen navigate.
+ */
+export type ScreenNavigator = (name: ScreenName, opts?: ShowScreenOptions) => void;
+
+let navigator: ScreenNavigator | null = null;
+let backHandler: (() => void) | null = null;
+
+export function registerNavigator(show: ScreenNavigator, back: () => void): void {
+  navigator = show;
+  backHandler = back;
+}
+
+export function navigate(name: ScreenName, opts?: ShowScreenOptions): void {
+  if (!navigator) throw new Error('The screen router has not been registered.');
+  navigator(name, opts);
+}
+
+export function goBack(): void {
+  if (!backHandler) throw new Error('The screen router has not been registered.');
+  backHandler();
+}
 
 export function getCurrentScreen(): ScreenName {
   return currentScreen;

@@ -439,6 +439,8 @@ The requested layout is kept. Three additions are needed and are called out:
 - `src/ui/nav.ts` + `src/ui/sessionFlow.ts` — navigation state and the session
   controller. They let modes call `answer/next` and screens call `showScreen`
   without circular screen↔router imports.
+- `src/ui/languageSelect.ts` — the localised `<option>` builder shared by the
+  language-confirmation and settings screens, so that markup is not duplicated.
 - `src/styles/index.css` — the single CSS entry that imports the five requested
   stylesheets in the original order.
 
@@ -474,6 +476,7 @@ src/
   ui/
     dom.ts  nav.ts  router.ts  topbar.ts  toast.ts  feedback.ts
     theme.ts  mnemonic.ts  wordSheet.ts  importFlow.ts  sessionFlow.ts
+    languageSelect.ts
     screens/
       login.ts  home.ts  import.ts  lang.ts  preview.ts  deck.ts
       session.ts  summary.ts  achievements.ts  settings.ts
@@ -496,6 +499,9 @@ modes/ui-primitives ← ui/sessionFlow ← ui/screens ← ui/router ← main
 ```
 
 - `types.ts` has no runtime imports.
+- Screens never import the router; they navigate through `ui/nav.ts`. The only
+  screen-to-screen imports are acyclic action helpers (`settings` → `login` for
+  profile switching, `home`/`preview`/`summary` → `deck` for `openDeck`).
 - `storage` never imports UI/i18n; functions return results and the caller
   toasts. `state.ts` exposes `getState()`/`setState()`; nobody imports a
   mutable `S` binding.
@@ -590,7 +596,7 @@ unless needed); old app still builds.
 ### Phase 5 — UI, router, main
 
 Files: `index.html` (Vite shell with the exact legacy body),
-`src/main.ts`, `src/ui/{router,topbar,theme,wordSheet,importFlow}.ts`,
+`src/main.ts`, `src/ui/{router,topbar,theme,wordSheet,importFlow,languageSelect}.ts`,
 `src/ui/screens/{login,home,import,lang,preview,deck,session,summary,achievements,settings}.ts`.
 
 - Replace the inline app with the module entry (same markup, ids, classes,

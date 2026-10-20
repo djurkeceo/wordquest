@@ -93,3 +93,12 @@ export function emojiFor(
   }
   return null;
 }
+
+/** Pick a representative emoji for a deck (the first word that has one). */
+export function deckEmoji(deck: { words: readonly Word[] }): string {
+  for (const w of deck.words) {
+    const em = emojiFor(w, w.n);
+    if (em) return em;
+  }
+  return '📚';
+}

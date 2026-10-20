@@ -35,3 +35,20 @@ export function stage(): HTMLElement {
   if (!el) throw new Error('Missing #stage');
   return el;
 }
+
+/** Animate a number inside an element (used for the XP tally). */
+export function countUp(el: Element | null, to: number, prefix?: string): void {
+  if (!el) return;
+  const calm = document.documentElement.getAttribute('data-motion') === 'calm'
+    || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (calm || !isFinite(to) || to <= 0) { el.textContent = (prefix || '') + to; return; }
+  const started = performance.now();
+  const dur = 900;
+  const tick = (now: number): void => {
+    const p = Math.max(0, Math.min(1, (now - started) / dur));
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (prefix || '') + Math.round(to * eased);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
