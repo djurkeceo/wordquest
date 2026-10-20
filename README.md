@@ -27,7 +27,10 @@ Everything else — language detection, exercise choice, difficulty — adapts t
 
 ### Language detection
 - Works offline: script ranges, stopword lists, diacritics and character n-grams.
-- You confirm the guess once with two dropdowns; the native language is remembered.
+- Nothing is applied silently: before the word list appears, WordQuest shows the pair it detected
+  (with a few sample words from each column) and waits for you to confirm. Picking a different
+  language — or swapping the two columns for lists written translation-first — is one tap away.
+- The native language is remembered for next time.
 - Serbian is supported in both scripts (Latin and Cyrillic), including transliteration between them.
 - Optional accent-insensitive matching (`cafe` = `café`) for typing exercises.
 
@@ -86,7 +89,7 @@ cd wordquest
 python -m http.server 8000
 ```
 
-Then click **Sample** on the home screen to try a built-in 20-word German → Serbian deck.
+Then click **Sample** on the home screen to try a built-in 40-word German → Serbian deck.
 
 ## Keyboard shortcuts
 
@@ -99,7 +102,7 @@ Then click **Sample** on the home screen to try a built-in 20-word German → Se
 
 ## How it is built
 
-- Plain HTML, CSS and JavaScript in one file (~4,900 lines). No framework, no bundler, no npm.
+- Plain HTML, CSS and JavaScript in one file (~5,100 lines). No framework, no bundler, no npm.
 - The only external request is Google Fonts (Nunito) — and the app is perfectly usable without it.
 - State lives in `localStorage`: one key per profile (`wordquest.state.v1::<id>`), plus a small
   registry of profiles.

@@ -305,6 +305,31 @@ label.field>span{display:block;font-weight:800;font-size:.82rem;color:var(--mute
 .preview-table .del:hover{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%, transparent)}
 .scroll-y{max-height:46vh;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
 
+/* language confirmation --------------------------------------------------- */
+.langpair{display:flex;align-items:stretch;gap:10px;margin-top:16px}
+.langpair__side{
+  flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:8px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;box-shadow:var(--shadow);
+}
+.langpair__side select{font-weight:800;padding:11px 12px}
+.langpair__sample{font-size:.8rem;font-weight:700;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}
+.langpair__arrow{
+  flex:none;align-self:center;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-weight:900;
+  background:linear-gradient(135deg,var(--brand),var(--mark-end));
+  box-shadow:0 4px 10px rgba(108,75,246,.3);
+}
+.langpair__note{margin:12px 0 0;font-weight:800;font-size:.9rem}
+.langpair__note.is-sure{color:var(--success)}
+.langpair__note.is-unsure{color:var(--muted)}
+@media (max-width:420px){
+  .langpair{gap:7px}
+  .langpair__side{padding:10px}
+  .langpair__arrow{width:26px;height:26px;font-size:.8rem}
+  .langpair__sample{font-size:.74rem}
+}
+
 .bubbles{display:flex;flex-wrap:wrap;gap:8px}
 .bubble{
   border:0;cursor:pointer;font:inherit;font-weight:800;font-size:.8rem;
@@ -639,22 +664,47 @@ html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="
     <div class="hidden" id="sampleData" aria-hidden="true"></div>
   </section>
 
+  <!-- ==================================================== LANGUAGE CHECK -->
+  <section class="screen" id="screen-lang" aria-labelledby="langTitle">
+    <h1 id="langTitle" data-i18n="lang.title">Which languages are these?</h1>
+    <p class="muted small" id="langLead"></p>
+
+    <div class="langpair">
+      <div class="langpair__side">
+        <label class="fieldlabel" for="selForeignLang" data-i18n="lang.learning">Learning</label>
+        <select id="selForeignLang"></select>
+        <span class="langpair__sample" id="sampleForeign"></span>
+      </div>
+      <div class="langpair__arrow" aria-hidden="true">→</div>
+      <div class="langpair__side">
+        <label class="fieldlabel" for="selNativeLangPick" data-i18n="lang.speaking">I speak</label>
+        <select id="selNativeLangPick"></select>
+        <span class="langpair__sample" id="sampleNative"></span>
+      </div>
+    </div>
+
+    <p class="langpair__note" id="langConfidence" role="status"></p>
+
+    <button class="btn btn--sm btn--ghost" id="btnSwapLang">⇄ <span data-i18n="lang.swap">Swap sides</span></button>
+
+    <div class="row" style="margin-top:16px">
+      <button class="btn grow" id="btnLangCancel" data-i18n="common.cancel">Cancel</button>
+      <button class="btn btn--primary grow" id="btnLangConfirm" data-i18n="lang.confirm">Looks right</button>
+    </div>
+  </section>
+
   <!-- ========================================================= PREVIEW -->
   <section class="screen" id="screen-preview" aria-labelledby="prevTitle">
     <h1 id="prevTitle" data-i18n="preview.title">Check your words</h1>
     <div class="card">
-      <div class="row">
-        <label class="field grow" style="margin:0;min-width:140px">
-          <span data-i18n="preview.foreign">Foreign</span>
-          <select id="selForeign"></select>
-        </label>
-        <label class="field grow" style="margin:0;min-width:140px">
-          <span data-i18n="preview.native">Native</span>
-          <select id="selNative"></select>
-        </label>
+      <div class="row" style="align-items:center;justify-content:space-between;gap:10px">
+        <div style="min-width:0">
+          <div class="fieldlabel" data-i18n="preview.languages">Languages</div>
+          <b id="prevLangPair">—</b>
+        </div>
+        <button class="btn btn--sm" id="btnChangeLang" data-i18n="lang.change">Change</button>
       </div>
-      <p class="small" id="langHint" style="margin-top:12px" role="status"></p>
-      <label class="field" style="margin:10px 0 0">
+      <label class="field" style="margin:12px 0 0">
         <span data-i18n="preview.deckName">Deck name</span>
         <input type="text" id="deckNameInput" maxlength="60">
       </label>
@@ -955,10 +1005,17 @@ const I18N = {
     'import.empty': 'Nothing to parse yet — drop a file or paste some lines.',
     'preview.title': 'Check your words',
     'preview.foreign': 'Foreign', 'preview.native': 'Native',
+    'preview.languages': 'Languages',
     'preview.deckName': 'Deck name', 'preview.pairs': 'Words',
     'preview.start': 'Save deck',
-    'preview.detected': 'Detected: {a} → {b}. Correct?',
-    'preview.unsure': 'Not sure which language this is — pick one below.',
+    'lang.title': 'Which languages are these?',
+    'lang.learning': 'Learning', 'lang.speaking': 'I speak',
+    'lang.lead': 'We looked at your list and guessed the languages below. Confirm them — or change them if we got it wrong.',
+    'lang.leadUnsure': 'We could not tell which languages these are. Pick them below.',
+    'lang.confident': '✨ Pretty confident about this one.',
+    'lang.unsure': '🤔 Not sure about this one.',
+    'lang.swap': 'Swap sides', 'lang.confirm': 'Looks right', 'lang.change': 'Change',
+    'lang.same': 'Pick two different languages.',
     'preview.errorTitle': '{n} line(s) could not be parsed:',
     'preview.noWords': 'No usable word pairs found. Check the separator.',
     'deck.lesson': 'Start lesson', 'deck.practice': 'Practice', 'deck.speed': 'Speed round',
@@ -1059,6 +1116,7 @@ const I18N = {
     'toast.emojiSet': 'Emoji saved.',
     'toast.deckSaved': 'Deck saved 🎉',
     'toast.deckDeleted': 'Deck deleted.',
+    'common.cancel': 'Cancel',
     'level.up': 'Level {n}! 🚀',
     'streak.kept': '{n}-day streak 🔥'
   },
@@ -1083,10 +1141,17 @@ const I18N = {
     'import.empty': 'Nema šta da se obradi — prevuci fajl ili nalepi redove.',
     'preview.title': 'Proveri reči',
     'preview.foreign': 'Strani', 'preview.native': 'Maternji',
+    'preview.languages': 'Jezici',
     'preview.deckName': 'Naziv špilje', 'preview.pairs': 'Reči',
     'preview.start': 'Sačuvaj špilju',
-    'preview.detected': 'Prepoznato: {a} → {b}. Tačno?',
-    'preview.unsure': 'Nisam siguran koji je jezik — izaberi ispod.',
+    'lang.title': 'Koji su ovo jezici?',
+    'lang.learning': 'Učim', 'lang.speaking': 'Govorim',
+    'lang.lead': 'Pogledali smo tvoju listu i pogodili jezike ispod. Potvrdi — ili promeni ako smo pogrešili.',
+    'lang.leadUnsure': 'Nismo sigurni koji su ovo jezici. Izaberi ih ispod.',
+    'lang.confident': '✨ Prilično smo sigurni.',
+    'lang.unsure': '🤔 Nismo sigurni.',
+    'lang.swap': 'Zameni strane', 'lang.confirm': 'Izgleda tačno', 'lang.change': 'Promeni',
+    'lang.same': 'Izaberi dva različita jezika.',
     'preview.errorTitle': '{n} red(ova) nije moglo da se obradi:',
     'preview.noWords': 'Nema upotrebljivih parova. Proveri razdvajač.',
     'deck.lesson': 'Počni lekciju', 'deck.practice': 'Vežba', 'deck.speed': 'Brzinska runda',
@@ -1187,6 +1252,7 @@ const I18N = {
     'toast.emojiSet': 'Emodži sačuvan.',
     'toast.deckSaved': 'Špilja sačuvana 🎉',
     'toast.deckDeleted': 'Špilja obrisana.',
+    'common.cancel': 'Otkaži',
     'level.up': 'Nivo {n}! 🚀',
     'streak.kept': 'Niz od {n} dana 🔥'
   }
@@ -1817,7 +1883,7 @@ const LANGUAGES = {
   cs: { name: 'Czech',          native: 'Čeština',    tts: 'cs-CZ', script: 'latin' },
   sk: { name: 'Slovak',         native: 'Slovenčina', tts: 'sk-SK', script: 'latin' },
   sl: { name: 'Slovenian',      native: 'Slovenščina',tts: 'sl-SI', script: 'latin' },
-  sr: { name: 'Serbian/Croatian/Bosnian', native: 'Srpskohrvatski', tts: 'sr-RS', script: 'both' },
+  sr: { name: 'Serbian',        native: 'Srpskohrvatski', tts: 'sr-RS', script: 'both' },
   ro: { name: 'Romanian',       native: 'Română',     tts: 'ro-RO', script: 'latin' },
   hu: { name: 'Hungarian',      native: 'Magyar',     tts: 'hu-HU', script: 'latin' },
   tr: { name: 'Turkish',        native: 'Türkçe',     tts: 'tr-TR', script: 'latin' },
@@ -1836,6 +1902,17 @@ const LANGUAGES = {
   zh: { name: 'Chinese',        native: '中文',         tts: 'zh-CN', script: 'hanzi' },
   vi: { name: 'Vietnamese',     native: 'Tiếng Việt',  tts: 'vi-VN', script: 'latin' },
   id: { name: 'Indonesian',     native: 'Bahasa Indonesia', tts: 'id-ID', script: 'latin' }
+};
+
+/** Serbian names for the language pickers (the Serbian UI uses Latin script). */
+const LANG_NAMES_SR = {
+  en: 'Engleski', de: 'Nemački', fr: 'Francuski', es: 'Španski', it: 'Italijanski',
+  pt: 'Portugalski', nl: 'Holandski', sv: 'Švedski', da: 'Danski', no: 'Norveški',
+  fi: 'Finski', pl: 'Poljski', cs: 'Češki', sk: 'Slovački', sl: 'Slovenački',
+  sr: 'Srpski', ro: 'Rumunski', hu: 'Mađarski', tr: 'Turski', ru: 'Ruski',
+  uk: 'Ukrajinski', bg: 'Bugarski', mk: 'Makedonski', el: 'Grčki', ar: 'Arapski',
+  he: 'Hebrejski', fa: 'Persijski', hi: 'Hindski', th: 'Tajlandski', ko: 'Korejski',
+  ja: 'Japanski', zh: 'Kineski', vi: 'Vijetnamski', id: 'Indonežanski'
 };
 
 /** Latin-language fingerprints. Keep lowercase; diacritics are intentional. */
@@ -2084,9 +2161,12 @@ function detectPair(foreignText, nativeText) {
   return { foreign, native, a, b };
 }
 
-/** Human label for a language code. */
+/** Human label for a language code, in the current UI language. */
 function langName(code) {
-  return LANGUAGES[code] ? LANGUAGES[code].name : code;
+  const l = LANGUAGES[code];
+  if (!l) return code;
+  if (S.settings.uiLang === 'sr' && LANG_NAMES_SR[code]) return LANG_NAMES_SR[code];
+  return l.name;
 }
 /** BCP-47 tag for speech synthesis. */
 function ttsTag(code) {
@@ -2094,9 +2174,9 @@ function ttsTag(code) {
 }
 /** Build <option> markup for a language select. */
 function languageOptions(selected) {
-  return Object.entries(LANGUAGES)
-    .sort((a, b) => a[1].name.localeCompare(b[1].name))
-    .map(([code, l]) => `<option value="${code}"${code === selected ? ' selected' : ''}>${esc(l.name)}</option>`)
+  return Object.keys(LANGUAGES)
+    .sort((a, b) => langName(a).localeCompare(langName(b)))
+    .map(code => `<option value="${code}"${code === selected ? ' selected' : ''}>${esc(langName(code))}</option>`)
     .join('');
 }
 
@@ -4170,7 +4250,7 @@ function renderSummary(data) {
  * ======================================================================== */
 let currentScreen = 'home';
 let currentDeckId = null;
-let pendingImport = null;   // { pairs, errors, foreign, native, name }
+let pendingImport = null;   // { pairs, errors, foreign, native, confidence, suggestedName, nameTouched }
 
 /** Simple screen router with back-stack support. */
 const navStack = [];
@@ -4186,7 +4266,7 @@ function showScreen(name, opts) {
   $('#btnBack').classList.toggle('hidden', name === 'home' || name === 'session' || locked);
   $$('#tabbar button').forEach(b => {
     const nav = b.getAttribute('data-nav');
-    const active = (nav === name) || (nav === 'home' && (name === 'deck' || name === 'import' || name === 'preview'));
+    const active = (nav === name) || (nav === 'home' && (name === 'deck' || name === 'import' || name === 'lang' || name === 'preview'));
     if (active) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
   });
   $('#tabbar').classList.toggle('hidden', name === 'session' || locked);
@@ -4197,6 +4277,7 @@ function showScreen(name, opts) {
   if (locked) renderLogin();
   if (name === 'home') renderHome();
   if (name === 'deck') renderDeck();
+  if (name === 'lang') renderLangConfirm();
   if (name === 'achievements') renderAchievements();
   if (name === 'settings') renderSettings();
 }
@@ -4386,7 +4467,10 @@ $('#btnParsePaste').addEventListener('click', () => {
 $('#btnSample').addEventListener('click', () => beginPreview(SAMPLE_TEXT, 'German → Serbian sample'));
 $('#btnSampleHome').addEventListener('click', () => beginPreview(SAMPLE_TEXT, 'German → Serbian sample'));
 
-/** Parse text, run detection, and show the editable preview. */
+/**
+ * Parse a list, guess the language pair, and open the confirmation step.
+ * The guess is never applied silently: the user sees it first and can fix it.
+ */
 function beginPreview(text, suggestedName) {
   const { pairs, errors } = parseWordList(text);
   if (!pairs.length) {
@@ -4401,24 +4485,68 @@ function beginPreview(text, suggestedName) {
     errors,
     foreign: det.foreign,
     native: det.native,
-    detectedForeign: det.foreign,
-    detectedNative: det.native,
-    confidence: Math.max(det.a.confidence, det.b.confidence)
+    confidence: Math.min(det.a.confidence, det.b.confidence),
+    suggestedName: suggestedName || '',
+    nameTouched: false
   };
-  $('#selForeign').innerHTML = languageOptions(pendingImport.foreign);
-  $('#selNative').innerHTML = languageOptions(pendingImport.native);
-  const detected = Math.min(det.a.confidence, det.b.confidence) > 0.32;
-  $('#langHint').innerHTML = detected
-    ? `✨ ${esc(t('preview.detected', { a: langName(pendingImport.foreign), b: langName(pendingImport.native) }))}`
-    : `🤔 ${esc(t('preview.unsure'))}`;
-  $('#deckNameInput').value = suggestedName || `${langName(pendingImport.foreign)} → ${langName(pendingImport.native)}`;
+  // Re-importing replaces the half-finished one instead of stacking screens.
+  const replacing = currentScreen === 'lang' || currentScreen === 'preview';
+  showScreen('lang', replacing ? { replace: true } : undefined);
+}
+
+/** Fill the language-confirmation screen from the pending import. */
+function renderLangConfirm() {
+  if (!pendingImport) { showScreen('home', { replace: true }); return; }
+  const pi = pendingImport;
+  $('#selForeignLang').innerHTML = languageOptions(pi.foreign);
+  $('#selNativeLangPick').innerHTML = languageOptions(pi.native);
+  $('#sampleForeign').textContent = pi.pairs.slice(0, 3).map(p => p.f).join(' · ');
+  $('#sampleNative').textContent = pi.pairs.slice(0, 3).map(p => p.n.join(' / ')).join(' · ');
+
+  const sure = pi.confidence > 0.32;
+  $('#langLead').textContent = t(sure ? 'lang.lead' : 'lang.leadUnsure');
+  const note = $('#langConfidence');
+  note.textContent = t(sure ? 'lang.confident' : 'lang.unsure');
+  note.className = 'langpair__note ' + (sure ? 'is-sure' : 'is-unsure');
+}
+
+/** Accept the guessed pair (or the user's correction) and show the word list. */
+function confirmLanguages() {
+  if (!pendingImport) return;
+  const foreign = $('#selForeignLang').value;
+  const native = $('#selNativeLangPick').value;
+  if (foreign === native) { toast(t('lang.same')); return; }
+  pendingImport.foreign = foreign;
+  pendingImport.native = native;
+  if (!pendingImport.nameTouched) {
+    $('#deckNameInput').value = pendingImport.suggestedName ||
+      `${langName(foreign)} → ${langName(native)}`;
+  }
   renderPreviewTable();
   renderParseErrors();
   showScreen('preview');
 }
+
+/**
+ * Swap the two columns. Word lists are usually foreign first, but plenty of
+ * people write the translation first; this fixes both the pair and the words.
+ */
+function swapImportSides() {
+  if (!pendingImport) return;
+  const pi = pendingImport;
+  const f = pi.foreign;
+  pi.foreign = pi.native;
+  pi.native = f;
+  pi.pairs = pi.pairs.map(p => p.n.length
+    ? { f: p.n[0], n: [p.f, ...p.n.slice(1)], emoji: null }
+    : p);
+  renderLangConfirm();
+}
+
 /** Render the editable parsed-pairs table. */
 function renderPreviewTable() {
   if (!pendingImport) return;
+  $('#prevLangPair').textContent = `${langName(pendingImport.foreign)} → ${langName(pendingImport.native)}`;
   const body = $('#previewBody');
   body.innerHTML = pendingImport.pairs.map((p, i) => `
     <tr data-i="${i}">
@@ -4456,13 +4584,25 @@ function renderParseErrors() {
       ${pendingImport.errors.slice(0, 30).map(e => `Line ${e.line}: ${esc(e.text)}`).join('<br>')}
     </div></div>`;
 }
-$('#selForeign').addEventListener('change', e => {
-  if (pendingImport) pendingImport.foreign = e.target.value;
+$('#btnLangConfirm').addEventListener('click', confirmLanguages);
+$('#btnSwapLang').addEventListener('click', swapImportSides);
+$('#btnLangCancel').addEventListener('click', () => { pendingImport = null; goBack(); });
+
+// Going back to fix the languages keeps the words the user already edited.
+$('#btnChangeLang').addEventListener('click', () => {
+  if (navStack[navStack.length - 1] === 'lang') goBack();
+  else showScreen('lang');
 });
-$('#selNative').addEventListener('change', e => {
-  if (pendingImport) pendingImport.native = e.target.value;
+
+$('#deckNameInput').addEventListener('input', () => {
+  if (pendingImport) pendingImport.nameTouched = true;
 });
-$('#btnCancelPreview').addEventListener('click', () => { pendingImport = null; goBack(); });
+
+$('#btnCancelPreview').addEventListener('click', () => {
+  pendingImport = null;
+  navStack.length = 0;
+  showScreen('home', { replace: true });
+});
 
 $('#btnSaveDeck').addEventListener('click', () => {
   if (!pendingImport) return;
