@@ -1,0 +1,63 @@
+# English → Serbian · Everyday phrases
+# One pair per line. Avoid commas in the native side; they split translations.
+hello - zdravo
+hi - ćao
+good morning - dobro jutro
+good afternoon - dobar dan
+good evening - dobro veče
+good night - laku noć
+goodbye - doviđenja
+see you later - vidimo se kasnije
+see you tomorrow - vidimo se sutra
+how are you - kako si
+i am fine - dobro sam
+and you - a ti
+thank you - hvala
+you are welcome - nema na čemu
+please - molim
+excuse me - izvinite
+i am sorry - žao mi je
+no problem - nema problema
+yes - da
+no - ne
+maybe - možda
+of course - naravno
+i do not know - ne znam
+i do not understand - ne razumem
+do you speak english - govoriš li engleski
+i speak a little serbian - govorim malo srpski
+what is your name - kako se zoveš
+my name is - zovem se
+nice to meet you - drago mi je
+how old are you - koliko imaš godina
+where are you from - odakle si
+i am from serbia - iz srbije sam
+i live in - živim u
+this is my friend - ovo je moj prijatelj
+how much does it cost - koliko košta
+that is expensive - to je skupo
+i would like this - želeo bih ovo
+can i pay by card - mogu li da platim karticom
+where is the toilet - gde je toalet
+where is the station - gde je stanica
+i am hungry - gladan sam
+i am thirsty - žedan sam
+i am tired - umoran sam
+i need help - treba mi pomoć
+call a doctor - pozovite lekara
+help me please - pomozite mi molim vas
+what time is it - koliko je sati
+i am late - kasnim
+hurry up - požuri
+wait a moment - sačekaj trenutak
+i will be back - vratiću se
+let us go - idemo
+come here - dođi ovde
+sit down - sedi
+stand up - ustani
+open the window - otvori prozor
+close the door - zatvori vrata
+have a nice day - lep dan ti želim
+good luck - srećno
+congratulations - čestitam
+i love you - volim te

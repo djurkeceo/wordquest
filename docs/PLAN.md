@@ -615,12 +615,20 @@ Acceptance: all 10 screens match screenshots; the manual checklist begins.
 
 ### Phase 6 — Presets
 
+Status: complete. The packs section lives on Home and is also linked from the
+import screen. One deliberate addition to shared plumbing: `applyI18n()` now
+also translates `data-i18n-placeholder` attributes (used by the pack search
+box); no existing attribute used it before. `src/ui/screens/import.ts` itself
+did not need changes — `presets/ui.ts` binds the new import-screen button
+(`#btnPacksFromImport`) and reuses the same jump-to-packs handler as Home.
+
 Files: `src/presets/index.ts`, `src/presets/merge.ts`, `src/presets/ui.ts`,
 `src/presets/data/*.txt` (13 packs), `src/presets/presets.test.ts`,
-`src/styles/presets.css`, plus complete updated `src/types.ts`,
-`src/storage/migration.ts`, `src/ui/screens/import.ts`,
-`src/ui/screens/home.ts`, `src/i18n/en.ts`, `src/i18n/sr.ts`,
-`src/styles/index.css`.
+`src/styles/presets.css`, plus updated `src/types.ts`,
+`src/storage/migration.ts`, `src/ui/screens/home.ts`, `src/main.ts`,
+`src/i18n/index.ts`, `src/i18n/en.ts`, `src/i18n/sr.ts`,
+`src/styles/index.css`, and `index.html` (home section, import shortcut,
+preview modal).
 
 - Registry entry: `id`, `{en,sr}` title/description, `foreignLang`,
   `nativeLang`, `category`, `level`, `load: () => import('./data/x.txt?raw')`.
@@ -646,21 +654,29 @@ Acceptance: preset data test (no duplicate foreign keys, all pairs parse, word
 counts, language pair), browser pass of filters/preview/merge/re-add, storage
 round-trip.
 
-### Phase 7 — Verification and docs
+### Phase 7 - Verification and docs
 
-Files: `README.md`, `docs/REGRESSION.md`, `docs/BEHAVIOR-DIFFERENCES.md`,
-`LICENSE` (MIT, `Copyright (c) 2026 Filip Djuric`).
+Status: complete. Files: `README.md`, `docs/REGRESSION.md`,
+`docs/BEHAVIOR-DIFFERENCES.md`, `LICENSE` (MIT,
+`Copyright (c) 2026 Filip Djuric`), `public/icons/*` and
+`public/site.webmanifest`.
 
 - Full manual checklist (profiles, import, detection, all modes, SRS, XP,
-  hearts, streak, badges, settings, export/import/reset, presets).
-- Old vs new: DOM id/class inventory, computed styles at 390 px and 1280 px in
-  light/dark, EN/SR copy, localStorage diff after the same actions, keyboard
-  and screen-reader semantics.
+  hearts, streak, badges, settings, export/import/reset, presets) recorded in
+  `docs/REGRESSION.md`.
+- Old vs new: DOM id/class inventory, legacy breakpoints (390 px and desktop;
+  the refactored pack grid adds a 640 px modal breakpoint), light/dark, EN/SR
+  copy, localStorage diff after the same actions, keyboard and screen-reader
+  semantics.
 - Build/deploy: `npm ci`, `npm test`, `npm run build`, `vite preview`; Vercel
   static output `dist/`; no GitHub Pages.
-- Behaviour-differences list: the target is “none”; the only intentional
-  differences are the Vite asset pipeline and the code-split emoji lexicon
-  preloaded during boot (so the first screen can still render emoji).
+- Behaviour-differences list in `docs/BEHAVIOR-DIFFERENCES.md`: no differences
+  in existing flows. The intentional differences are the Vite asset pipeline,
+  the code-split emoji lexicon preloaded during boot, the requested ready-made
+  packs, additive `presetId`, `data-i18n-placeholder`, and app icons/manifest.
+- Icons applied by purpose: `favicon-32.png` and `icon.svg` as favicons,
+  `apple-touch-icon.png` for iOS, `icon-192/512.png` as manifest `any`, and
+  `icon-maskable.svg` / `icon-maskable-512.png` as manifest `maskable`.
 
 ---
 

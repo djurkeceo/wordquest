@@ -6,6 +6,11 @@
 <meta name="theme-color" content="#6C4BF6">
 <meta name="description" content="WordQuest — turn any word list into an adaptive language-learning game.">
 <title>WordQuest — learn words by playing</title>
+<link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
+<meta name="application-name" content="WordQuest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -126,18 +131,41 @@
     <div class="decklist" id="deckList"></div>
     <div class="emptystate hidden" id="deckEmpty">
       <div class="big" aria-hidden="true">📚</div>
-      <p data-i18n="home.noDecks">No decks yet. Import your first word list — or grab the sample file.</p>
+      <p data-i18n="home.noDecks">No decks yet. Pick a ready-made pack or upload your own.</p>
+      <button class="btn btn--ghost" id="btnBrowsePacks" data-i18n="preset.browse">Browse ready-made packs</button>
     </div>
     <div class="row" style="margin-top:14px">
       <button class="btn btn--primary btn--lg grow" id="btnNewDeck">＋ <span data-i18n="home.newDeck">New deck</span></button>
       <button class="btn btn--ghost btn--lg" id="btnSampleHome" data-i18n="import.sampleShort">Sample</button>
     </div>
+
+    <section class="packs" id="packsSection" aria-labelledby="packsTitle">
+      <div class="packs__head">
+        <div>
+          <h2 id="packsTitle" data-i18n="preset.title">Ready-made packs</h2>
+          <p class="muted small" data-i18n="preset.sub">Start in one tap — add a pack as a new deck or merge it into an existing one.</p>
+        </div>
+      </div>
+      <div class="packs__tools">
+        <input type="search" id="presetSearch" data-i18n-placeholder="preset.search" data-i18n-aria="preset.search" placeholder="Search packs" aria-label="Search ready-made packs">
+      </div>
+      <div class="chips" id="presetChips" role="tablist" data-i18n-aria="preset.categories" aria-label="Pack categories"></div>
+      <div class="packs__grid" id="presetGrid"></div>
+      <p class="muted small hidden packs__loading" id="presetLoading" data-i18n="preset.loading">Loading packs…</p>
+      <div class="emptystate hidden" id="presetEmpty">
+        <div class="big" aria-hidden="true">🔍</div>
+        <p data-i18n="preset.noMatch">No packs match that search.</p>
+      </div>
+    </section>
   </section>
 
   <!-- ========================================================== IMPORT -->
   <section class="screen" id="screen-import" aria-labelledby="impTitle">
     <h1 id="impTitle" data-i18n="import.title">Add words</h1>
     <p class="muted small" data-i18n="import.help">One pair per line, separated by — = : ; tab or comma.</p>
+    <div class="row" style="margin:2px 0 14px">
+      <button class="btn btn--ghost grow" id="btnPacksFromImport">📦 <span data-i18n="preset.browse">Browse ready-made packs</span></button>
+    </div>
 
     <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Drop a text file or activate to choose one">
       <div class="dzicon" aria-hidden="true">📥</div>
@@ -380,6 +408,33 @@
     </div>
     <div id="fbExtra"></div>
     <button class="btn btn--block" id="fbNext" style="margin-bottom:12px">Continue</button>
+  </div>
+</div>
+
+<div class="modal hidden" id="presetModal" role="dialog" aria-modal="true" aria-labelledby="presetModalTitle">
+  <div class="modal__backdrop" id="presetBackdrop"></div>
+  <div class="modal__card">
+    <div class="modal__head row">
+      <div class="grow">
+        <h2 id="presetModalTitle">—</h2>
+        <p class="muted small" id="presetModalDesc"></p>
+      </div>
+      <button class="icon-btn" id="presetClose" data-i18n-aria="preset.close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal__meta">
+      <span class="tag tag--soft" id="presetModalPair"></span>
+      <span class="tag tag--soft" id="presetModalCount"></span>
+      <span class="tag" id="presetModalLevel"></span>
+    </div>
+    <div class="list" id="presetPreviewList" style="margin-top:12px"></div>
+    <div id="presetExistingWrap" class="hidden" style="margin-top:14px">
+      <label class="small muted" for="presetExistingDeck" data-i18n="preset.existingLabel">Add to an existing deck</label>
+      <select id="presetExistingDeck" style="width:100%;margin:6px 0 10px"></select>
+      <button class="btn btn--block" id="presetAddExisting" data-i18n="preset.addExisting">Add to this deck</button>
+    </div>
+    <div class="modal__actions">
+      <button class="btn btn--primary btn--block" id="presetAddNew" data-i18n="preset.addNew">Add as a new deck</button>
+    </div>
   </div>
 </div>
 <script type="module" src="/src/main.ts"></script>

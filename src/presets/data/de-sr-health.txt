@@ -1,0 +1,62 @@
+# German → Serbian · Body & health
+# One pair per line.
+die Gesundheit - zdravlje
+die Krankheit - bolest
+der Körper - telo
+der Kopf - glava
+das Gesicht - lice
+das Auge - oko
+das Ohr - uvo
+die Nase - nos
+der Mund - usta
+der Zahn - zub
+die Zunge - jezik
+das Haar - kosa
+der Hals - grlo
+die Schulter - rame
+der Arm - ruka
+die Hand - šaka
+der Finger - prst
+die Brust - grudi
+der Bauch - stomak
+der Rücken - leđa
+das Bein - noga
+das Knie - koleno
+der Fuß - stopalo
+die Haut - koža
+das Blut - krv
+das Herz - srce
+die Lunge - pluća
+der Magen - želudac
+die Leber - jetra
+das Gehirn - mozak
+der Knochen - kost
+der Muskel - mišić
+das Fieber - temperatura
+der Husten - kašalj
+die Erkältung - prehlada
+die Grippe - grip
+der Schnupfen - kijavica
+die Kopfschmerzen - glavobolja
+die Bauchschmerzen - bol u stomaku
+der Schmerz - bol
+die Wunde - rana
+die Verletzung - povreda
+die Allergie - alergija
+die Infektion - infekcija
+die Medizin - lek
+die Tablette - tableta
+das Pflaster - flaster
+der Verband - zavoj
+die Spritze - injekcija
+der Arzt - lekar
+die Ärztin - lekarka
+die Krankenschwester - medicinska sestra
+das Krankenhaus - bolnica
+die Praxis - ordinacija
+der Notfall - hitan slučaj
+der Krankenwagen - kola hitne pomoći
+die Apotheke - apoteka
+das Rezept - recept
+die Untersuchung - pregled
+die Behandlung - lečenje

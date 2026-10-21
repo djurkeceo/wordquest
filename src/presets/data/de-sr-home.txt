@@ -1,0 +1,62 @@
+# German → Serbian · Home & furniture
+# One pair per line.
+das Haus - kuća
+die Wohnung - stan
+das Zimmer - soba
+das Wohnzimmer - dnevna soba
+das Schlafzimmer - spavaća soba
+die Küche - kuhinja
+das Badezimmer - kupatilo
+der Flur - hodnik
+der Balkon - balkon
+der Keller - podrum
+der Dachboden - tavan
+die Garage - garaža
+die Tür - vrata
+das Fenster - prozor
+die Wand - zid
+der Boden - pod
+die Decke - plafon
+die Treppe - stepenice
+der Aufzug - lift
+der Schlüssel - ključ
+die Klingel - zvono
+der Tisch - sto
+der Stuhl - stolica
+das Sofa - sofa
+das Bett - krevet
+die Matratze - dušek
+das Kissen - jastuk
+die Bettdecke - jorgan
+der Schrank - ormar
+die Kommode - komoda
+das Regal - polica
+die Lampe - lampa
+der Teppich - tepih
+der Vorhang - zavese
+der Spiegel - ogledalo
+das Waschbecken - umivaonik
+die Dusche - tuš
+die Badewanne - kada
+die Toilette - toalet
+der Kühlschrank - frižider
+der Herd - šporet
+der Ofen - rerna
+die Waschmaschine - veš mašina
+der Geschirrspüler - mašina za sudove
+der Staubsauger - usisivač
+der Müll - smeće
+der Eimer - kanta
+der Besen - metla
+das Bügeleisen - pegla
+der Fernseher - televizor
+das Radio - radio
+der Computer - kompjuter
+das Telefon - telefon
+die Steckdose - utičnica
+der Schalter - prekidač
+die Glühbirne - sijalica
+der Garten - bašta
+der Zaun - ograda
+die Pflanze - biljka
+der Blumentopf - saksija

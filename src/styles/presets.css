@@ -1,0 +1,61 @@
+/* ============================================================================
+   Ready-made packs — cards, chips and the preview modal.
+   Uses the same tokens/radii as the rest of the app so it matches in both
+   themes without new colours.
+   ========================================================================== */
+
+.packs{margin-top:26px}
+.packs__head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.packs__head h2{margin:0}
+.packs__tools{display:flex;gap:10px;align-items:center;margin:12px 0 10px;flex-wrap:wrap}
+.packs__tools input[type="search"]{
+  flex:1 1 220px;min-width:180px;padding:11px 14px;border-radius:14px;
+  border:1.5px solid var(--line);background:var(--card);color:var(--text);
+  font:inherit;font-weight:600
+}
+.packs__tools input[type="search"]:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--muted);font:inherit;font-weight:700;font-size:.82rem;cursor:pointer;
+  transition:transform .15s, background .15s, color .15s, border-color .15s
+}
+.chip:active{transform:scale(.96)}
+.chip.is-on{background:var(--brand);border-color:var(--brand);color:#fff}
+.packs__grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.packcard{
+  display:flex;flex-direction:column;gap:8px;text-align:left;padding:14px;border-radius:18px;
+  border:1.5px solid var(--line);background:var(--card);color:var(--text);font:inherit;cursor:pointer;
+  box-shadow:var(--shadow-sm, 0 2px 10px rgba(30,20,60,.06));
+  transition:transform .16s, border-color .16s, box-shadow .16s
+}
+.packcard:hover{border-color:var(--brand);transform:translateY(-2px)}
+.packcard:active{transform:translateY(0) scale(.99)}
+.packcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.packcard__top b{font-size:1rem;line-height:1.25}
+.packcard__meta{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--muted);font-weight:700}
+.packcard__foot{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.tag--soft{background:var(--brand-soft);color:var(--brand)}
+.packs__loading{padding:10px 2px}
+.modal{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center}
+.modal.hidden{display:none}
+.modal__backdrop{position:absolute;inset:0;background:rgba(14,14,23,.55);backdrop-filter:blur(2px)}
+.modal__card{
+  position:relative;width:100%;max-width:560px;max-height:88vh;overflow:auto;
+  background:var(--card);color:var(--text);border-radius:22px 22px 0 0;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  box-shadow:0 -10px 40px rgba(20,10,50,.35);
+  animation:modalUp .26s cubic-bezier(.2,.9,.3,1)
+}
+.modal__head h2{margin:0}
+.modal__meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.modal__actions{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.modal__actions .row{width:100%}
+@media (min-width:640px){
+  .modal{align-items:center}
+  .modal__card{border-radius:22px;animation:modalPop .22s cubic-bezier(.2,.9,.3,1)}
+}
+@keyframes modalUp{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes modalPop{from{transform:scale(.97);opacity:0}to{transform:none;opacity:1}}
+[data-motion="calm"] .modal__card{animation:none}

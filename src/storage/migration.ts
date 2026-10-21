@@ -67,7 +67,7 @@ export type DeckInput = Partial<Omit<Deck, 'words'>> & { words?: ReadonlyArray<P
 /** Ensure a deck has every expected field (older saves / imported JSON). */
 export function normalizeDeck(d: DeckInput): Deck {
   const words = Array.isArray(d.words) ? d.words.map(w => normalizeWord(w)) : [];
-  return {
+  const deck: Deck = {
     id: d.id || uid(),
     name: d.name || 'Untitled deck',
     createdAt: d.createdAt || Date.now(),
@@ -75,6 +75,9 @@ export function normalizeDeck(d: DeckInput): Deck {
     foreignLang: d.foreignLang || 'de',
     words: words.filter(w => w.f && w.n && w.n.length)
   };
+  // Additive only: decks that predate presets keep the exact same JSON.
+  if (d.presetId) deck.presetId = d.presetId;
+  return deck;
 }
 
 export function normalizeWord(w: Partial<Word>): Word {

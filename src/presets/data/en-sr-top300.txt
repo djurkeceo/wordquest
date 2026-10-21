@@ -1,0 +1,302 @@
+# English → Serbian · 300 most useful everyday words
+# One pair per line. Nouns include their article.
+the house - kuća
+the apartment - stan
+the room - soba
+the kitchen - kuhinja
+the bathroom - kupatilo
+the door - vrata
+the window - prozor
+the table - sto
+the chair - stolica
+the bed - krevet
+the lamp - lampa
+the closet - ormar
+the wall - zid
+the floor - pod
+the stairs - stepenice
+the garden - bašta
+the street - ulica
+the city - grad
+the village - selo
+the country - zemlja
+the world - svet
+the sky - nebo
+the sun - sunce
+the moon - mesec
+the star - zvezda
+the weather - vreme
+the rain - kiša
+the snow - sneg
+the wind - vetar
+the cloud - oblak
+the water - voda
+the fire - vatra
+the earth - zemlja
+the air - vazduh
+the tree - drvo
+the flower - cvet
+the grass - trava
+the forest - šuma
+the mountain - planina
+the river - reka
+the sea - more
+the lake - jezero
+the island - ostrvo
+the beach - plaža
+the stone - kamen
+the sand - pesak
+the animal - životinja
+the dog - pas
+the cat - mačka
+the horse - konj
+the cow - krava
+the pig - svinja
+the sheep - ovca
+the bird - ptica
+the fish - riba
+the mouse - miš
+the bear - medved
+the lion - lav
+the snake - zmija
+the bee - pčela
+the apple - jabuka
+the pear - kruška
+the banana - banana
+the orange - pomorandža
+the grape - grožđe
+the strawberry - jagoda
+the lemon - limun
+the bread - hleb
+the milk - mleko
+the cheese - sir
+the egg - jaje
+the meat - meso
+the chicken - piletina
+the sausage - kobasica
+the rice - pirinač
+the pasta - testenina
+the soup - supa
+the salad - salata
+the vegetable - povrće
+the fruit - voće
+the potato - krompir
+the tomato - paradajz
+the onion - luk
+the garlic - beli luk
+the salt - so
+the sugar - šećer
+the pepper - biber
+the oil - ulje
+the cake - kolač
+the chocolate - čokolada
+the coffee - kafa
+the tea - čaj
+the beer - pivo
+the wine - vino
+the juice - sok
+the person - čovek
+the woman - žena
+the man - muškarac
+the child - dete
+the boy - dečak
+the girl - devojčica
+the family - porodica
+the mother - majka
+the father - otac
+the parents - roditelji
+the brother - brat
+the sister - sestra
+the son - sin
+the daughter - ćerka
+the friend - prijatelj
+the neighbor - komšija
+the teacher - učitelj
+the student - učenik
+the doctor - lekar
+the waiter - konobar
+the seller - prodavac
+the work - posao
+the job - zanimanje
+the school - škola
+the university - univerzitet
+the book - knjiga
+the notebook - sveska
+the pencil - olovka
+the paper - papir
+the newspaper - novine
+the letter - pismo
+the language - jezik
+the word - reč
+the sentence - rečenica
+the question - pitanje
+the answer - odgovor
+the number - broj
+the name - ime
+the color - boja
+the picture - slika
+the music - muzika
+the song - pesma
+the movie - film
+the game - igra
+the sport - sport
+the ball - lopta
+the car - auto
+the bus - autobus
+the train - voz
+the bicycle - bicikl
+the airplane - avion
+the ship - brod
+the station - stanica
+the airport - aerodrom
+the ticket - karta
+the suitcase - kofer
+the trip - putovanje
+the vacation - odmor
+the hotel - hotel
+the bill - račun
+the money - novac
+the price - cena
+the store - prodavnica
+the market - pijaca
+the pharmacy - apoteka
+the hospital - bolnica
+the body - telo
+the head - glava
+the hair - kosa
+the eye - oko
+the nose - nos
+the mouth - usta
+the ear - uvo
+the tooth - zub
+the hand - šaka
+the arm - ruka
+the leg - noga
+the foot - stopalo
+the finger - prst
+the heart - srce
+the stomach - stomak
+the back - leđa
+the dress - haljina
+the shirt - košulja
+the pants - pantalone
+the skirt - suknja
+the jacket - jakna
+the coat - kaput
+the shoe - cipela
+the sock - čarapa
+the hat - šešir
+the bag - torba
+the ring - prsten
+the clock - sat
+the phone - telefon
+the computer - kompjuter
+the key - ključ
+the glasses - naočare
+the people - ljudi
+to be - biti
+to have - imati
+to become - postati
+to do - raditi
+to go - ići
+to come - doći
+to see - videti
+to hear - čuti
+to speak - govoriti
+to say - reći
+to ask - pitati
+to answer - odgovoriti
+to read - čitati
+to write - pisati
+to learn - učiti
+to understand - razumeti
+to know - znati
+to think - misliti
+to eat - jesti
+to drink - piti
+to sleep - spavati
+to get up - ustati
+to sit - sedeti
+to stand - stajati
+to run - trčati
+to drive - voziti
+to fly - leteti
+to buy - kupovati
+to sell - prodavati
+to pay - platiti
+to work - raditi
+to play - igrati
+to sing - pevati
+to dance - plesati
+to laugh - smejati se
+to cry - plakati
+to love - voleti
+to help - pomoći
+to need - trebati
+to give - dati
+to take - uzeti
+to bring - doneti
+to find - naći
+to search - tražiti
+to open - otvoriti
+to close - zatvoriti
+to begin - početi
+to finish - završiti
+to stay - ostati
+to wait - čekati
+to meet - sresti
+to cook - kuvati
+to clean - čistiti
+to wash - prati
+to draw - crtati
+to travel - putovati
+to swim - plivati
+to rain - padati kiša
+to snow - padati sneg
+to shine - sijati
+to like - svideti se
+to thank - zahvaliti
+to apologize - izviniti
+to be called - zvati se
+to live - živeti
+to want - želeti
+to can - moći
+to must - morati
+good - dobar
+bad - loš
+big - velik
+small - mali
+new - nov
+old - star
+young - mlad
+fast - brz
+slow - spor
+hot - vruć
+cold - hladan
+warm - topao
+beautiful - lep
+ugly - ružan
+easy - lak
+heavy - težak
+right - tačan
+wrong - pogrešan
+long - dug
+short - kratak
+high - visok
+low - nizak
+expensive - skup
+cheap - jeftin
+clean - čist
+dirty - prljav
+full - pun
+empty - prazan
+happy - srećan
+sad - tužan
+tired - umoran
+hungry - gladan
+thirsty - žedan
+sick - bolestan
+healthy - zdrav
+strong - jak
+weak - slab
+friendly - ljubazan

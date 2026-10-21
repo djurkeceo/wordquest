@@ -1,0 +1,64 @@
+# German → Serbian · Work & school
+# One pair per line.
+die Arbeit - posao
+der Beruf - zanimanje
+der Job - radno mesto
+die Stelle - radno mesto
+der Chef - šef
+die Chefin - šefica
+der Kollege - kolega
+die Kollegin - koleginica
+der Mitarbeiter - saradnik
+das Büro - kancelarija
+der Schreibtisch - radni sto
+der Computer - kompjuter
+das Telefon - telefon
+die E-Mail - imejl
+die Besprechung - sastanak
+das Meeting - poslovni sastanak
+der Termin - termin
+die Aufgabe - zadatak
+das Projekt - projekat
+der Bericht - izveštaj
+der Vertrag - ugovor
+die Firma - firma
+die Abteilung - odeljenje
+der Kunde - klijent
+die Rechnung - račun
+das Gehalt - plata
+der Lohn - nadnica
+die Steuer - porez
+der Urlaub - odmor
+die Pause - pauza
+die Arbeitszeit - radno vreme
+der Feierabend - kraj radnog dana
+die Bewerbung - prijava za posao
+der Lebenslauf - biografija
+das Vorstellungsgespräch - razgovor za posao
+die Ausbildung - obuka
+die Erfahrung - iskustvo
+die Kenntnis - znanje
+die Fähigkeit - sposobnost
+der Erfolg - uspeh
+das Ziel - cilj
+die Karriere - karijera
+die Schule - škola
+der Lehrer - učitelj
+die Lehrerin - učiteljica
+der Schüler - učenik
+die Schülerin - učenica
+die Universität - univerzitet
+der Professor - profesor
+das Studium - studije
+die Prüfung - ispit
+die Note - ocena
+das Zeugnis - svedočanstvo
+die Hausaufgabe - domaći zadatak
+das Buch - knjiga
+das Heft - sveska
+der Bleistift - olovka
+der Kugelschreiber - hemijska olovka
+der Radiergummi - gumica
+das Wörterbuch - rečnik
+die Tafel - tabla
+der Unterricht - nastava

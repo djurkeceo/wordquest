@@ -1,0 +1,47 @@
+# German → Serbian · Feelings & character
+# One pair per line.
+das Gefühl - osećanje
+die Freude - radost
+das Glück - sreća
+die Liebe - ljubav
+die Hoffnung - nada
+die Angst - strah
+die Sorge - briga
+die Trauer - tuga
+die Wut - bes
+der Ärger - ljutnja
+die Eifersucht - ljubomora
+die Scham - stid
+der Stolz - ponos
+die Überraschung - iznenađenje
+die Neugier - radoznalost
+die Langeweile - dosada
+die Einsamkeit - samoća
+die Zufriedenheit - zadovoljstvo
+die Begeisterung - oduševljenje
+die Enttäuschung - razočaranje
+die Dankbarkeit - zahvalnost
+das Vertrauen - poverenje
+die Geduld - strpljenje
+die Ruhe - mir
+der Stress - stres
+die Nervosität - nervoza
+die Stimmung - raspoloženje
+das Lächeln - osmeh
+die Träne - suza
+der Kuss - poljubac
+die Umarmung - zagrljaj
+glücklich - srećan
+traurig - tužan
+wütend - besan
+ängstlich - plašljiv
+überrascht - iznenađen
+zufrieden - zadovoljan
+enttäuscht - razočaran
+dankbar - zahvalan
+eifersüchtig - ljubomoran
+stolz - ponosan
+schüchtern - stidljiv
+mutig - hrabar
+freundlich - ljubazan
+ehrlich - iskren

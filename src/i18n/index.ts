@@ -67,5 +67,9 @@ export function applyI18n(): void {
     const key = node.getAttribute('data-i18n-aria') ?? '';
     node.setAttribute('aria-label', t(key));
   });
+  // Placeholder text (search boxes and text inputs).
+  document.querySelectorAll<HTMLInputElement>('[data-i18n-placeholder]').forEach(node => {
+    node.placeholder = t(node.getAttribute('data-i18n-placeholder') ?? '');
+  });
   document.documentElement.lang = getState().settings.uiLang || 'en';
 }

@@ -1,0 +1,302 @@
+# German → Serbian · 300 most useful everyday words
+# One pair per line. Nouns include their article.
+das Haus - kuća
+die Wohnung - stan
+das Zimmer - soba
+die Küche - kuhinja
+das Bad - kupatilo
+die Tür - vrata
+das Fenster - prozor
+der Tisch - sto
+der Stuhl - stolica
+das Bett - krevet
+die Lampe - lampa
+der Schrank - ormar
+die Wand - zid
+der Boden - pod
+die Treppe - stepenice
+der Garten - bašta
+die Straße - ulica
+die Stadt - grad
+das Dorf - selo
+das Land - zemlja
+die Welt - svet
+der Himmel - nebo
+die Sonne - sunce
+der Mond - mesec
+der Stern - zvezda
+das Wetter - vreme
+der Regen - kiša
+der Schnee - sneg
+der Wind - vetar
+die Wolke - oblak
+das Wasser - voda
+das Feuer - vatra
+die Erde - zemlja
+die Luft - vazduh
+der Baum - drvo
+die Blume - cvet
+das Gras - trava
+der Wald - šuma
+der Berg - planina
+der Fluss - reka
+das Meer - more
+der See - jezero
+die Insel - ostrvo
+der Strand - plaža
+der Stein - kamen
+der Sand - pesak
+das Tier - životinja
+der Hund - pas
+die Katze - mačka
+das Pferd - konj
+die Kuh - krava
+das Schwein - svinja
+das Schaf - ovca
+der Vogel - ptica
+der Fisch - riba
+die Maus - miš
+der Bär - medved
+der Löwe - lav
+die Schlange - zmija
+die Biene - pčela
+der Apfel - jabuka
+die Birne - kruška
+die Banane - banana
+die Orange - pomorandža
+die Traube - grožđe
+die Erdbeere - jagoda
+die Zitrone - limun
+das Brot - hleb
+die Milch - mleko
+der Käse - sir
+das Ei - jaje
+das Fleisch - meso
+das Hähnchen - piletina
+die Wurst - kobasica
+der Reis - pirinač
+die Nudel - testenina
+die Suppe - supa
+der Salat - salata
+das Gemüse - povrće
+das Obst - voće
+die Kartoffel - krompir
+die Tomate - paradajz
+die Zwiebel - luk
+der Knoblauch - beli luk
+das Salz - so
+der Zucker - šećer
+der Pfeffer - biber
+das Öl - ulje
+der Kuchen - kolač
+die Schokolade - čokolada
+der Kaffee - kafa
+der Tee - čaj
+das Bier - pivo
+der Wein - vino
+der Saft - sok
+der Mensch - čovek
+die Frau - žena
+der Mann - muškarac
+das Kind - dete
+der Junge - dečak
+das Mädchen - devojčica
+die Familie - porodica
+die Mutter - majka
+der Vater - otac
+die Eltern - roditelji
+der Bruder - brat
+die Schwester - sestra
+der Sohn - sin
+die Tochter - ćerka
+der Freund - prijatelj
+die Freundin - prijateljica
+der Nachbar - komšija
+der Lehrer - učitelj
+der Schüler - učenik
+der Arzt - lekar
+der Kellner - konobar
+der Verkäufer - prodavac
+die Arbeit - posao
+der Beruf - zanimanje
+die Schule - škola
+die Universität - univerzitet
+das Buch - knjiga
+das Heft - sveska
+der Bleistift - olovka
+das Papier - papir
+die Zeitung - novine
+der Brief - pismo
+die Sprache - jezik
+das Wort - reč
+der Satz - rečenica
+die Frage - pitanje
+die Antwort - odgovor
+die Zahl - broj
+der Name - ime
+die Farbe - boja
+das Bild - slika
+die Musik - muzika
+das Lied - pesma
+der Film - film
+das Spiel - igra
+der Sport - sport
+der Ball - lopta
+das Auto - auto
+der Bus - autobus
+der Zug - voz
+das Fahrrad - bicikl
+das Flugzeug - avion
+das Schiff - brod
+der Bahnhof - stanica
+der Flughafen - aerodrom
+die Fahrkarte - karta
+der Koffer - kofer
+die Reise - putovanje
+der Urlaub - odmor
+das Hotel - hotel
+die Rechnung - račun
+das Geld - novac
+der Preis - cena
+der Laden - prodavnica
+der Markt - pijaca
+die Apotheke - apoteka
+das Krankenhaus - bolnica
+der Körper - telo
+der Kopf - glava
+das Haar - kosa
+das Auge - oko
+die Nase - nos
+der Mund - usta
+das Ohr - uvo
+der Zahn - zub
+die Hand - šaka
+der Arm - ruka
+das Bein - noga
+der Fuß - stopalo
+der Finger - prst
+das Herz - srce
+der Bauch - stomak
+der Rücken - leđa
+das Kleid - haljina
+das Hemd - košulja
+die Hose - pantalone
+der Rock - suknja
+die Jacke - jakna
+der Mantel - kaput
+der Schuh - cipela
+die Socke - čarapa
+der Hut - šešir
+die Tasche - torba
+der Ring - prsten
+die Uhr - sat
+das Telefon - telefon
+der Computer - kompjuter
+der Schlüssel - ključ
+die Brille - naočare
+die Leute - ljudi
+sein - biti
+haben - imati
+werden - postati
+machen - raditi
+gehen - ići
+kommen - doći
+sehen - videti
+hören - čuti
+sprechen - govoriti
+sagen - reći
+fragen - pitati
+antworten - odgovoriti
+lesen - čitati
+schreiben - pisati
+lernen - učiti
+verstehen - razumeti
+wissen - znati
+denken - misliti
+essen - jesti
+trinken - piti
+schlafen - spavati
+aufstehen - ustati
+sitzen - sedeti
+stehen - stajati
+laufen - trčati
+fahren - voziti
+fliegen - leteti
+kaufen - kupovati
+verkaufen - prodavati
+bezahlen - platiti
+arbeiten - raditi
+spielen - igrati
+singen - pevati
+tanzen - plesati
+lachen - smejati se
+weinen - plakati
+lieben - voleti
+helfen - pomoći
+brauchen - trebati
+geben - dati
+nehmen - uzeti
+bringen - doneti
+finden - naći
+suchen - tražiti
+öffnen - otvoriti
+schließen - zatvoriti
+beginnen - početi
+enden - završiti
+bleiben - ostati
+warten - čekati
+treffen - sresti
+kochen - kuvati
+putzen - čistiti
+waschen - prati
+zeichnen - crtati
+reisen - putovati
+schwimmen - plivati
+regnen - padati kiša
+schneien - padati sneg
+scheinen - sijati
+gefallen - svideti se
+danken - zahvaliti
+entschuldigen - izviniti
+heißen - zvati se
+wohnen - stanovati
+leben - živeti
+gut - dobar
+schlecht - loš
+groß - velik
+klein - mali
+neu - nov
+alt - star
+jung - mlad
+schnell - brz
+langsam - spor
+heiß - vruć
+kalt - hladan
+warm - topao
+schön - lep
+hässlich - ružan
+leicht - lak
+schwer - težak
+richtig - tačan
+falsch - pogrešan
+lang - dug
+kurz - kratak
+hoch - visok
+niedrig - nizak
+teuer - skup
+billig - jeftin
+sauber - čist
+schmutzig - prljav
+voll - pun
+leer - prazan
+glücklich - srećan
+traurig - tužan
+müde - umoran
+hungrig - gladan
+durstig - žedan
+krank - bolestan
+gesund - zdrav
+stark - jak
+schwach - slab
+freundlich - ljubazan
+wichtig - važan

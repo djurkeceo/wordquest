@@ -1,0 +1,63 @@
+# German → Serbian · City & shopping
+# One pair per line.
+die Stadt - grad
+das Dorf - selo
+die Straße - ulica
+der Platz - trg
+die Kreuzung - raskrsnica
+der Kreisverkehr - kružni tok
+die Ampel - semafor
+der Bürgersteig - trotoar
+die Brücke - most
+der Tunnel - tunel
+das Gebäude - zgrada
+das Hochhaus - soliter
+der Wolkenkratzer - neboder
+die Kirche - crkva
+der Tempel - hram
+die Moschee - džamija
+das Rathaus - gradska uprava
+die Bibliothek - biblioteka
+das Museum - muzej
+das Theater - pozorište
+das Kino - bioskop
+die Schule - škola
+die Universität - univerzitet
+das Krankenhaus - bolnica
+die Apotheke - apoteka
+die Bank - banka
+die Post - pošta
+die Polizei - policija
+die Feuerwehr - vatrogasci
+der Supermarkt - supermarket
+der Laden - prodavnica
+das Einkaufszentrum - tržni centar
+der Markt - pijaca
+die Bäckerei - pekara
+die Metzgerei - mesara
+der Friseur - frizer
+das Restaurant - restoran
+das Café - kafić
+die Bar - bar
+das Hotel - hotel
+der Park - park
+der Spielplatz - igralište
+der Zoo - zoološki vrt
+das Schwimmbad - bazen
+das Stadion - stadion
+die Galerie - galerija
+das Konzert - koncert
+die Ausstellung - izložba
+der Bahnhof - železnička stanica
+der Busbahnhof - autobuska stanica
+der Flughafen - aerodrom
+die Haltestelle - stajalište
+das Taxi - taksi
+der Parkplatz - parking
+die Tankstelle - benzinska pumpa
+die Werkstatt - radionica
+der Kiosk - kiosk
+die Toilette - toalet
+der Brunnen - česma
+die Mauer - zid
+das Denkmal - spomenik

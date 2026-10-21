@@ -1,0 +1,62 @@
+# German → Serbian · Travel & transport
+# One pair per line.
+die Reise - putovanje
+der Urlaub - odmor
+der Ausflug - izlet
+die Ferien - raspust
+das Reiseziel - odredište
+die Fahrkarte - karta
+der Fahrschein - vozna karta
+der Fahrplan - red vožnje
+der Bahnhof - železnička stanica
+der Hauptbahnhof - glavna stanica
+das Gleis - peron
+der Zug - voz
+der ICE - brzi voz
+der Bus - autobus
+die Haltestelle - stajalište
+die U-Bahn - metro
+die Straßenbahn - tramvaj
+das Taxi - taksi
+das Auto - auto
+das Fahrrad - bicikl
+das Motorrad - motocikl
+der Flughafen - aerodrom
+das Flugzeug - avion
+der Flug - let
+das Flugticket - avionska karta
+der Abflug - polazak
+die Ankunft - dolazak
+der Koffer - kofer
+der Rucksack - ranac
+der Reisepass - pasoš
+das Visum - viza
+die Grenze - granica
+der Zoll - carina
+die Verspätung - kašnjenje
+der Sitzplatz - sedište
+das Fenster - prozor
+der Gang - prolaz
+die Reservierung - rezervacija
+das Hotel - hotel
+die Rezeption - recepcija
+das Zimmer - soba
+der Schlüssel - ključ
+die Jugendherberge - omladinski hostel
+das Frühstück - doručak
+die Aussicht - pogled
+der Strand - plaža
+das Meer - more
+der Berg - planina
+die Karte - mapa
+der Stadtplan - plan grada
+die Sehenswürdigkeit - znamenitost
+das Museum - muzej
+der Führer - vodič
+die Tour - tura
+der Tourist - turista
+die Information - informacija
+die Toilette - toalet
+das Geld - novac
+die Bank - banka
+der Automat - automat

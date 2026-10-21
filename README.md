@@ -1,10 +1,10 @@
 # WordQuest 🦊
 
-A single-file language-learning game. Import your own word list, let WordQuest work out which
-languages you are studying, and practise with spaced repetition, nine exercise types and a friendly
-fox called Pip.
+Turn any word list into an adaptive language-learning game. Import your own pairs, let WordQuest
+work out the languages, and practise with spaced repetition, nine exercise types and a friendly fox
+called Pip.
 
-No build step, no backend, no tracking — the whole app is one `index.html`.
+No backend, no accounts, no tracking — your decks and progress stay in this browser.
 
 <p align="center">
   <img src="assets/screenshot.png" alt="WordQuest home screen with the continue card, daily goal ring and deck list" width="300">
@@ -13,17 +13,27 @@ No build step, no backend, no tracking — the whole app is one `index.html`.
 
 ## Why
 
-Most vocabulary apps make you pick a course from their catalogue. WordQuest starts from *your*
-list: a text file, a pasted column from a spreadsheet, or anything you can drag onto the page.
-Everything else — language detection, exercise choice, difficulty — adapts to that list.
+Most vocabulary apps make you pick a course from their catalogue. WordQuest starts from *your* list:
+a text file, a pasted column from a spreadsheet, or one of the built-in packs. Everything else —
+language detection, exercise choice, difficulty — adapts to that list.
 
 ## Features
+
+### Ready-made packs
+- **13 curated packs**, lazy-loaded so they cost nothing until you browse them: German → Serbian
+  top 300 plus nine themed packs (food, travel, home, health, nature, work, city, feelings, verbs),
+  and English → Serbian top 300 plus everyday phrases and verbs.
+- Filter by category or search by title, description, language or level; preview the first ten pairs
+  before committing.
+- Add a pack as a **new deck**, or **merge** it into a deck with the same language pair. Duplicates
+  are skipped by normalised foreign word, and the deck records which pack it came from.
+- Adding a pack skips the language-confirmation step; the pack already knows its pair.
 
 ### Import and decks
 - **Three ways in:** drag & drop, file picker, or paste text.
 - **Flexible format:** `-` `–` `—` `=` `:` `;` tab and comma all separate the two sides.
-- Skips blank lines and `#` comments, strips a UTF-8 BOM, merges duplicate words, and keeps
-  several translations per word.
+- Skips blank lines and `#` comments, strips a UTF-8 BOM, merges duplicate words, and keeps several
+  translations per word.
 - **Editable preview** before saving — fix a line or delete a row; unparseable lines are reported
   with their line numbers instead of failing silently.
 - Unlimited decks. Rename, delete, or switch between them at any time.
@@ -33,7 +43,6 @@ Everything else — language detection, exercise choice, difficulty — adapts t
 - Nothing is applied silently: before the word list appears, WordQuest shows the pair it detected
   (with a few sample words from each column) and waits for you to confirm. Picking a different
   language — or swapping the two columns for lists written translation-first — is one tap away.
-- The native language is remembered for next time.
 - Serbian is supported in both scripts (Latin and Cyrillic), including transliteration between them.
 - Optional accent-insensitive matching (`cafe` = `café`) for typing exercises.
 
@@ -48,6 +57,7 @@ Everything else — language detection, exercise choice, difficulty — adapts t
 | Listen & pick | Ear training with text-to-speech |
 | Letter scramble | Spelling and word shape |
 | Speed round | 60 seconds, combo multiplier, one point per correct answer |
+| Boss round | Mixed-mode test unlocked by trouble words |
 
 A lesson is 10–15 exercises, so it fits in a coffee break.
 
@@ -59,11 +69,11 @@ A lesson is 10–15 exercises, so it fits in a coffee break.
 
 ### Pronunciation that actually sounds right
 Three selectable engines:
-- **Auto** — uses an installed system voice when one exists for that language, otherwise falls
-  back to an online voice. This is the default, and it fixes languages your OS has no voice for.
+- **Auto** — uses an installed system voice when one exists for that language, otherwise falls back
+  to an online voice. This is the default, and it fixes languages your OS has no voice for.
 - **Browser** — offline Web Speech only.
-- **Online** — Google Cloud Text-to-Speech with your own API key (free tier covers a lot of
-  practice), with a keyless fallback when no key is set.
+- **Online** — Google Cloud Text-to-Speech with your own API key, with a keyless fallback when no
+  key is set.
 
 The API key is stored only in your browser's `localStorage`; it is never sent anywhere except to
 Google. Synthesised audio is cached in memory so repeated words do not hit the network twice.
@@ -78,39 +88,73 @@ Google. Synthesised audio is cached in memory so repeated words do not hit the n
 - Light and dark themes.
 - Keyboard: `Enter` to continue, `1`–`4` to answer, `Space` to flip a card, `Esc` to leave.
 - Respects `prefers-reduced-motion`, visible focus rings, ARIA labels, and a skip link.
-- UI available in English and Serbian (Latin); it defaults to the language you are learning from.
+- UI available in English and Serbian (Latin); it can default to the language you are learning from.
 - Works on a phone — the layout is mobile-first, not a shrunken desktop page.
+- App icons and a web app manifest for favicons, home-screen shortcuts and installable windows.
 
 ## Run it
 
-Download or clone the repo and open `index.html` in a modern browser. That's it.
+Requires Node 20.19+ (developed with Node 22).
 
 ```bash
 git clone https://github.com/djurkeceo/wordquest.git
 cd wordquest
-# double-click index.html, or serve it:
-python -m http.server 8000
+npm ci
+npm run dev
 ```
 
-Then click **Sample** on the home screen to try a built-in 40-word German → Serbian deck.
+Vite prints a local URL (usually `http://localhost:5173`). Click **Sample** for a 40-word German →
+Serbian deck, or open **Ready-made packs** and add one.
 
-## Keyboard shortcuts
+### Build and test
 
-| Key | Action |
-| --- | --- |
-| `Enter` | Continue / submit |
-| `1`–`4` | Choose an answer |
-| `Space` | Flip a flashcard |
-| `Esc` | Leave the lesson |
+```bash
+npm run typecheck   # strict TypeScript, no emit
+npm test            # Vitest characterisation + preset tests
+npm run build       # typecheck + production build into dist/
+npm run preview     # serve dist/ on a local port
+```
 
-## How it is built
+Deploy `dist/` to any static host. On Vercel: framework preset **Vite**, build command
+`npm run build`, output directory `dist`. No environment variables and no server code are needed.
 
-- Plain HTML, CSS and JavaScript in one file (~5,400 lines). No framework, no bundler, no npm.
-- The only external request is Google Fonts (Nunito) — and the app is perfectly usable without it.
-- State lives in `localStorage`: one key per profile (`wordquest.state.v1::<id>`), plus a small
-  registry of profiles.
-- The script is organised into 13 commented sections: storage, accounts, parser, language
-  detection, SRS, exercise generators, game engine, TTS, i18n, UI and so on.
+## Project structure
+
+```
+src/
+  main.ts          boot order, bindings, session host
+  types.ts         strict domain contract
+  storage/         profiles, state, migration, PIN hashing
+  parser/          word-list parser and separators
+  language/        detection, names, normalisation
+  emoji/           lazy lexicon + word-to-emoji inference
+  engine/          SRS, XP, answer checking, session builder
+  modes/           the nine exercise renderers
+  audio/           sound effects and text-to-speech
+  gamification/    achievements and level maths
+  ui/              router, screens, shared components
+  i18n/            English and Serbian catalogues
+  presets/         registry, merge logic, UI, data/*.txt
+  styles/          CSS split by concern, imported by main.ts
+public/            icons and site.webmanifest
+```
+
+### Adding a ready-made pack
+
+1. Drop a plain text file into `src/presets/data/` — one pair per line, e.g. `der Hund - pas`.
+2. Add one entry to `PRESETS` in `src/presets/index.ts` with both titles/descriptions, the language
+   pair, category, level and `load: () => import('./data/your-pack.txt?raw')`.
+
+The card's word count is parsed from the file, so there is no count to keep in sync. Pack text is a
+separate lazy chunk in the production build.
+
+## State and privacy
+
+- Profiles: `wordquest.profiles.v1` (`{ activeId, list }`).
+- Each profile: `wordquest.state.v1::<profileId>`.
+- Settings, decks, progress and the optional TTS key live inside that profile state.
+- A legacy `wordquest.state.v1` save is adopted by the first profile.
+- Nothing is uploaded. Export JSON from Settings for a backup, or import it on another device.
 
 ## Browser support
 

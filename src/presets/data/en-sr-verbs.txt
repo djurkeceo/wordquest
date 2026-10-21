@@ -1,0 +1,62 @@
+# English → Serbian · Everyday verbs
+# One pair per line.
+to be - biti
+to have - imati
+to do - raditi
+to say - reći
+to go - ići
+to come - doći
+to see - videti
+to look - gledati
+to hear - čuti
+to speak - govoriti
+to ask - pitati
+to answer - odgovoriti
+to read - čitati
+to write - pisati
+to learn - učiti
+to teach - podučavati
+to understand - razumeti
+to know - znati
+to think - misliti
+to believe - verovati
+to eat - jesti
+to drink - piti
+to sleep - spavati
+to wake up - probuditi se
+to get up - ustati
+to sit - sedeti
+to stand - stajati
+to run - trčati
+to walk - hodati
+to drive - voziti
+to fly - leteti
+to buy - kupovati
+to sell - prodavati
+to pay - platiti
+to work - raditi
+to play - igrati
+to sing - pevati
+to dance - plesati
+to laugh - smejati se
+to cry - plakati
+to love - voleti
+to like - svideti se
+to help - pomoći
+to need - trebati
+to give - dati
+to take - uzeti
+to bring - doneti
+to find - naći
+to search - tražiti
+to open - otvoriti
+to close - zatvoriti
+to begin - početi
+to finish - završiti
+to stay - ostati
+to wait - čekati
+to meet - sresti
+to cook - kuvati
+to clean - čistiti
+to wash - prati
+to travel - putovati

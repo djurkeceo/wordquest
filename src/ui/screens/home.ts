@@ -16,6 +16,7 @@ import { getState } from '../../storage/state';
 import { $, esc, h } from '../dom';
 import { startSession } from '../sessionFlow';
 import { updateTopbar } from '../topbar';
+import { renderPresetSection } from '../../presets/ui';
 import { openDeck } from './deck';
 
 export function renderHome(): void {
@@ -99,4 +100,6 @@ export function renderHome(): void {
       list.appendChild(card);
     });
   }
+
+  renderPresetSection();
 }

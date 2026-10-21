@@ -162,6 +162,12 @@ export interface Deck {
    * `normalizeDeck()` on every load (reported as bug H1 in docs/PLAN.md).
    */
   lastOpened?: Timestamp;
+  /**
+   * Which ready-made pack created this deck, if any. Optional and additive:
+   * older saves do not have it and keep loading unchanged. A deck that
+   * receives several packs can only remember one id (singular by design).
+   */
+  presetId?: string;
 }
 
 /* -------------------------------------------------------------- app state -- */
@@ -445,3 +451,52 @@ export type I18nValue = string | readonly string[];
 export type I18nDict = Record<string, I18nValue>;
 export type I18nCatalogs = Record<UiLangCode, I18nDict>;
 export type I18nVars = Record<string, string | number>;
+
+/* --------------------------------------------------------------- presets -- */
+
+/** Curated pack groups. `top` is the two 300-word starter lists. */
+export type PresetCategory =
+  | 'top'
+  | 'food'
+  | 'travel'
+  | 'home'
+  | 'health'
+  | 'nature'
+  | 'work'
+  | 'city'
+  | 'feelings'
+  | 'verbs'
+  | 'phrases';
+
+/** Rough CEFR band shown on the card. */
+export type PresetLevel = 'A1' | 'A2' | 'B1';
+
+/** A string that has an English and a Serbian (Latin) variant. */
+export interface PresetText {
+  en: string;
+  sr: string;
+}
+
+/**
+ * One ready-made pack. `load()` is a lazy Vite import of the raw `.txt`, so
+ * pack text and computed word counts only cost bytes when the cards render.
+ */
+export interface PresetMeta {
+  id: string;
+  title: PresetText;
+  description: PresetText;
+  foreignLang: LanguageCode;
+  nativeLang: LanguageCode;
+  category: PresetCategory;
+  level: PresetLevel;
+  load: () => Promise<{ default: string }>;
+}
+
+/** Registry entry plus the data parsed out of its text file. */
+export interface LoadedPreset {
+  meta: PresetMeta;
+  text: string;
+  pairs: ParsedPair[];
+  /** Distinct foreign words, i.e. the number the parser would produce. */
+  wordCount: number;
+}

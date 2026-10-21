@@ -17,6 +17,7 @@ import { checkAchievements } from './gamification/achievements';
 import { t } from './i18n';
 import { activeProfile, loadProfiles } from './storage/profiles';
 import { getState, save } from './storage/state';
+import { bindPresets } from './presets/ui';
 import { bindFeedback } from './ui/feedback';
 import { getCurrentScreen } from './ui/nav';
 import { bindRouter, showScreen } from './ui/router';
@@ -93,6 +94,7 @@ bindPreviewScreen();
 bindDeckScreen();
 bindSessionScreen();
 bindSettingsScreen();
+bindPresets();
 bindThemeListener();
 
 initSessionFlow({
