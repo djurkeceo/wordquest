@@ -11,6 +11,9 @@
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="manifest" href="./site.webmanifest">
 <meta name="application-name" content="WordQuest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WordQuest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,14 +26,7 @@
   <button class="icon-btn hidden" id="btnBack" data-i18n-aria="nav.back" aria-label="Go back">←</button>
   <button class="brand" id="brandHome" type="button" data-i18n-aria="nav.homeHint" aria-label="WordQuest — go to home">
     <span class="brand__mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M6 9.7 4.6 2.8l6.4 3.5Z" fill="currentColor"/>
-        <path d="M18 9.7 19.4 2.8l-6.4 3.5Z" fill="currentColor"/>
-        <path d="M12 21.4c-4.4 0-7.6-3.3-7.6-7.5 0-4.2 3.2-7.4 7.6-7.4s7.6 3.2 7.6 7.4c0 4.2-3.2 7.5-7.6 7.5Z" fill="currentColor"/>
-        <circle cx="9.3" cy="11.3" r="1.2" fill="#2A1A12"/>
-        <circle cx="14.7" cy="11.3" r="1.2" fill="#2A1A12"/>
-        <ellipse cx="12" cy="15.3" rx="1.15" ry=".9" fill="#2A1A12"/>
-      </svg>
+      <img src="./icons/icon.svg" alt="" width="42" height="42" decoding="async">
     </span>
     <span class="brand__word">Word<em>Quest</em></span>
   </button>

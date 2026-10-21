@@ -105,19 +105,19 @@ label.field>span,.fieldlabel{
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:40;
   display:flex;justify-content:center;gap:6px;
-  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+  padding:8px max(10px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
   background:color-mix(in srgb, var(--card) 94%, transparent);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border-top:2px solid var(--border);
+  backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);
+  border-top:1px solid color-mix(in srgb, var(--border) 78%, transparent);
 }
 .tabbar button{
-  flex:1;max-width:190px;border:0;background:transparent;color:var(--muted);
+  flex:1;max-width:190px;min-height:54px;border:0;background:transparent;color:var(--muted);
   font:inherit;font-weight:900;font-size:.72rem;display:grid;gap:3px;justify-items:center;
-  padding:7px 4px;border-radius:16px;cursor:pointer;
-  transition:background .18s, color .18s, transform .12s;
+  padding:7px 4px;border-radius:16px;cursor:pointer;touch-action:manipulation;
+  transition:background .18s, color .18s, transform .12s, box-shadow .18s;
 }
 .tabbar button i{font-style:normal;font-size:1.3rem;line-height:1;transition:transform .2s}
-.tabbar button[aria-current="page"]{color:var(--brand);background:var(--brand-soft)}
+.tabbar button[aria-current="page"]{color:var(--brand);background:var(--brand-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brand) 18%, transparent)}
 .tabbar button[aria-current="page"] i{animation:tabPop .42s cubic-bezier(.3,1.6,.4,1)}
 .tabbar button:active{transform:scale(.95)}
 @keyframes tabPop{0%{transform:scale(.8) rotate(-8deg)}60%{transform:scale(1.16) rotate(4deg)}100%{transform:scale(1) rotate(0)}}

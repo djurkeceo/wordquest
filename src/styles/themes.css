@@ -36,6 +36,8 @@
   --shadow:0 2px 0 var(--border);
   --shadow-lg:0 18px 44px rgba(0,0,0,.6);
   --ring:0 0 0 4px rgba(142,116,255,.35);
+  --nav-shadow:0 16px 38px rgba(0,0,0,.42), 0 2px 0 var(--border);
+  --nav-highlight:inset 0 1px 0 rgba(255,255,255,.06);
 }
 
 /* ------------------------------------------- 10b dark-mode contrast fixes */
