@@ -14,6 +14,8 @@ export interface MascotOptions {
   size?: MascotSize;
   /** Give the fox an accessible name when it is the only meaningful visual. */
   label?: string;
+  /** Return to idle after this many milliseconds (e.g. a one-off celebration). */
+  autoResetMs?: number;
 }
 
 const FOX_MARKUP = `
@@ -30,9 +32,9 @@ const FOX_MARKUP = `
     </g>
     <path d="M84 420 Q88 352 150 340 L250 340 Q312 352 316 420 Z" fill="#F2701B"/>
     <path d="M168 342 Q200 392 232 342 L240 420 L160 420 Z" fill="#FFF4E6"/>
-    <path d="M112 334 Q200 384 288 334 L298 360 Q200 412 102 360 Z" fill="#6C4BF6"/>
+    <path class="fox-scarf" d="M112 334 Q200 384 288 334 L298 360 Q200 412 102 360 Z" fill="#6C4BF6"/>
     <path d="M122 350 Q200 396 278 350" fill="none" stroke="#A793FF" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 16"/>
-    <path d="M248 372 L282 412 L254 418 L232 382 Z" fill="#5A38E8"/>
+    <path class="fox-scarf-knot" d="M248 372 L282 412 L254 418 L232 382 Z" fill="#5A38E8"/>
     <g class="head">
       <g class="ear-l">
         <path d="M92 66 L172 130 L98 196 Q72 134 92 66 Z" fill="url(#wq-fur)"/>
@@ -82,6 +84,7 @@ const FOX_MARKUP = `
 let fox: SVGSVGElement | null = null;
 let state: MascotState = 'idle';
 let resetTimer: ReturnType<typeof setTimeout> | null = null;
+let resetAt = 0;
 let bound = false;
 let frame = 0;
 let pointerX = 0;
@@ -118,10 +121,13 @@ export function setState(next: MascotState, autoResetMs?: number): void {
   if (resetTimer !== null) {
     clearTimeout(resetTimer);
     resetTimer = null;
+    resetAt = 0;
   }
   if (autoResetMs && autoResetMs > 0) {
+    resetAt = Date.now() + autoResetMs;
     resetTimer = setTimeout(() => {
       resetTimer = null;
+      resetAt = 0;
       setState('idle');
     }, autoResetMs);
   }
@@ -129,6 +135,15 @@ export function setState(next: MascotState, autoResetMs?: number): void {
 
 export function getMascotState(): MascotState {
   return state;
+}
+
+/**
+ * True while a reaction is still inside its auto-reset window. The session
+ * renderer uses this so a level-up celebration survives the next exercise but
+ * a summary celebration can never leak into the following lesson.
+ */
+export function isCelebrating(): boolean {
+  return state === 'celebrate' && resetTimer !== null && Date.now() < resetAt;
 }
 
 function ensureFox(): SVGSVGElement {
@@ -164,8 +179,19 @@ export function mountMascot(
     svg.setAttribute('aria-label', options.label);
   }
 
-  if (options.state) setState(options.state);
+  if (options.state) setState(options.state, options.autoResetMs);
   return svg;
+}
+
+/**
+ * Re-apply the current motion preference (called when "Calm motion" changes).
+ * CSS handles the freeze itself; this also clears a pointer-follow offset so a
+ * static fox never stays tilted after the setting is switched on.
+ */
+export function refreshMotionPreference(): void {
+  if (!fox) return;
+  fox.setAttribute('data-paused', document.hidden ? 'true' : 'false');
+  if (reduceMotion.matches || calmMotion()) resetLook();
 }
 
 function trackPointer(x: number, y: number): void {
@@ -210,5 +236,12 @@ function bindGlobalListeners(): void {
         frame = 0;
       }
     }
+  });
+
+  // The OS preference can change while the app is open. The CSS media query
+  // updates on its own; this listener clears any look offset immediately.
+  reduceMotion.addEventListener('change', refreshMotionPreference);
+  desktopPointer.addEventListener('change', () => {
+    if (!desktopPointer.matches) resetLook();
   });
 }

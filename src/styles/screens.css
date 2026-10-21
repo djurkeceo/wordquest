@@ -149,6 +149,12 @@ body.in-session .topbar{display:none}
 .sessionbar{display:flex;align-items:center;gap:12px;padding:12px 0 16px;flex:none}
 .sessionbar .icon-btn{width:38px;height:38px;flex:0 0 38px;font-size:1rem;border-radius:12px}
 .sessionbar .bar{height:16px}
+/* The lesson fox sits above the exercise, not in the thin progress bar. */
+.sessionperch{
+  position:relative;z-index:2;display:flex;justify-content:center;
+  flex:none;margin:-6px 0 -8px;pointer-events:none;
+}
+.sessionperch .mascot-slot[data-size="md"]{--mascot-size:88px}
 .hearts{display:flex;gap:3px;font-size:1.12rem;flex:0 0 auto}
 .hearts span{display:inline-block;transition:opacity .3s, filter .3s, transform .3s}
 .heart--lost{filter:grayscale(1);opacity:.26;transform:scale(.82)}
@@ -387,6 +393,7 @@ body.in-session .topbar{display:none}
   body{background-attachment:scroll}
 }
 @media(min-width:720px){
+  .sessionperch .mascot-slot[data-size="md"]{--mascot-size:108px}
   body{padding-bottom:calc(108px + env(safe-area-inset-bottom))}
   #app{padding:0 22px}
   .topbar{
@@ -442,5 +449,13 @@ body.in-session .topbar{display:none}
 }
 @media(max-width:600px){
   .preview-table input{font-size:16px}
+}
+@media(max-height:620px){
+  .sessionperch{margin-top:-10px;margin-bottom:-14px}
+  .sessionperch .mascot-slot[data-size="md"]{--mascot-size:76px}
+}
+@media(max-height:520px){
+  .sessionperch{margin-top:-12px;margin-bottom:-18px}
+  .sessionperch .mascot-slot[data-size="md"]{--mascot-size:58px}
 }
 

@@ -22,9 +22,7 @@ export function renderSummary(data: SummaryData): void {
   const mood = data.reason === 'nohearts' ? 'sad'
     : perfect || data.newBadges.length ? 'celebrate'
     : data.accuracy >= 60 ? 'happy' : 'sad';
-  const moodLabel = mood === 'celebrate' ? 'Pip the fox celebrates'
-    : mood === 'sad' ? 'Pip the fox looks sad'
-    : 'Pip the fox looks happy';
+  const moodLabel = 'Pip the fox mascot';
   const msg = data.reason === 'nohearts' ? t('session.noHearts')
     : data.reason === 'timeup' ? t('session.timeUp')
     : t('summary.nice');
@@ -70,7 +68,13 @@ export function renderSummary(data: SummaryData): void {
       <button class="btn btn--block" id="btnToDeck">${esc(t('summary.home'))}</button>
     </div>`;
 
-  mountMascot('#summaryMascot', { size: 'lg', state: mood, label: moodLabel });
+  mountMascot('#summaryMascot', {
+    size: 'lg',
+    state: mood,
+    label: moodLabel,
+    // Every result reaction settles back to idle; none of them loop forever.
+    autoResetMs: 6000
+  });
 
   countUp($('#summaryInner .bigstat div:nth-child(2) b'), session.xp, '+');
 

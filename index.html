@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#6C4BF6">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#6C4BF6">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#12121E">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="WordQuest — turn any word list into an adaptive language-learning game.">
 <title>WordQuest — learn words by playing</title>
 <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
@@ -142,9 +144,6 @@
   <section class="screen" id="screen-import" aria-labelledby="impTitle">
     <h1 id="impTitle" data-i18n="import.title">Add words</h1>
     <p class="muted small" data-i18n="import.help">One pair per line, separated by — = : ; tab or comma.</p>
-    <div class="row" style="margin:2px 0 14px">
-      <button class="btn btn--ghost grow" id="btnPacksFromImport">📦 <span data-i18n="preset.browse">Browse ready-made packs</span></button>
-    </div>
 
     <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Drop a text file or activate to choose one">
       <div class="dzicon" aria-hidden="true">📥</div>
@@ -159,6 +158,18 @@
       <button class="btn btn--primary grow" id="btnParsePaste" data-i18n="import.parse">Parse text</button>
       <button class="btn" id="btnSample" data-i18n="import.sample">Download sample</button>
     </div>
+
+    <section class="packs packs--import" id="importPacks" aria-labelledby="importPacksTitle">
+      <div class="packs__head">
+        <div>
+          <h2 id="importPacksTitle" data-i18n="preset.importTitle">Ready-made packs</h2>
+          <p class="muted small" data-i18n="preset.importSub">Not sure where to start? Add one of these decks in a tap.</p>
+        </div>
+        <button class="btn btn--sm btn--ghost" id="btnPacksFromImport">📦 <span data-i18n="preset.browseAll">Browse all</span></button>
+      </div>
+      <div class="packs__grid" id="importPresetGrid"></div>
+      <p class="muted small hidden packs__loading" id="importPresetLoading" data-i18n="preset.loading">Loading packs…</p>
+    </section>
     <div class="hidden" id="sampleData" aria-hidden="true"></div>
   </section>
 
@@ -252,10 +263,12 @@
     <h2 class="sr-only" id="sessionTitle" data-i18n="session.title">Lesson</h2>
     <div class="sessionbar">
       <button class="icon-btn" id="btnQuit" aria-label="Quit lesson">✕</button>
-      <div class="mascot-slot" id="sessionMascot" data-size="xs" aria-hidden="true"></div>
       <div class="bar grow"><i id="sessionProgress" style="width:0%"></i></div>
       <div class="hearts" id="hearts" title="Hearts"></div>
       <div class="timer hidden" id="timer">60</div>
+    </div>
+    <div class="sessionperch" aria-hidden="true">
+      <div class="mascot-slot" id="sessionMascot" data-size="md"></div>
     </div>
     <div class="stage" id="stage"></div>
   </section>
@@ -300,7 +313,7 @@
       </div>
       <div class="switch">
         <div class="switch__txt">🎬 <span data-i18n="settings.motion">Calm motion</span>
-          <small data-i18n="settings.motionSub">Shortens animations and confetti.</small></div>
+          <small data-i18n="settings.motionSub">Freezes the fox and turns off confetti and decorative motion.</small></div>
         <button class="toggle" id="tgMotion" role="switch" aria-checked="false" aria-label="Calm motion"></button>
       </div>
     </div>
@@ -334,7 +347,7 @@
       <label class="field"><span data-i18n="settings.voiceKey">Google Cloud API key (optional)</span>
         <input type="password" id="ttsKeyInput" autocomplete="off" spellcheck="false" placeholder="AIza…">
       </label>
-      <p class="tiny muted" style="margin:-2px 0 0" data-i18n="settings.voiceKeyHint">A free key unlocks neural voices with a native accent. It is stored only in this browser.</p>
+      <p class="tiny muted" style="margin:-2px 0 0" data-i18n="settings.voiceKeyHint">A free key unlocks neural voices. It is stored in this browser and sent straight to Google, so restrict it to this site and the Text-to-Speech API in Google Cloud before using it.</p>
     </div>
 
     <div class="card">

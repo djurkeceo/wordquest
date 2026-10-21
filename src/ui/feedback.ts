@@ -22,7 +22,7 @@ export function showFeedback(opts: FeedbackOptions): void {
   if (title) title.textContent = opts.title;
   if (msg) msg.textContent = opts.msg || '';
   if (extra) extra.innerHTML = opts.extra || '';
-  mountMascot('#fbMascot', { size: 'sm' });
+  mountMascot('#fbMascot', { size: 'md' });
   if (next) next.textContent = t('fb.continue');
   fb.classList.add('show');
   if (next) next.focus({ preventScroll: true });
@@ -32,7 +32,7 @@ export function showFeedback(opts: FeedbackOptions): void {
     feedbackResolver = null;
     if (fn) fn();
     if ($<HTMLElement>('#screen-session')?.classList.contains('is-active')) {
-      mountMascot('#sessionMascot', { size: 'xs' });
+      mountMascot('#sessionMascot', { size: 'md' });
     }
   };
 }

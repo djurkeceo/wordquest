@@ -79,7 +79,7 @@ export const en: I18nDict = {
     'settings.tts': 'Text to speech', 'settings.ttsSub': 'Pronounce words with the browser voice.',
     'settings.strict': 'Strict accents', 'settings.strictSub': 'Off: c = č = ć and s = š are all accepted.',
     'settings.hearts': 'Hearts in lessons', 'settings.heartsSub': 'Off makes every lesson a no-pressure practice run.',
-    'settings.motion': 'Calm motion', 'settings.motionSub': 'Shortens animations and confetti.',
+    'settings.motion': 'Calm motion', 'settings.motionSub': 'Freezes the fox and turns off confetti and decorative motion.',
     'settings.uiLang': 'Interface language', 'settings.nativeLang': 'My native language',
     'settings.goal': 'Daily XP goal', 'settings.theme': 'Appearance',
     'settings.themeAuto': 'Auto', 'settings.themeLight': 'Light', 'settings.themeDark': 'Dark',
@@ -95,7 +95,7 @@ export const en: I18nDict = {
     'settings.voiceInfoCloud': 'Google Cloud voice for {lang}.',
     'settings.voiceInfoOffline': 'Offline — connect to the internet for a better accent.',
     'settings.voiceKey': 'Google Cloud API key (optional)',
-    'settings.voiceKeyHint': 'A free key unlocks neural voices with a native accent. It is stored only in this browser.',
+    'settings.voiceKeyHint': 'A free key unlocks neural voices. It is stored in this browser and sent straight to Google, so restrict it to this site and the Text-to-Speech API in Google Cloud before using it.',
     'toast.ttsKeyBad': 'That API key was rejected. Check it in Settings.',
 
     'login.title': "Who's playing?", 'login.sub': 'Pick your profile to continue.',
@@ -141,6 +141,9 @@ export const en: I18nDict = {
     /* Ready-made packs (phase 6). */
     'preset.title': 'Ready-made packs',
     'preset.sub': 'Start in one tap — add a pack as a new deck or merge it into an existing one.',
+    'preset.importTitle': 'Ready-made packs',
+    'preset.importSub': 'Not sure where to start? Add one of these decks in a tap.',
+    'preset.browseAll': 'Browse all',
     'preset.search': 'Search packs',
     'preset.categories': 'Pack categories',
     'preset.loading': 'Loading packs…',

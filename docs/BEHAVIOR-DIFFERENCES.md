@@ -35,9 +35,9 @@ This is the one new product surface, requested after the refactor:
 - **Home:** a “Ready-made packs” section below the deck list, category chips,
   debounced search, pack cards, an “Already added” state, and the new empty-state
   copy “No decks yet. Pick a ready-made pack or upload your own.”
-- **Import screen:** a “Browse ready-made packs” button that returns Home,
-  scrolls to the section and focuses search. Upload/import behaviour is
-  unchanged.
+- **Import screen:** a compact “Ready-made packs” section with four featured
+  cards, plus a “Browse all” button that returns Home, scrolls to the full
+  section and focuses search. Upload/import behaviour is unchanged.
 - **Preview dialog:** first 10 pairs, total count, pair, level, “Add as a new
   deck”, and a same-pair deck picker plus “Add to this deck”. Escape, backdrop
   and the close button dismiss it.

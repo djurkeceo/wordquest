@@ -49,12 +49,15 @@ function bindEscape(): void {
 }
 
 async function boot(): Promise<void> {
-  // The lexicon is a separate chunk; wait for it so Home can render emoji.
-  await loadEmojiLexicon();
-
+  // Apply theme/motion before the (async) lexicon so the native browser chrome
+  // and the fox are correct on the very first paint.
   loadProfiles();
   applyTheme();
   applyMotionPreference();
+
+  // The lexicon is a separate chunk; wait for it so Home can render emoji.
+  await loadEmojiLexicon();
+
   const prof = activeProfile();
   if (prof && !prof.pinHash) {
     // A single profile without a PIN needs no ceremony — go straight in.

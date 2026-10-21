@@ -79,7 +79,7 @@ export const sr: I18nDict = {
     'settings.tts': 'Čitanje naglas', 'settings.ttsSub': 'Izgovori reči glasom iz pregledača.',
     'settings.strict': 'Strogi dijakritici', 'settings.strictSub': 'Isključeno: c = č = ć i s = š se prihvataju.',
     'settings.hearts': 'Srca u lekcijama', 'settings.heartsSub': 'Isključeno čini svaku lekciju opuštenom vežbom.',
-    'settings.motion': 'Mirne animacije', 'settings.motionSub': 'Skraćuje animacije i konfete.',
+    'settings.motion': 'Mirne animacije', 'settings.motionSub': 'Zamrzava lisicu i isključuje konfete i ukrasne animacije.',
     'settings.uiLang': 'Jezik interfejsa', 'settings.nativeLang': 'Moj maternji jezik',
     'settings.goal': 'Dnevni cilj XP', 'settings.theme': 'Izgled',
     'settings.themeAuto': 'Automatski', 'settings.themeLight': 'Svetlo', 'settings.themeDark': 'Tamno',
@@ -95,7 +95,7 @@ export const sr: I18nDict = {
     'settings.voiceInfoCloud': 'Google Cloud glas za {lang}.',
     'settings.voiceInfoOffline': 'Offline — poveži se na internet za bolji akcenat.',
     'settings.voiceKey': 'Google Cloud API ključ (opciono)',
-    'settings.voiceKeyHint': 'Besplatan ključ uključuje neuronske glasove sa pravim akcentom. Čuva se samo u ovom pregledaču.',
+    'settings.voiceKeyHint': 'Besplatan ključ uključuje neuronske glasove. Čuva se u ovom pregledaču i šalje direktno Google-u, pa ga ograniči na ovaj sajt i Text-to-Speech API u Google Cloudu pre upotrebe.',
     'toast.ttsKeyBad': 'Taj API ključ je odbijen. Proveri ga u Podešavanjima.',
 
     'login.title': 'Ko igra?', 'login.sub': 'Izaberi svoj profil da nastaviš.',
@@ -141,6 +141,9 @@ export const sr: I18nDict = {
     /* Gotovi paketi (faza 6). */
     'preset.title': 'Gotovi paketi',
     'preset.sub': 'Počni jednim dodirom — dodaj paket kao novu špilju ili ga spoji sa postojećom.',
+    'preset.importTitle': 'Gotovi paketi',
+    'preset.importSub': 'Ne znaš odakle da počneš? Dodaj jednu od ovih špilja jednim dodirom.',
+    'preset.browseAll': 'Pogledaj sve',
     'preset.search': 'Pretraži pakete',
     'preset.categories': 'Kategorije paketa',
     'preset.loading': 'Učitavanje paketa…',

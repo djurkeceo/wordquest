@@ -37,7 +37,8 @@ import {
 type CategoryFilter = PresetCategory | 'all';
 
 let loaded: LoadedPreset[] | null = null;
-let loadingPromise: Promise<void> | null = null;
+let loadingPromise: Promise<LoadedPreset[]> | null = null;
+let homeLoading = false;
 let query = '';
 let category: CategoryFilter = 'all';
 let preview: LoadedPreset | null = null;
@@ -54,6 +55,18 @@ function byId(id: string): LoadedPreset | undefined {
 
 /* --------------------------------------------------------------- section -- */
 
+/** Shared lazy loader so Home and Add words never fetch the packs twice. */
+function ensurePresetsLoaded(): Promise<LoadedPreset[]> {
+  if (loaded) return Promise.resolve(loaded);
+  if (!loadingPromise) {
+    loadingPromise = loadAllPresets().then(result => {
+      loaded = result;
+      return result;
+    });
+  }
+  return loadingPromise;
+}
+
 /** Called by Home on every render. Starts the lazy load on first use. */
 export function renderPresetSection(): void {
   if (loaded) {
@@ -65,20 +78,34 @@ export function renderPresetSection(): void {
   $('#presetEmpty')?.classList.add('hidden');
   const grid = $('#presetGrid');
   if (grid) grid.innerHTML = '';
-  if (!loadingPromise) {
-    loadingResumeState = getMascotState() === 'thinking' ? 'idle' : getMascotState();
-    setMascotState('thinking');
-    loadingPromise = loadAllPresets().then(result => {
-      loaded = result;
-      $('#presetLoading')?.classList.add('hidden');
-      renderChips();
-      renderGrid();
-      if (loadingResumeState && getCurrentScreen() === 'home') setMascotState(loadingResumeState);
-      loadingResumeState = null;
-    });
-  } else if (loadingResumeState && getCurrentScreen() === 'home' && getMascotState() !== 'thinking') {
-    setMascotState('thinking');
-  }
+  if (homeLoading) return;
+  homeLoading = true;
+  // Only borrow an idle fox for the loading pose. If a reaction (celebrate,
+  // happy, sad) is playing, leave it alone so its auto-reset is never lost.
+  loadingResumeState = getMascotState() === 'idle' ? 'idle' : null;
+  if (loadingResumeState) setMascotState('thinking');
+  void ensurePresetsLoaded().then(() => {
+    homeLoading = false;
+    $('#presetLoading')?.classList.add('hidden');
+    renderChips();
+    renderGrid();
+    if (loadingResumeState && getCurrentScreen() === 'home') setMascotState(loadingResumeState);
+    loadingResumeState = null;
+  });
+}
+
+/** Compact pack row shown on the "Add words" screen. */
+export function renderImportPacks(): void {
+  const grid = $('#importPresetGrid');
+  if (!grid) return;
+  const paint = (list: LoadedPreset[]): void => {
+    grid.innerHTML = '';
+    list.slice(0, 4).forEach(entry => grid.appendChild(packCard(entry)));
+    $('#importPresetLoading')?.classList.add('hidden');
+  };
+  if (loaded) { paint(loaded); return; }
+  $('#importPresetLoading')?.classList.remove('hidden');
+  void ensurePresetsLoaded().then(paint);
 }
 
 /** Category chips, limited to categories that actually exist. */
@@ -123,24 +150,26 @@ function renderGrid(): void {
     return;
   }
   grid.innerHTML = '';
-  for (const entry of visible) {
-    const card = h(`<button class="packcard" data-preset="${esc(entry.meta.id)}">
-      <span class="packcard__top">
-        <b>${esc(presetTitle(entry, uiLang()))}</b>
-        <span class="tag">${esc(entry.meta.level)}</span>
-      </span>
-      <span class="muted small">${esc(presetDescription(entry, uiLang()))}</span>
-      <span class="packcard__meta">
-        <span>${esc(langName(entry.meta.foreignLang, uiLang()))} → ${esc(langName(entry.meta.nativeLang, uiLang()))}</span>
-        <span>${entry.wordCount} ${esc(t('deck.words'))}</span>
-      </span>
-      <span class="packcard__foot">
-        <span class="tag tag--soft">${esc(t(categoryLabelKey(entry.meta.category)))}</span>
-        ${presetAlreadyAdded(entry.meta.id) ? `<span class="tag tag--green">✓ ${esc(t('preset.added'))}</span>` : ''}
-      </span>
-    </button>`);
-    grid.appendChild(card);
-  }
+  for (const entry of visible) grid.appendChild(packCard(entry));
+}
+
+/** One pack card, shared by the Home grid and the Add words teaser. */
+function packCard(entry: LoadedPreset): HTMLElement {
+  return h(`<button class="packcard" data-preset="${esc(entry.meta.id)}">
+    <span class="packcard__top">
+      <b>${esc(presetTitle(entry, uiLang()))}</b>
+      <span class="tag">${esc(entry.meta.level)}</span>
+    </span>
+    <span class="muted small">${esc(presetDescription(entry, uiLang()))}</span>
+    <span class="packcard__meta">
+      <span>${esc(langName(entry.meta.foreignLang, uiLang()))} → ${esc(langName(entry.meta.nativeLang, uiLang()))}</span>
+      <span>${entry.wordCount} ${esc(t('deck.words'))}</span>
+    </span>
+    <span class="packcard__foot">
+      <span class="tag tag--soft">${esc(t(categoryLabelKey(entry.meta.category)))}</span>
+      ${presetAlreadyAdded(entry.meta.id) ? `<span class="tag tag--green">✓ ${esc(t('preset.added'))}</span>` : ''}
+    </span>
+  </button>`);
 }
 
 /* --------------------------------------------------------------- preview -- */
@@ -277,11 +306,13 @@ export function bindPresets(): void {
     renderGrid();
   });
 
-  $('#presetGrid')?.addEventListener('click', e => {
+  const openFromGrid = (e: Event): void => {
     const btn = (e.target as Element).closest<HTMLElement>('[data-preset]');
     if (!btn) return;
     void openPresetPreview(btn.getAttribute('data-preset') || '');
-  });
+  };
+  $('#presetGrid')?.addEventListener('click', openFromGrid);
+  $('#importPresetGrid')?.addEventListener('click', openFromGrid);
 
   $('#presetAddNew')?.addEventListener('click', addAsNewDeck);
   $('#presetAddExisting')?.addEventListener('click', addToExistingDeck);

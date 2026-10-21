@@ -38,6 +38,28 @@ import { updateTopbar } from '../topbar';
 
 let chosenAvatar: string = AVATARS[0];
 
+/**
+ * Hashing is nearly instant, so the thinking pose would flash. Hold it for a
+ * short, deliberate beat so the reaction actually reads on screen.
+ */
+const MIN_THINKING_MS = 450;
+let authBusy = false;
+const wait = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+async function whileThinking<T>(task: Promise<T>): Promise<T> {
+  authBusy = true;
+  setMascotState('thinking');
+  const started = performance.now();
+  try {
+    const result = await task;
+    const remaining = MIN_THINKING_MS - (performance.now() - started);
+    if (remaining > 0) await wait(remaining);
+    return result;
+  } finally {
+    authBusy = false;
+  }
+}
+
 /** Match the lock screen to the last user's language and theme. */
 function loginChrome(): void {
   const recent = mostRecentProfile();
@@ -140,14 +162,13 @@ export function unlockProfile(id: string): void {
 }
 
 async function submitPin(): Promise<void> {
-  if (Date.now() < pinThrottle.lockUntil) return;
+  if (authBusy || Date.now() < pinThrottle.lockUntil) return;
   const target = getPinTargetId();
   if (!target) return;
   const prof = findProfile(target);
   if (!prof) return;
   const input = $<HTMLInputElement>('#pinInput');
-  setMascotState('thinking');
-  const hash = await hashPin(input?.value ?? '', prof.salt);
+  const hash = await whileThinking(hashPin(input?.value ?? '', prof.salt));
   if (hash === prof.pinHash) {
     pinThrottle.fails = 0;
     unlockProfile(prof.id);
@@ -182,6 +203,7 @@ async function submitPin(): Promise<void> {
 }
 
 async function createProfile(): Promise<void> {
+  if (authBusy) return;
   const nameInput = $<HTMLInputElement>('#newName');
   const pinInput = $<HTMLInputElement>('#newPin');
   const name = (nameInput?.value ?? '').trim();
@@ -196,9 +218,8 @@ async function createProfile(): Promise<void> {
   let salt: string | null = null;
   let pinHash: string | null = null;
   if (pin) {
-    setMascotState('thinking');
     salt = randomSalt();
-    pinHash = await hashPin(pin, salt);
+    pinHash = await whileThinking(hashPin(pin, salt));
   }
   const state = getState();
   const prof: ProfileRecord = {

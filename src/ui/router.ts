@@ -21,6 +21,7 @@ import { renderLogin } from './screens/login';
 import { renderPreview } from './screens/preview';
 import { renderSettings } from './screens/settings';
 import { endSession } from './sessionFlow';
+import { renderImportPacks } from '../presets/ui';
 
 export function showScreen(name: ScreenName, opts?: ShowScreenOptions): void {
   const o = opts || {};
@@ -45,6 +46,7 @@ export function showScreen(name: ScreenName, opts?: ShowScreenOptions): void {
   window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
   if (locked) renderLogin();
   if (name === 'home') renderHome();
+  if (name === 'import') renderImportPacks();
   if (name === 'deck') renderDeck();
   if (name === 'lang') renderLangConfirm();
   if (name === 'preview') renderPreview();

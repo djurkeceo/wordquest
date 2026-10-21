@@ -17,6 +17,11 @@
 
 .wq-fox{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;pointer-events:none}
 .wq-fox *{transform-box:view-box}
+/* The scarf is the one brand-purple shape; lift it on the dark background. */
+.wq-fox .fox-scarf{fill:var(--brand,#6C4BF6)}
+.wq-fox .fox-scarf-knot{fill:var(--brand-dark,#5A38E8)}
+[data-theme="dark"] .wq-fox .fox-scarf{fill:#A18BFF}
+[data-theme="dark"] .wq-fox .fox-scarf-knot{fill:#8268F2}
 .wq-fox .rig{animation:wq-breathe 3.2s ease-in-out infinite;transform-origin:200px 400px}
 .wq-fox .tail{transform-origin:292px 352px;animation:wq-sway 3.4s ease-in-out infinite}
 .wq-fox .head{transform-origin:200px 336px;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}

@@ -6,5 +6,5 @@
   .flip__inner{transition:none}
 }
 html[data-motion="calm"] *,html[data-motion="calm"] *::before,html[data-motion="calm"] *::after{
-  animation-duration:.001ms !important;transition-duration:.06s !important;
+  animation:none !important;transition-duration:.06s !important;
 }

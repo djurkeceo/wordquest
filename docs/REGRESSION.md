@@ -138,15 +138,24 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 - [x] Correct answers/combo increases show `happy`; wrong answers show `sad`;
       level-ups and perfect/new-badge summaries show `celebrate`; hints, Boss
       intro, PIN hashing and pack loading show `thinking`.
+- [x] Reactions auto-reset: the goal celebration on Home and the summary
+      celebration never stay looped, and starting a new run always begins idle.
+- [x] Pin hashing holds `thinking` for at least 450 ms, so the pose is visible
+      instead of flashing.
+- [x] The lesson fox sits in a dedicated perch above the exercise (not in the
+      progress bar); the feedback fox is also larger.
 - [x] `prefers-reduced-motion: reduce` removes loops and transitions and leaves
-      a static pose; calm mode does the same.
+      a static pose; calm mode does the same. Changing the OS setting while the
+      app is open takes effect immediately (media-query listener).
 - [x] Hiding the tab pauses all fox animations through `data-paused`.
 - [x] Pointer tracking works on desktop in `idle`/`happy` only and never runs
-      on a touch/coarse-pointer device.
+      on a touch/coarse-pointer device or with reduced/calm motion.
 - [x] Light and dark themes, and 320/390 px phone layouts, show the mascot
-      without horizontal overflow.
-- [x] Lesson, deck, feedback and login mascots are decorative (`aria-hidden`);
-      Home and Summary give the fox an accessible name.
+      without horizontal overflow. The scarf uses a lighter purple in dark mode
+      for contrast.
+- [x] Lesson, deck, feedback and login mascots are decorative (`aria-hidden`,
+      no `tabindex`, no key handler); Home and Summary give the fox an
+      accessible name.
 - [x] The icon set is generated from the same fox artwork: `icon.svg`,
       `icon-maskable.svg`, `icon-192.png`, `icon-512.png`,
       `icon-maskable-512.png`, `apple-touch-icon.png`, `favicon-32.png`.
@@ -159,8 +168,12 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 - [x] `icon-maskable-512.png` and `icon-maskable.svg` are manifest maskable icons.
 - [x] `site.webmanifest` returns 200 and every icon path returns 200 from
       `vite preview`.
+- [x] `theme-color` follows the active theme (`#6C4BF6` light, `#12121E` dark)
+      and updates when the theme or OS preference changes.
 - [x] Production output is static and relative (`base: './'`), suitable for
       Vercel with build `npm run build` and output `dist`.
+- [x] The optional Google TTS key is client-side by design; the Settings hint
+      tells users to restrict it to the site and the Text-to-Speech API.
 
 ## Layout and accessibility spot checks
 
@@ -168,7 +181,10 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
   560 px sheet, tabbar stays fixed.
 - Narrow/mobile layout was compared in phase 5 at 390 px using the legacy
   breakpoints; the packs grid uses `auto-fill/minmax(230px, 1fr)` and the modal
-  becomes a bottom sheet under 640 px.
+  becomes a bottom sheet under 640 px. The Add words teaser uses the same grid
+  at `minmax(190px, 1fr)` and stays one column at 320 px.
+- The lesson perch scales from 108 px on desktop to 88 px on phones and 76/58 px
+  on short viewports; 320×640 and 320×480 iframes show no horizontal overflow.
 - Every new control is a real button/input, has an accessible name, and the
   search/chips use translated `aria-label`s.
 - The preview dialog has `role="dialog"`, `aria-modal`, a labelled title, focus

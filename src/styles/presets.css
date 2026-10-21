@@ -38,6 +38,10 @@
 .packcard__foot{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
 .tag--soft{background:var(--brand-soft);color:var(--brand)}
 .packs__loading{padding:10px 2px}
+.packs--import{margin-top:20px;padding-top:18px;border-top:1px dashed var(--border)}
+.packs--import .packs__head{align-items:center}
+.packs--import .packs__grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));margin-top:12px}
+.packs--import .packcard{padding:12px}
 .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center}
 .modal.hidden{display:none}
 .modal__backdrop{position:absolute;inset:0;background:rgba(14,14,23,.55);backdrop-filter:blur(2px)}

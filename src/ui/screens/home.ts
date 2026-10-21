@@ -9,7 +9,7 @@
 import { deckEmoji } from '../../emoji';
 import { SRS } from '../../engine/srs';
 import { ensureDaily } from '../../gamification/hearts';
-import { mountMascot } from '../../gamification/mascot';
+import { mountMascot, setState as setMascotState } from '../../gamification/mascot';
 import { applyI18n, t, tRand } from '../../i18n';
 import { langName } from '../../language/names';
 import { getState } from '../../storage/state';
@@ -27,11 +27,16 @@ export function renderHome(): void {
   const uiLang = state.settings.uiLang || 'en';
   const heroMsg = $('#heroMsg');
   if (heroMsg) heroMsg.textContent = tRand('home.hello');
+  // Home is the resting screen: always return to idle. Reaching the daily goal
+  // earns a short celebration, never a permanently looping state.
   mountMascot('#mascot', {
     size: 'lg',
-    state: state.profile.dailyXp >= state.settings.dailyGoal ? 'celebrate' : 'idle',
+    state: 'idle',
     label: 'Pip the fox mascot'
   });
+  if (state.profile.dailyXp >= state.settings.dailyGoal) {
+    setMascotState('celebrate', 2600);
+  }
 
   // Daily goal ring.
   const goal = Math.max(1, state.settings.dailyGoal);

@@ -7,6 +7,7 @@
  */
 
 import { getState } from '../storage/state';
+import { refreshMotionPreference } from '../gamification/mascot';
 import { $ } from './dom';
 
 /** Apply light/dark, following the OS when theme = auto. */
@@ -15,13 +16,19 @@ export function applyTheme(): void {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const dark = mode === 'dark' || (mode === 'auto' && prefersDark);
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', dark ? '#0E0E17' : '#6C4BF6');
+  // Keep native UI (address bar, scrollbars) in step with the app theme.
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+  // There are two media-scoped tags for the initial paint; keep both in sync
+  // so a forced theme wins over the OS preference once the app boots.
+  document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+    meta.setAttribute('content', dark ? '#12121E' : '#6C4BF6');
+  });
 }
 
 /** Calm-motion override independent of the OS setting. */
 export function applyMotionPreference(): void {
   document.documentElement.setAttribute('data-motion', getState().settings.calmMotion ? 'calm' : 'normal');
+  refreshMotionPreference();
 }
 
 /** Live-update when the OS theme changes (the legacy listener, unchanged). */

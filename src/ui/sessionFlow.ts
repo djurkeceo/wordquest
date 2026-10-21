@@ -28,7 +28,7 @@ import { checkAchievements } from '../gamification/achievements';
 import { showCombo } from '../gamification/combo';
 import { burst } from '../gamification/confetti';
 import { renderHearts, resetHeartAnimation } from '../gamification/hearts';
-import { getMascotState, mountMascot, setState as setMascotState } from '../gamification/mascot';
+import { isCelebrating, mountMascot, setState as setMascotState } from '../gamification/mascot';
 import { t } from '../i18n';
 import { SRS } from '../engine/srs';
 import { levelFromXp } from '../engine/xp';
@@ -136,6 +136,9 @@ export function startSession(deck: Deck, kind: SessionKind, opts?: SessionOption
 
   if (!host) throw new Error('Session host has not been registered.');
   host.showSession();
+  // A new run always starts from a clean idle pose; a summary celebration must
+  // never bleed into the first exercise.
+  setMascotState('idle');
   $<HTMLElement>('#timer')?.classList.toggle('hidden', kind !== 'speed');
   if (kind === 'speed') {
     // The speed round generates questions on the fly rather than walking a plan.
@@ -252,8 +255,8 @@ export function renderExercise(): void {
   const ex: Exercise | undefined = session.queue[session.index];
   if (!ex) { endSession('complete'); return; }
   session.locked = false;
-  mountMascot('#sessionMascot', { size: 'xs' });
-  if (getMascotState() !== 'celebrate') setMascotState('idle');
+  mountMascot('#sessionMascot', { size: 'md' });
+  if (!isCelebrating()) setMascotState('idle');
   updateSessionProgress();
   if (!renderers) throw new Error('Session renderers have not been registered.');
   // Match exercises reference several words at once, so they bypass the
