@@ -8,6 +8,8 @@
 
 import type { LoadedPreset, PresetCategory } from '../types';
 import { checkAchievements } from '../gamification/achievements';
+import type { MascotState } from '../gamification/mascot';
+import { getMascotState, setState as setMascotState } from '../gamification/mascot';
 import { applyI18n, t } from '../i18n';
 import { langName } from '../language/names';
 import { getState, save } from '../storage/state';
@@ -40,6 +42,7 @@ let query = '';
 let category: CategoryFilter = 'all';
 let preview: LoadedPreset | null = null;
 let lastFocused: HTMLElement | null = null;
+let loadingResumeState: MascotState | null = null;
 
 function uiLang(): string {
   return getState().settings.uiLang || 'en';
@@ -63,12 +66,18 @@ export function renderPresetSection(): void {
   const grid = $('#presetGrid');
   if (grid) grid.innerHTML = '';
   if (!loadingPromise) {
+    loadingResumeState = getMascotState() === 'thinking' ? 'idle' : getMascotState();
+    setMascotState('thinking');
     loadingPromise = loadAllPresets().then(result => {
       loaded = result;
       $('#presetLoading')?.classList.add('hidden');
       renderChips();
       renderGrid();
+      if (loadingResumeState && getCurrentScreen() === 'home') setMascotState(loadingResumeState);
+      loadingResumeState = null;
     });
+  } else if (loadingResumeState && getCurrentScreen() === 'home' && getMascotState() !== 'thinking') {
+    setMascotState('thinking');
   }
 }
 

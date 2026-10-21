@@ -9,7 +9,7 @@
 import { deckEmoji } from '../../emoji';
 import { SRS } from '../../engine/srs';
 import { ensureDaily } from '../../gamification/hearts';
-import { setMascotMood } from '../../gamification/mascot';
+import { mountMascot } from '../../gamification/mascot';
 import { applyI18n, t, tRand } from '../../i18n';
 import { langName } from '../../language/names';
 import { getState } from '../../storage/state';
@@ -27,7 +27,11 @@ export function renderHome(): void {
   const uiLang = state.settings.uiLang || 'en';
   const heroMsg = $('#heroMsg');
   if (heroMsg) heroMsg.textContent = tRand('home.hello');
-  setMascotMood(state.profile.dailyXp >= state.settings.dailyGoal ? 'party' : 'happy');
+  mountMascot('#mascot', {
+    size: 'lg',
+    state: state.profile.dailyXp >= state.settings.dailyGoal ? 'celebrate' : 'idle',
+    label: 'Pip the fox mascot'
+  });
 
   // Daily goal ring.
   const goal = Math.max(1, state.settings.dailyGoal);

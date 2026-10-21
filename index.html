@@ -7,8 +7,8 @@
 <meta name="description" content="WordQuest — turn any word list into an adaptive language-learning game.">
 <title>WordQuest — learn words by playing</title>
 <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/icon.svg" sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" sizes="180x180" type="image/png">
 <link rel="manifest" href="./site.webmanifest">
 <meta name="application-name" content="WordQuest">
 <meta name="mobile-web-app-capable" content="yes">
@@ -40,7 +40,7 @@
   <!-- =========================================================== LOGIN -->
   <section class="screen loginscreen" id="screen-login" aria-labelledby="loginTitle">
     <div class="loginhead">
-      <div id="loginMascot" aria-hidden="true"></div>
+      <div class="mascot-slot" id="loginMascot" data-size="md" aria-hidden="true"></div>
       <h1 id="loginTitle" data-i18n="login.title">Who's playing?</h1>
       <p class="muted small" id="loginSub" data-i18n="login.sub">Pick your profile to continue.</p>
     </div>
@@ -79,24 +79,7 @@
   <!-- ============================================================ HOME -->
   <section class="screen" id="screen-home" aria-labelledby="homeTitle">
     <div class="hero">
-      <svg class="mascot" id="mascot" viewBox="0 0 120 120" role="img" aria-label="Pip the fox mascot">
-        <ellipse class="m-tail" cx="20" cy="92" rx="16" ry="9" fill="#F97316" opacity=".9"/>
-        <path class="m-ear" d="M32 34 L28 8 L54 24 Z" fill="#F97316"/>
-        <path class="m-ear" d="M88 34 L92 8 L66 24 Z" fill="#F97316"/>
-        <path d="M35 32 L33 17 L49 27 Z" fill="#3B1E0B"/>
-        <path d="M85 32 L87 17 L71 27 Z" fill="#3B1E0B"/>
-        <ellipse cx="60" cy="62" rx="42" ry="38" fill="#F97316"/>
-        <path d="M60 100 a42 38 0 0 1 -34 -18 a44 26 0 0 0 68 0 a42 38 0 0 1 -34 18 Z" fill="#fff" opacity=".92"/>
-        <ellipse cx="60" cy="74" rx="26" ry="22" fill="#FFF3E6"/>
-        <circle class="m-eye" cx="45" cy="58" r="6.5" fill="#2A1A12"/>
-        <circle class="m-eye" cx="75" cy="58" r="6.5" fill="#2A1A12"/>
-        <circle cx="47" cy="55.5" r="2.3" fill="#fff"/>
-        <circle cx="77" cy="55.5" r="2.3" fill="#fff"/>
-        <ellipse cx="60" cy="70" rx="5" ry="4" fill="#2A1A12"/>
-        <path class="m-mouth" d="M52 80 q8 8 16 0" stroke="#2A1A12" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <circle cx="36" cy="72" r="6" fill="#FF8FA3" opacity=".55"/>
-        <circle cx="84" cy="72" r="6" fill="#FF8FA3" opacity=".55"/>
-      </svg>
+      <div class="mascot-slot" id="mascot" data-size="lg"></div>
       <div>
         <h1 id="homeTitle" data-i18n="home.title">Ready for a quest?</h1>
         <p class="muted" id="heroMsg" data-i18n="home.sub">Import a word list and turn it into a game.</p>
@@ -237,8 +220,13 @@
 
   <!-- ============================================================ DECK -->
   <section class="screen" id="screen-deck" aria-labelledby="deckTitle">
-    <h1 id="deckTitle"></h1>
-    <p class="muted small" id="deckMeta"></p>
+    <div class="deckhead">
+      <div class="mascot-slot" id="deckMascot" data-size="deck" aria-hidden="true"></div>
+      <div class="grow">
+        <h1 id="deckTitle"></h1>
+        <p class="muted small" id="deckMeta"></p>
+      </div>
+    </div>
     <div class="card" id="deckStats"></div>
     <button class="btn btn--primary btn--lg btn--block" id="btnStartLesson">▶ <span data-i18n="deck.lesson">Start lesson</span></button>
     <div class="row" style="margin-top:10px">
@@ -264,6 +252,7 @@
     <h2 class="sr-only" id="sessionTitle" data-i18n="session.title">Lesson</h2>
     <div class="sessionbar">
       <button class="icon-btn" id="btnQuit" aria-label="Quit lesson">✕</button>
+      <div class="mascot-slot" id="sessionMascot" data-size="xs" aria-hidden="true"></div>
       <div class="bar grow"><i id="sessionProgress" style="width:0%"></i></div>
       <div class="hearts" id="hearts" title="Hearts"></div>
       <div class="timer hidden" id="timer">60</div>
@@ -396,7 +385,7 @@
 <div class="feedback" id="feedback" aria-live="assertive">
   <div class="feedback__inner">
     <div class="feedback__head">
-      <div class="feedback__mascot" id="fbMascot" aria-hidden="true"></div>
+      <div class="feedback__mascot mascot-slot" id="fbMascot" data-size="sm" aria-hidden="true"></div>
       <div class="grow">
         <div class="feedback__title" id="fbTitle"></div>
         <div class="feedback__msg" id="fbMsg"></div>

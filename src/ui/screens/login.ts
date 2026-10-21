@@ -11,7 +11,7 @@ import { sound } from '../../audio';
 import { levelFromXp } from '../../engine/xp';
 import { checkAchievements } from '../../gamification/achievements';
 import { ensureDaily } from '../../gamification/hearts';
-import { mascotSvg } from '../../gamification/mascot';
+import { mountMascot, setState as setMascotState } from '../../gamification/mascot';
 import { applyI18n, t } from '../../i18n';
 import { AVATARS } from '../../storage/keys';
 import { defaultState } from '../../storage/migration';
@@ -53,8 +53,7 @@ function loginChrome(): void {
 
 export function renderLogin(): void {
   loginChrome();
-  const mascot = $('#loginMascot');
-  if (mascot && !mascot.innerHTML) mascot.innerHTML = mascotSvg('happy');
+  mountMascot('#loginMascot', { size: 'md', state: 'idle' });
   const sub = $('#loginSub');
   if (sub) sub.textContent = t(getProfiles().list.length ? 'login.sub' : 'login.first');
   const grid = $('#profileGrid');
@@ -147,6 +146,7 @@ async function submitPin(): Promise<void> {
   const prof = findProfile(target);
   if (!prof) return;
   const input = $<HTMLInputElement>('#pinInput');
+  setMascotState('thinking');
   const hash = await hashPin(input?.value ?? '', prof.salt);
   if (hash === prof.pinHash) {
     pinThrottle.fails = 0;
@@ -155,6 +155,7 @@ async function submitPin(): Promise<void> {
   }
   pinThrottle.fails++;
   sound.play('wrong');
+  setMascotState('sad', 1800);
   if (input) input.value = '';
   const err = $('#pinErr');
   const unlockBtn = $<HTMLButtonElement>('#btnUnlock');
@@ -194,7 +195,11 @@ async function createProfile(): Promise<void> {
   if (pin && pin.length < 4) { if (err) err.textContent = t('login.pinShort'); return; }
   let salt: string | null = null;
   let pinHash: string | null = null;
-  if (pin) { salt = randomSalt(); pinHash = await hashPin(pin, salt); }
+  if (pin) {
+    setMascotState('thinking');
+    salt = randomSalt();
+    pinHash = await hashPin(pin, salt);
+  }
   const state = getState();
   const prof: ProfileRecord = {
     id: uid(),

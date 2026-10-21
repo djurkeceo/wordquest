@@ -28,6 +28,7 @@ import { checkAchievements } from '../gamification/achievements';
 import { showCombo } from '../gamification/combo';
 import { burst } from '../gamification/confetti';
 import { renderHearts, resetHeartAnimation } from '../gamification/hearts';
+import { getMascotState, mountMascot, setState as setMascotState } from '../gamification/mascot';
 import { t } from '../i18n';
 import { SRS } from '../engine/srs';
 import { levelFromXp } from '../engine/xp';
@@ -82,19 +83,22 @@ export function getSession(): SessionState | null {
 }
 
 /** Award XP and handle level-up toasts. */
-export function addXp(n: number): void {
-  if (!n) return;
+export function addXp(n: number): boolean {
+  if (!n) return false;
   const state = getState();
   const before = state.profile.level;
   state.profile.xp += n;
   state.profile.dailyXp += n;
   state.profile.level = levelFromXp(state.profile.xp);
-  if (state.profile.level > before) {
+  const leveled = state.profile.level > before;
+  if (leveled) {
     toast(t('level.up', { n: state.profile.level }));
     burst(60, { power: 12 });
     sound.play('win');
+    setMascotState('celebrate', 1800);
   }
   refreshTopbar();
+  return leveled;
 }
 
 export function refreshTopbar(): void {
@@ -143,6 +147,7 @@ export function startSession(deck: Deck, kind: SessionKind, opts?: SessionOption
   } else {
     renderExercise();
   }
+  if (kind === 'boss') setMascotState('thinking', 1600);
   save();
 }
 
@@ -193,8 +198,9 @@ export function answer(ok: boolean, meta?: AnswerMeta): void {
       gain = 5 * mult;
     }
     session.xp += gain;
-    addXp(gain);
+    const leveledUp = addXp(gain);
     sound.play('correct');
+    if (!leveledUp) setMascotState('happy');
     if (session.combo >= 3) {
       showCombo(session.combo);
       sound.play('combo');
@@ -205,6 +211,7 @@ export function answer(ok: boolean, meta?: AnswerMeta): void {
     state.profile.totalWrong++;
     if (!m.noHeart && isFinite(session.hearts)) session.hearts = Math.max(0, session.hearts - 1);
     sound.play('wrong');
+    setMascotState('sad');
     if (!m.noRequeue) requeue(word ? word.id : null);
   }
   updateSessionProgress();
@@ -245,6 +252,8 @@ export function renderExercise(): void {
   const ex: Exercise | undefined = session.queue[session.index];
   if (!ex) { endSession('complete'); return; }
   session.locked = false;
+  mountMascot('#sessionMascot', { size: 'xs' });
+  if (getMascotState() !== 'celebrate') setMascotState('idle');
   updateSessionProgress();
   if (!renderers) throw new Error('Session renderers have not been registered.');
   // Match exercises reference several words at once, so they bypass the

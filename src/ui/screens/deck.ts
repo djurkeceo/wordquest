@@ -10,6 +10,7 @@ import { langName } from '../../language/names';
 import { emojiFor } from '../../emoji';
 import { SRS } from '../../engine/srs';
 import { sound } from '../../audio';
+import { mountMascot } from '../../gamification/mascot';
 import { downloadFile } from '../../storage/backup';
 import { getDeck, save } from '../../storage/state';
 import { getState } from '../../storage/state';
@@ -32,6 +33,7 @@ export function openDeck(id: string): void {
 export function renderDeck(): void {
   const deck = getDeck(getCurrentDeckId());
   if (!deck) { navigate('home'); return; }
+  mountMascot('#deckMascot', { size: 'deck', state: 'idle' });
   const uiLang = getState().settings.uiLang || 'en';
   const mastered = SRS.masteredCount(deck);
   const avg = SRS.avgMastery(deck);

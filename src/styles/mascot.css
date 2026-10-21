@@ -1,0 +1,109 @@
+/* ============================================================================
+   Animated fox mascot.
+   Paths, colours and timings mirror wordquest_animated_fox.html exactly.
+   ========================================================================== */
+
+.mascot-slot{
+  --mascot-size:112px;
+  width:var(--mascot-size);height:var(--mascot-size);flex:0 0 var(--mascot-size);
+  position:relative;display:block;
+  filter:drop-shadow(0 10px 16px rgba(60,40,120,.18));
+}
+.mascot-slot[data-size="xs"]{--mascot-size:34px;filter:none}
+.mascot-slot[data-size="sm"]{--mascot-size:52px}
+.mascot-slot[data-size="md"]{--mascot-size:108px}
+.mascot-slot[data-size="lg"]{--mascot-size:132px}
+.mascot-slot[data-size="deck"]{--mascot-size:76px;filter:drop-shadow(0 6px 10px rgba(60,40,120,.14))}
+
+.wq-fox{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;pointer-events:none}
+.wq-fox *{transform-box:view-box}
+.wq-fox .rig{animation:wq-breathe 3.2s ease-in-out infinite;transform-origin:200px 400px}
+.wq-fox .tail{transform-origin:292px 352px;animation:wq-sway 3.4s ease-in-out infinite}
+.wq-fox .head{transform-origin:200px 336px;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.wq-fox .ear-l{transform-origin:130px 176px;animation:wq-twitch 6s ease-in-out infinite;transition:transform .35s}
+.wq-fox .ear-r{transform-origin:272px 176px;transition:transform .35s}
+.wq-fox .look{transform:translate(var(--lx,0px),var(--ly,0px));transition:transform .12s}
+.wq-fox .lids{transform-origin:200px 232px;animation:wq-blink 4.6s infinite}
+.wq-fox .brow-l{transform-origin:155px 196px;transition:transform .3s}
+.wq-fox .brow-r{transform-origin:246px 190px;transition:transform .3s}
+.wq-fox .mouth,
+.wq-fox .happy-eyes,
+.wq-fox .tear,
+.wq-fox .sparkles,
+.wq-fox .bubble{display:none}
+.wq-fox .m-idle{display:block}
+
+@keyframes wq-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes wq-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
+@keyframes wq-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes wq-twitch{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-9deg)}96%{transform:rotate(3deg)}}
+@keyframes wq-bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-22px) scale(1.02,.98)}}
+@keyframes wq-jump{0%,100%{transform:translateY(0) scale(1,1)}15%{transform:translateY(6px) scale(1.04,.94)}45%{transform:translateY(-46px) scale(.97,1.05)}75%{transform:translateY(0) scale(1.03,.96)}}
+@keyframes wq-wag{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(18deg)}}
+@keyframes wq-tear{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+@keyframes wq-twinkle{0%,100%{transform:scale(.3);opacity:0}50%{transform:scale(1);opacity:1}}
+@keyframes wq-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.wq-fox[data-state="happy"] .rig{animation:wq-bounce .8s ease-in-out infinite}
+.wq-fox[data-state="happy"] .tail{animation:wq-wag .35s ease-in-out infinite}
+.wq-fox[data-state="happy"] .eyes-open{display:none}
+.wq-fox[data-state="happy"] .happy-eyes,
+.wq-fox[data-state="happy"] .m-happy{display:block}
+.wq-fox[data-state="happy"] .m-idle{display:none}
+.wq-fox[data-state="happy"] .brow-l,
+.wq-fox[data-state="happy"] .brow-r{transform:translateY(-6px)}
+.wq-fox[data-state="happy"] .head{transform:rotate(-3deg)}
+
+.wq-fox[data-state="celebrate"] .rig{animation:wq-jump 1s ease-in-out infinite}
+.wq-fox[data-state="celebrate"] .tail{animation:wq-wag .28s ease-in-out infinite}
+.wq-fox[data-state="celebrate"] .eyes-open{display:none}
+.wq-fox[data-state="celebrate"] .happy-eyes,
+.wq-fox[data-state="celebrate"] .m-happy,
+.wq-fox[data-state="celebrate"] .sparkles{display:block}
+.wq-fox[data-state="celebrate"] .m-idle{display:none}
+.wq-fox[data-state="celebrate"] .ear-l{animation:none;transform:rotate(-8deg)}
+.wq-fox[data-state="celebrate"] .ear-r{transform:rotate(8deg)}
+.wq-fox[data-state="celebrate"] .brow-l,
+.wq-fox[data-state="celebrate"] .brow-r{transform:translateY(-8px)}
+.wq-fox .sp{transform-box:fill-box;transform-origin:center;animation:wq-twinkle 1s ease-in-out infinite}
+.wq-fox .sp:nth-child(2){animation-delay:.25s}
+.wq-fox .sp:nth-child(3){animation-delay:.5s}
+.wq-fox .sp:nth-child(4){animation-delay:.75s}
+.wq-fox .sp:nth-child(5){animation-delay:.12s}
+
+.wq-fox[data-state="sad"] .rig{animation:none}
+.wq-fox[data-state="sad"] .tail{animation:none;transform:rotate(14deg)}
+.wq-fox[data-state="sad"] .head{transform:translateY(10px) rotate(-4deg)}
+.wq-fox[data-state="sad"] .ear-l{animation:none;transform:rotate(-22deg)}
+.wq-fox[data-state="sad"] .ear-r{transform:rotate(26deg)}
+.wq-fox[data-state="sad"] .brow-l{transform:rotate(-16deg)}
+.wq-fox[data-state="sad"] .brow-r{transform:rotate(16deg)}
+.wq-fox[data-state="sad"] .m-idle{display:none}
+.wq-fox[data-state="sad"] .m-sad,
+.wq-fox[data-state="sad"] .tear{display:block}
+.wq-fox[data-state="sad"] .tear{animation:wq-tear 2.2s ease-in infinite}
+
+.wq-fox[data-state="thinking"] .head{transform:rotate(7deg)}
+.wq-fox[data-state="thinking"] .brow-r{transform:translateY(-8px) rotate(-6deg)}
+.wq-fox[data-state="thinking"] .m-idle{display:none}
+.wq-fox[data-state="thinking"] .m-think,
+.wq-fox[data-state="thinking"] .bubble{display:block}
+.wq-fox[data-state="thinking"] .bubble{animation:wq-float 2s ease-in-out infinite}
+
+.wq-fox[data-paused="true"] *{animation-play-state:paused!important}
+
+@media (prefers-reduced-motion: reduce){
+  .wq-fox *{animation:none!important;transition:none!important}
+  .wq-fox[data-state="celebrate"] .sparkles .sp{opacity:1;transform:none}
+}
+html[data-motion="calm"] .wq-fox *{animation:none!important;transition:none!important}
+html[data-motion="calm"] .wq-fox[data-state="celebrate"] .sparkles .sp{opacity:1;transform:none}
+
+@media (max-width:640px){
+  .mascot-slot[data-size="lg"]{--mascot-size:112px}
+}
+@media (max-width:400px){
+  .mascot-slot[data-size="lg"]{--mascot-size:96px}
+  .mascot-slot[data-size="md"]{--mascot-size:88px}
+  .mascot-slot[data-size="deck"]{--mascot-size:60px}
+}

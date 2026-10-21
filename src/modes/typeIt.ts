@@ -4,6 +4,7 @@ import type { SingleExercise, Word } from '../types';
 import { sound } from '../audio';
 import { emojiFor } from '../emoji';
 import { checkTyped } from '../engine/answer';
+import { setState as setMascotState } from '../gamification/mascot';
 import { t, tRand } from '../i18n';
 import { getState } from '../storage/state';
 import { esc, $, stage } from '../ui/dom';
@@ -98,6 +99,7 @@ export function renderType(ex: SingleExercise, word: Word): void {
     state.profile.xp = Math.max(0, state.profile.xp - 2);
     refreshTopbar();
     sound.play('hint');
+    setMascotState('thinking', 1200);
     const shown = target.slice(0, hintCount);
     const masked = shown + '·'.repeat(Math.max(0, target.length - hintCount));
     const box = $<HTMLElement>('#hintBox')!;

@@ -3,6 +3,7 @@
 import type { MatchExercise, Word } from '../types';
 import { sound } from '../audio';
 import { SRS } from '../engine/srs';
+import { setState as setMascotState } from '../gamification/mascot';
 import { t } from '../i18n';
 import { getWord } from '../storage/state';
 import { esc, $, $$, stage } from '../ui/dom';
@@ -74,6 +75,7 @@ export function renderMatch(ex: MatchExercise): void {
         matched++;
         first = null;
         sound.play('correct');
+        setMascotState('happy', 900);
         status();
         // Every matched pair counts as a correct answer for both sides.
         if (matched === words.length) {
@@ -93,6 +95,7 @@ export function renderMatch(ex: MatchExercise): void {
         btn.classList.add('wrong');
         first.btn.classList.add('wrong');
         sound.play('wrong');
+        setMascotState('sad', 900);
         const a = first;
         setTimeout(() => {
           hide(btn); hide(a.btn);

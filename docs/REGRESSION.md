@@ -130,6 +130,27 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 - [x] Modal closes via the close button, backdrop and Escape; focus returns to
       the opener (P7).
 
+### Mascot and icon artwork
+
+- [x] One shared fox SVG is mounted at a time, including when feedback opens
+      over a lesson; moving between screens does not leave duplicate copies.
+- [x] All five states render: `idle`, `happy`, `celebrate`, `sad`, `thinking`.
+- [x] Correct answers/combo increases show `happy`; wrong answers show `sad`;
+      level-ups and perfect/new-badge summaries show `celebrate`; hints, Boss
+      intro, PIN hashing and pack loading show `thinking`.
+- [x] `prefers-reduced-motion: reduce` removes loops and transitions and leaves
+      a static pose; calm mode does the same.
+- [x] Hiding the tab pauses all fox animations through `data-paused`.
+- [x] Pointer tracking works on desktop in `idle`/`happy` only and never runs
+      on a touch/coarse-pointer device.
+- [x] Light and dark themes, and 320/390 px phone layouts, show the mascot
+      without horizontal overflow.
+- [x] Lesson, deck, feedback and login mascots are decorative (`aria-hidden`);
+      Home and Summary give the fox an accessible name.
+- [x] The icon set is generated from the same fox artwork: `icon.svg`,
+      `icon-maskable.svg`, `icon-192.png`, `icon-512.png`,
+      `icon-maskable-512.png`, `apple-touch-icon.png`, `favicon-32.png`.
+
 ### Icons, manifest and deployment
 
 - [x] `favicon-32.png` is the 32 px favicon; `icon.svg` is the scalable favicon.
@@ -175,5 +196,6 @@ These predate the refactor and are documented rather than fixed:
 ## Final result
 
 No regression was found in the refactored flows. The only deliberate
-behavioural additions are the ready-made packs, the app icons/manifest, and the
-build-time code splitting described in `BEHAVIOR-DIFFERENCES.md`.
+behavioural additions are the ready-made packs, the app icons/manifest, the
+animated mascot refresh, and the build-time code splitting described in
+`BEHAVIOR-DIFFERENCES.md`.

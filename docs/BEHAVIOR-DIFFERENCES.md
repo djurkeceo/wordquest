@@ -18,14 +18,15 @@ an accepted difference.
 | One inline emoji map | `lexicon-<hash>.js` lazy chunk, awaited during boot before the first screen renders | One extra request and a slightly later first paint; emoji lookup itself is identical and synchronous thereafter |
 | No build step | `tsc --noEmit && vite build`; `base: './'` | Static, relative asset URLs; works from any path on Vercel |
 
-The CSS import order is `base → components → screens → themes → motion →
-presets`, matching the legacy cascade. The only stylesheet that did not exist
-before is `presets.css`, which is scoped to the new pack UI.
+The CSS import order is `base → components → screens → mascot → themes →
+motion → presets`, matching the legacy cascade. The only stylesheets that did
+not exist before are `presets.css`, scoped to the new pack UI, and `mascot.css`,
+scoped to the shared fox.
 
 `index.html` remains the Vite entry and still contains all ten legacy screens,
 ids, classes, ARIA attributes, inline styles and copy. The new pack section,
-import-screen shortcut, preview dialog, head icon links and module script are
-insertions; legacy elements keep their order and identity.
+import-screen shortcut, preview dialog, head icon links, mascot slots and
+module script are insertions; legacy elements keep their order and identity.
 
 ## 2. Ready-made packs (new feature)
 
@@ -88,10 +89,12 @@ New files under `public/` and new `<head>` links:
 - `icon-192.png` / `icon-512.png` → manifest `any`
 - `icon-maskable.svg` / `icon-maskable-512.png` → manifest `maskable`
 
-This changes only browser chrome, install prompts and bookmark/home-screen
-icons. It adds no service worker and no offline cache; the app remains
-offline-first in the sense that all data stays local and no runtime API is
-needed, not in the sense of a cached installable PWA.
+All icon artwork is generated from the same fox mascot used in the app, so
+browser chrome, install prompts and bookmark/home-screen icons match the
+product. This changes only browser chrome, install prompts and
+bookmark/home-screen icons. It adds no service worker and no offline cache; the
+app remains offline-first in the sense that all data stays local and no runtime
+API is needed, not in the sense of a cached installable PWA.
 
 ## 6. Accepted operational differences
 
@@ -116,8 +119,10 @@ needed, not in the sense of a cached installable PWA.
 - All storage keys, defaults, save debounce (220 ms), feedback timings, keyboard
   shortcuts, mode composition, SRS maths, XP curve, hearts and streak rules are
   unchanged and pinned by characterisation tests.
-- The legacy UI copy, mascot, emoji choices, sounds and TTS engines are
-  unchanged.
+- The legacy UI copy, emoji choices, sounds and TTS engines are unchanged. The
+  mascot artwork and animation now come from the supplied animated fox and use
+  the additive states `idle`, `happy`, `celebrate`, `sad` and `thinking`; no
+  saved-data shape changes.
 
 ## 8. Verification
 

@@ -2,6 +2,7 @@
 
 import type { Word } from '../types';
 import { buildOptions } from '../engine/options';
+import { getMascotState, mountMascot, setState as setMascotState } from '../gamification/mascot';
 import { SRS } from '../engine/srs';
 import { t } from '../i18n';
 import { normKey } from '../language/normalize';
@@ -58,6 +59,8 @@ export function stopSpeedTimer(): void {
 export function renderSpeedQuestion(): void {
   const s = getSession();
   if (!s || s.kind !== 'speed') return;
+  mountMascot('#sessionMascot', { size: 'xs' });
+  if (getMascotState() !== 'celebrate') setMascotState('idle');
   // Recycle words indefinitely; weight the pool occasionally.
   if (!s.speedPool || !s.speedPool.length) s.speedPool = shuffle(s.deck.words);
   if (s.speedIdx == null) s.speedIdx = 0;

@@ -2,20 +2,6 @@
    Rules are copied verbatim and kept in their original order. */
 
 /* ------------------------------------------------------------- 5 screens */
-/* Mascot ------------------------------------------------------------------ */
-.mascot{width:112px;height:112px;flex:0 0 112px;filter:drop-shadow(0 10px 16px rgba(60,40,120,.18))}
-.mascot .m-ear{transform-origin:50% 90%;transition:transform .3s cubic-bezier(.3,1.6,.4,1)}
-.mascot .m-eye{transition:transform .25s, opacity .25s}
-.mascot .m-mouth{transition:.25s}
-.mascot .m-tail{transform-origin:20% 80%}
-.mascot--happy .m-ear{transform:rotate(-8deg)}
-.mascot--happy .m-tail,.mascot--party .m-tail{animation:wag .5s ease-in-out infinite alternate}
-.mascot--sad .m-ear{transform:rotate(16deg) translateY(3px)}
-.mascot--party{animation:hop .5s ease-in-out infinite alternate}
-@keyframes wag{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
-@keyframes hop{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-10px) rotate(3deg)}}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
-.hero .mascot:not(.mascot--party):not(.mascot--sad){animation:bob 3.8s ease-in-out infinite}
 .hero{display:flex;align-items:center;gap:16px;padding:4px 2px 16px}
 .hero h1{font-size:1.55rem}
 .hero p{margin:3px 0 0;font-size:.95rem}
@@ -152,6 +138,8 @@
 .bubble:hover{transform:scale(1.06) translateY(-1px);filter:brightness(1.04)}
 .bubble:active{transform:scale(.95) translateY(2px);box-shadow:0 1px 0 rgba(31,31,56,.16)}
 .bubble small{opacity:.6;font-weight:900;margin-left:6px;font-size:.7rem}
+.deckhead{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+.deckhead h1{margin:0}
 
 /* session ----------------------------------------------------------------- */
 body.in-session{padding-bottom:0}
@@ -296,8 +284,6 @@ body.in-session .topbar{display:none}
 }
 .feedback.bad .feedback__inner{background:var(--danger-soft);border-top-color:var(--danger)}
 .feedback__head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
-.feedback__mascot{width:52px;height:52px;flex:0 0 52px}
-.feedback__mascot .mascot{width:52px;height:52px;flex-basis:52px;filter:none}
 .feedback.ok .feedback__title{color:var(--success-dark)}
 .feedback.bad .feedback__title{color:var(--danger-dark)}
 .feedback__title{font-weight:900;font-size:1.15rem;letter-spacing:-.01em}
@@ -357,7 +343,6 @@ body.in-session .topbar{display:none}
 /* ------------------------------------------------------ 8 login / account */
 .loginscreen{padding-top:4px}
 .loginhead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;margin-bottom:12px}
-.loginhead .mascot{width:108px;height:108px;flex:0 0 108px;animation:bob 3.8s ease-in-out infinite}
 .loginhead h1{margin:8px 0 0;font-size:1.7rem}
 .profilegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin:16px 0}
 .profile{
@@ -433,8 +418,6 @@ body.in-session .topbar{display:none}
   h1{font-size:2rem}
   .hero h1{font-size:1.9rem}
   .qword{font-size:2.6rem}
-  .mascot{width:132px;height:132px;flex-basis:132px}
-  .hero .mascot{width:136px;height:136px;flex-basis:136px}
 }
 @media(max-width:420px){
   #app{padding:0 14px}
@@ -451,7 +434,6 @@ body.in-session .topbar{display:none}
   .qword{font-size:1.8rem}
   .btn--lg{padding:15px 18px;font-size:.94rem}
   .mem{min-height:80px;font-size:.81rem}
-  .mascot{width:96px;height:96px;flex-basis:96px}
   .deckcard__av{width:48px;height:48px;flex-basis:48px;font-size:1.4rem}
 }
 @media(max-width:360px){

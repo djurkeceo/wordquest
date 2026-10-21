@@ -5,7 +5,7 @@
 
 import type { FeedbackOptions } from '../types';
 import { t } from '../i18n';
-import { mascotSvg } from '../gamification/mascot';
+import { mountMascot } from '../gamification/mascot';
 import { $ } from './dom';
 
 let feedbackResolver: (() => void) | null = null;
@@ -18,12 +18,11 @@ export function showFeedback(opts: FeedbackOptions): void {
   const title = $<HTMLElement>('#fbTitle');
   const msg = $<HTMLElement>('#fbMsg');
   const extra = $<HTMLElement>('#fbExtra');
-  const mascot = $<HTMLElement>('#fbMascot');
   const next = $<HTMLElement>('#fbNext');
   if (title) title.textContent = opts.title;
   if (msg) msg.textContent = opts.msg || '';
   if (extra) extra.innerHTML = opts.extra || '';
-  if (mascot) mascot.innerHTML = mascotSvg(opts.ok ? 'happy' : 'sad');
+  mountMascot('#fbMascot', { size: 'sm' });
   if (next) next.textContent = t('fb.continue');
   fb.classList.add('show');
   if (next) next.focus({ preventScroll: true });
@@ -32,6 +31,9 @@ export function showFeedback(opts: FeedbackOptions): void {
     const fn = opts.then;
     feedbackResolver = null;
     if (fn) fn();
+    if ($<HTMLElement>('#screen-session')?.classList.contains('is-active')) {
+      mountMascot('#sessionMascot', { size: 'xs' });
+    }
   };
 }
 

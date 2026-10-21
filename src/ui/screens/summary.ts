@@ -6,7 +6,7 @@ import { countUp, $, esc } from '../dom';
 import { getSession, startSession } from '../sessionFlow';
 import { t } from '../../i18n';
 import { getState } from '../../storage/state';
-import { mascotSvg } from '../../gamification/mascot';
+import { mountMascot } from '../../gamification/mascot';
 import { openDeck } from './deck';
 
 /** Build the summary screen. Called by the session host before it is shown. */
@@ -19,14 +19,19 @@ export function renderSummary(data: SummaryData): void {
   const isSpeed = session.kind === 'speed';
   const perfect = data.perfect && !isSpeed;
   const title = perfect ? t('summary.perfect') : data.reason === 'complete' ? t('summary.title') : t('summary.titleShort');
-  const mood = perfect ? 'party' : data.accuracy >= 60 ? 'happy' : 'sad';
+  const mood = data.reason === 'nohearts' ? 'sad'
+    : perfect || data.newBadges.length ? 'celebrate'
+    : data.accuracy >= 60 ? 'happy' : 'sad';
+  const moodLabel = mood === 'celebrate' ? 'Pip the fox celebrates'
+    : mood === 'sad' ? 'Pip the fox looks sad'
+    : 'Pip the fox looks happy';
   const msg = data.reason === 'nohearts' ? t('session.noHearts')
     : data.reason === 'timeup' ? t('session.timeUp')
     : t('summary.nice');
 
   inner.innerHTML = `
     <div class="hero" style="justify-content:center;text-align:center">
-      ${mascotSvg(mood)}
+      <div class="mascot-slot" id="summaryMascot" data-size="lg"></div>
       <div>
         <h1>${esc(title)}</h1>
         <p class="muted">${esc(msg)}</p>
@@ -64,6 +69,8 @@ export function renderSummary(data: SummaryData): void {
       <button class="btn btn--primary btn--block" id="btnAgain">↻ ${esc(t('summary.again'))}</button>
       <button class="btn btn--block" id="btnToDeck">${esc(t('summary.home'))}</button>
     </div>`;
+
+  mountMascot('#summaryMascot', { size: 'lg', state: mood, label: moodLabel });
 
   countUp($('#summaryInner .bigstat div:nth-child(2) b'), session.xp, '+');
 
