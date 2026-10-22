@@ -1,0 +1,47 @@
+# Spanish - Serbian: Home & furniture
+# One pair per line.
+casa - kuca
+apartamento - stan
+habitación - soba
+cocina - kuhinja
+baño - kupatilo
+dormitorio - spavaca soba
+salón - dnevna soba
+puerta - vrata
+ventana - prozor
+pared - zid
+suelo - pod
+techo - plafon
+tejado - krov
+jardín - basta
+garaje - garaza
+mesa - sto
+silla - stolica
+cama - krevet
+sofá - sofa
+lámpara - lampa
+espejo - ogledalo
+alfombra - tepih
+armario - ormar
+nevera - frizider
+horno - rerna
+fregadero - sudopera
+ducha - tus
+inodoro - toalet
+toalla - peskir
+manta - cebe
+almohada - jastuk
+llave - kljuc
+reloj - sat
+cuadro - slika
+planta - biljka
+televisión - televizor
+teléfono - telefon
+ordenador - racunar
+lavadora - ves masina
+calefacción - grejalica
+escaleras - stepenice
+balcón - balkon
+estante - polica
+cajón - fioka
+escoba - metla

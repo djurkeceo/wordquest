@@ -1,0 +1,52 @@
+# Spanish - Serbian: Food & drink
+# One pair per line.
+pan - hleb
+agua - voda
+leche - mleko
+café - kafa
+té - caj
+vino - vino
+cerveza - pivo
+zumo - sok
+queso - sir
+mantequilla - puter
+huevo - jaje
+carne - meso
+pollo - piletina
+pescado - riba
+arroz - pirinac
+pasta - testenina
+patata - krompir
+tomate - paradajz
+cebolla - crni luk
+ajo - beli luk
+sal - so
+pimienta - biber
+azúcar - secer
+miel - med
+manzana - jabuka
+plátano - banana
+naranja - pomorandza
+limón - limun
+fresa - jagoda
+tarta - torta
+chocolate - cokolada
+helado - sladoled
+sopa - supa
+ensalada - salata
+bocadillo - sendvic
+pizza - pizza
+desayuno - dorucak
+almuerzo - rucak
+cena - vecera
+restaurante - restoran
+menú - jelovnik
+cuenta - racun
+camarero - konobar
+tenedor - viljuska
+cuchillo - noz
+cuchara - kasika
+vaso - casa
+botella - flasa
+mercado - pijaca
+delicioso - ukusno

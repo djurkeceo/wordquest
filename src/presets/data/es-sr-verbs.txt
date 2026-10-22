@@ -1,0 +1,52 @@
+# Spanish - Serbian: Everyday verbs
+# One pair per line.
+ser - biti
+tener - imati
+hacer - raditi
+ir - ici
+venir - doci
+ver - videti
+mirar - gledati
+oír - cuti
+hablar - govoriti
+preguntar - pitati
+responder - odgovoriti
+leer - citati
+escribir - pisati
+aprender - uciti
+enseñar - poducavati
+entender - razumeti
+saber - znati
+pensar - misliti
+querer - zeleti
+necesitar - trebati
+gustar - voleti
+amar - obozavati
+comer - jesti
+beber - piti
+dormir - spavati
+despertarse - probuditi se
+trabajar - raditi
+jugar - igrati se
+comprar - kupovati
+vender - prodavati
+pagar - placati
+abrir - otvoriti
+cerrar - zatvoriti
+empezar - poceti
+terminar - zavrsiti
+ayudar - pomoci
+esperar - cekati
+encontrar - naci
+perder - izgubiti
+dar - dati
+tomar - uzeti
+traer - doneti
+salir - otici
+llegar - stici
+volver - vratiti se
+caminar - setati
+correr - trcati
+conducir - voziti
+viajar - putovati
+vivir - ziveti

@@ -22,15 +22,18 @@ preset flows and a nine-mode browser smoke test.
 | --- | --- |
 | `npm ci` | Pass, 43 packages, 0 vulnerabilities, lockfile honoured |
 | `npm run typecheck` | Pass, strict mode, no `any` added |
-| `npm test` | Pass: 11 files, 78 tests |
-| `npm run build` | Pass: 87 modules, `dist/index.html`, one CSS file, main JS, lazy emoji lexicon, 13 lazy pack chunks |
+| `npm test` | Pass: 11 files, 79 tests |
+| `npm run build` | Pass: 105 modules, `dist/index.html`, one CSS file, main JS, lazy emoji lexicon, 31 lazy pack chunks |
 | `npm run preview` | Pass: production build served and exercised over HTTP |
 
 Preset data tests pin:
 
-- 13 registry entries, unique ids, 10 German→Serbian + 3 English→Serbian.
-- Both top packs parse to exactly 300 pairs; every themed pack is 40–80 pairs.
-- No duplicate normalised foreign keys inside a pack.
+- 31 registry entries, unique ids, 10 German→Serbian + 6 English→Serbian +
+  5 each Italian→Serbian, Spanish→Serbian and French→Serbian.
+- Food, travel, home and verb packs exist for every advertised language.
+- Both starter packs parse to exactly 300 pairs; every themed pack is 40–80 pairs.
+- No duplicate normalised foreign keys inside a pack; every pack parses with no
+  line errors.
 - Every pair has both sides; metadata is complete in English and Serbian.
 - Merge skips duplicates, reports the added count, is idempotent on re-add, sets
   `presetId`, and starts all progress at zero.
@@ -114,11 +117,17 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 
 ### Ready-made packs (new)
 
-- [x] All 13 cards render with computed counts, pair, level and category (P7).
-- [x] Category chips filter immediately; search filters after the 120 ms debounce
-      (P7).
+- [x] All 31 cards render with computed counts, pair, level and category (P8).
+- [x] Language chips list German, English, Italian, Spanish and French; selecting
+      one limits the category chips to subjects that language actually has (P8).
+- [x] Switching from German + Health to Spanish resets the hidden category to
+      All instead of showing a misleading empty grid (P8).
+- [x] Category and search filters still combine with the selected language; search
+      filters after the 120 ms debounce (P8).
 - [x] No-match search shows the empty message (P7).
-- [x] Preview shows the first 10 pairs, total, pair, level and “…and N more” (P7).
+- [x] Preview shows the first 10 pairs, total, pair, level and “…and N more”; the
+      Spanish phrases preview kept its accents and added 41 words as a new deck
+      with the Spanish→Serbian pair (P8).
 - [x] Add as new deck: 60-word food pack, 61-word phrases pack, language pair and
       `presetId` stored (P7).
 - [x] Merge into a same-pair deck: travel pack added 59 new words because one
@@ -132,6 +141,8 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
       Serbian when the native side is Serbian (P7).
 - [x] Import screen shortcut returns Home, scrolls to the section and focuses
       search (P7).
+- [x] Import screen teaser shows one featured pack per language (five cards)
+      instead of four German cards (P8).
 - [x] Modal closes via the close button, backdrop and Escape; focus returns to
       the opener (P7).
 

@@ -1,10 +1,13 @@
 /**
- * Registry of the thirteen ready-made packs.
+ * Registry of the ready-made packs.
  *
  * Adding a pack means adding one `.txt` under `data/` and one entry here.
  * `load()` is a Vite `?raw` dynamic import, so neither the pack text nor its
  * word count is in the initial bundle: the cards render first, then each file
  * is fetched and parsed. `wordCount` is therefore computed, never hardcoded.
+ *
+ * German and English starter lists keep the 300-word count; themed packs are
+ * deliberately 40-80 pairs so they are quick to add or merge.
  */
 
 import type {
@@ -160,6 +163,186 @@ export const PRESETS: readonly PresetMeta[] = [
     category: 'verbs',
     level: 'A1',
     load: () => import('./data/en-sr-verbs.txt?raw')
+  },
+  {
+    id: 'en-sr-food',
+    title: text('English food & drink', 'Engleski: hrana i piće'),
+    description: text('Shopping, cooking and ordering food.', 'Kupovina, kuvanje i naručivanje hrane.'),
+    foreignLang: 'en',
+    nativeLang: 'sr',
+    category: 'food',
+    level: 'A1',
+    load: () => import('./data/en-sr-food.txt?raw')
+  },
+  {
+    id: 'en-sr-travel',
+    title: text('English travel & transport', 'Engleski: putovanje i prevoz'),
+    description: text('Tickets, directions and holidays.', 'Karte, snalaženje i odmor.'),
+    foreignLang: 'en',
+    nativeLang: 'sr',
+    category: 'travel',
+    level: 'A2',
+    load: () => import('./data/en-sr-travel.txt?raw')
+  },
+  {
+    id: 'en-sr-home',
+    title: text('English home & furniture', 'Engleski: kuća i nameštaj'),
+    description: text('Rooms, furniture and everyday objects.', 'Sobe, nameštaj i predmeti za svaki dan.'),
+    foreignLang: 'en',
+    nativeLang: 'sr',
+    category: 'home',
+    level: 'A1',
+    load: () => import('./data/en-sr-home.txt?raw')
+  },
+  {
+    id: 'it-sr-food',
+    title: text('Italian food & drink', 'Italijanski: hrana i piće'),
+    description: text('Shopping, cooking and ordering food.', 'Kupovina, kuvanje i naručivanje hrane.'),
+    foreignLang: 'it',
+    nativeLang: 'sr',
+    category: 'food',
+    level: 'A1',
+    load: () => import('./data/it-sr-food.txt?raw')
+  },
+  {
+    id: 'it-sr-travel',
+    title: text('Italian travel & transport', 'Italijanski: putovanje i prevoz'),
+    description: text('Tickets, directions and holidays.', 'Karte, snalaženje i odmor.'),
+    foreignLang: 'it',
+    nativeLang: 'sr',
+    category: 'travel',
+    level: 'A2',
+    load: () => import('./data/it-sr-travel.txt?raw')
+  },
+  {
+    id: 'it-sr-home',
+    title: text('Italian home & furniture', 'Italijanski: kuća i nameštaj'),
+    description: text('Rooms, furniture and everyday objects.', 'Sobe, nameštaj i predmeti za svaki dan.'),
+    foreignLang: 'it',
+    nativeLang: 'sr',
+    category: 'home',
+    level: 'A1',
+    load: () => import('./data/it-sr-home.txt?raw')
+  },
+  {
+    id: 'it-sr-verbs',
+    title: text('Italian everyday verbs', 'Italijanski: svakodnevni glagoli'),
+    description: text('The Italian verbs you use all day long.', 'Italijanski glagoli koje koristiš svakog dana.'),
+    foreignLang: 'it',
+    nativeLang: 'sr',
+    category: 'verbs',
+    level: 'A2',
+    load: () => import('./data/it-sr-verbs.txt?raw')
+  },
+  {
+    id: 'it-sr-phrases',
+    title: text('Italian everyday phrases', 'Italijanski: svakodnevne fraze'),
+    description: text('Greetings, polite phrases and small talk.', 'Pozdravi, učtive fraze i mali razgovori.'),
+    foreignLang: 'it',
+    nativeLang: 'sr',
+    category: 'phrases',
+    level: 'A1',
+    load: () => import('./data/it-sr-phrases.txt?raw')
+  },
+  {
+    id: 'es-sr-food',
+    title: text('Spanish food & drink', 'Španski: hrana i piće'),
+    description: text('Shopping, cooking and ordering food.', 'Kupovina, kuvanje i naručivanje hrane.'),
+    foreignLang: 'es',
+    nativeLang: 'sr',
+    category: 'food',
+    level: 'A1',
+    load: () => import('./data/es-sr-food.txt?raw')
+  },
+  {
+    id: 'es-sr-travel',
+    title: text('Spanish travel & transport', 'Španski: putovanje i prevoz'),
+    description: text('Tickets, directions and holidays.', 'Karte, snalaženje i odmor.'),
+    foreignLang: 'es',
+    nativeLang: 'sr',
+    category: 'travel',
+    level: 'A2',
+    load: () => import('./data/es-sr-travel.txt?raw')
+  },
+  {
+    id: 'es-sr-home',
+    title: text('Spanish home & furniture', 'Španski: kuća i nameštaj'),
+    description: text('Rooms, furniture and everyday objects.', 'Sobe, nameštaj i predmeti za svaki dan.'),
+    foreignLang: 'es',
+    nativeLang: 'sr',
+    category: 'home',
+    level: 'A1',
+    load: () => import('./data/es-sr-home.txt?raw')
+  },
+  {
+    id: 'es-sr-verbs',
+    title: text('Spanish everyday verbs', 'Španski: svakodnevni glagoli'),
+    description: text('The Spanish verbs you use all day long.', 'Španski glagoli koje koristiš svakog dana.'),
+    foreignLang: 'es',
+    nativeLang: 'sr',
+    category: 'verbs',
+    level: 'A2',
+    load: () => import('./data/es-sr-verbs.txt?raw')
+  },
+  {
+    id: 'es-sr-phrases',
+    title: text('Spanish everyday phrases', 'Španski: svakodnevne fraze'),
+    description: text('Greetings, polite phrases and small talk.', 'Pozdravi, učtive fraze i mali razgovori.'),
+    foreignLang: 'es',
+    nativeLang: 'sr',
+    category: 'phrases',
+    level: 'A1',
+    load: () => import('./data/es-sr-phrases.txt?raw')
+  },
+  {
+    id: 'fr-sr-food',
+    title: text('French food & drink', 'Francuski: hrana i piće'),
+    description: text('Shopping, cooking and ordering food.', 'Kupovina, kuvanje i naručivanje hrane.'),
+    foreignLang: 'fr',
+    nativeLang: 'sr',
+    category: 'food',
+    level: 'A1',
+    load: () => import('./data/fr-sr-food.txt?raw')
+  },
+  {
+    id: 'fr-sr-travel',
+    title: text('French travel & transport', 'Francuski: putovanje i prevoz'),
+    description: text('Tickets, directions and holidays.', 'Karte, snalaženje i odmor.'),
+    foreignLang: 'fr',
+    nativeLang: 'sr',
+    category: 'travel',
+    level: 'A2',
+    load: () => import('./data/fr-sr-travel.txt?raw')
+  },
+  {
+    id: 'fr-sr-home',
+    title: text('French home & furniture', 'Francuski: kuća i nameštaj'),
+    description: text('Rooms, furniture and everyday objects.', 'Sobe, nameštaj i predmeti za svaki dan.'),
+    foreignLang: 'fr',
+    nativeLang: 'sr',
+    category: 'home',
+    level: 'A1',
+    load: () => import('./data/fr-sr-home.txt?raw')
+  },
+  {
+    id: 'fr-sr-verbs',
+    title: text('French everyday verbs', 'Francuski: svakodnevni glagoli'),
+    description: text('The French verbs you use all day long.', 'Francuski glagoli koje koristiš svakog dana.'),
+    foreignLang: 'fr',
+    nativeLang: 'sr',
+    category: 'verbs',
+    level: 'A2',
+    load: () => import('./data/fr-sr-verbs.txt?raw')
+  },
+  {
+    id: 'fr-sr-phrases',
+    title: text('French everyday phrases', 'Francuski: svakodnevne fraze'),
+    description: text('Greetings, polite phrases and small talk.', 'Pozdravi, učtive fraze i mali razgovori.'),
+    foreignLang: 'fr',
+    nativeLang: 'sr',
+    category: 'phrases',
+    level: 'A1',
+    load: () => import('./data/fr-sr-phrases.txt?raw')
   }
 ];
 

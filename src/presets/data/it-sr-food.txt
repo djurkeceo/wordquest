@@ -1,0 +1,52 @@
+# Italian - Serbian: Food & drink
+# One pair per line.
+pane - hleb
+acqua - voda
+latte - mleko
+caffè - kafa
+tè - caj
+vino - vino
+birra - pivo
+succo - sok
+formaggio - sir
+burro - puter
+uovo - jaje
+carne - meso
+pollo - piletina
+pesce - riba
+riso - pirinac
+pasta - testenina
+patata - krompir
+pomodoro - paradajz
+cipolla - crni luk
+aglio - beli luk
+sale - so
+pepe - biber
+zucchero - secer
+miele - med
+mela - jabuka
+banana - banana
+arancia - pomorandza
+limone - limun
+fragola - jagoda
+torta - torta
+cioccolato - cokolada
+gelato - sladoled
+zuppa - supa
+insalata - salata
+panino - sendvic
+pizza - pizza
+colazione - dorucak
+pranzo - rucak
+cena - vecera
+ristorante - restoran
+menù - jelovnik
+conto - racun
+cameriere - konobar
+forchetta - viljuska
+coltello - noz
+cucchiaio - kasika
+bicchiere - casa
+bottiglia - flasa
+mercato - pijaca
+delizioso - ukusno

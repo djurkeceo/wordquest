@@ -1,0 +1,52 @@
+# Italian - Serbian: Everyday verbs
+# One pair per line.
+essere - biti
+avere - imati
+fare - raditi
+andare - ici
+venire - doci
+vedere - videti
+guardare - gledati
+sentire - cuti
+parlare - govoriti
+chiedere - pitati
+rispondere - odgovoriti
+leggere - citati
+scrivere - pisati
+imparare - uciti
+insegnare - poducavati
+capire - razumeti
+sapere - znati
+pensare - misliti
+volere - zeleti
+necessitare - trebati
+piacere - voleti
+amare - obozavati
+mangiare - jesti
+bere - piti
+dormire - spavati
+svegliarsi - probuditi se
+lavorare - raditi
+giocare - igrati se
+comprare - kupovati
+vendere - prodavati
+pagare - placati
+aprire - otvoriti
+chiudere - zatvoriti
+iniziare - poceti
+finire - zavrsiti
+aiutare - pomoci
+aspettare - cekati
+trovare - naci
+perdere - izgubiti
+dare - dati
+prendere - uzeti
+portare - doneti
+partire - otici
+arrivare - stici
+tornare - vratiti se
+camminare - setati
+correre - trcati
+guidare - voziti
+viaggiare - putovati
+vivere - ziveti

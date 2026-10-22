@@ -16,6 +16,8 @@
 .packs__tools input[type="search"]:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
+.chips--lang{padding-bottom:2px}
+.chips--lang + .chips{padding-top:0}
 .chip{
   flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1.5px solid var(--border);
   background:var(--card);color:var(--muted);font:inherit;font-weight:700;font-size:.82rem;cursor:pointer;

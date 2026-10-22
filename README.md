@@ -20,16 +20,17 @@ language detection, exercise choice, difficulty — adapts to that list.
 ## Features
 
 ### Ready-made packs
-- **13 curated packs**, lazy-loaded so they cost nothing until you browse them: German → Serbian
-  top 300 plus nine themed packs (food, travel, home, health, nature, work, city, feelings, verbs),
-  and English → Serbian top 300 plus everyday phrases and verbs.
-- Filter by category or search by title, description, language or level; preview the first ten pairs
-  before committing.
+- **31 curated packs** across German, English, Italian, Spanish and French, lazy-loaded so they cost
+  nothing until you browse them. Every language has food, travel, home and verb packs; German adds
+  health, nature, work, city and feelings themes, and English/Italian/Spanish/French include
+  everyday phrases. German and English each keep a 300-word starter list.
+- Filter by **language and category**, or search by title, description, language or level; preview
+  the first ten pairs before committing.
 - Add a pack as a **new deck**, or **merge** it into a deck with the same language pair. Duplicates
   are skipped by normalised foreign word, and the deck records which pack it came from.
 - Adding a pack skips the language-confirmation step; the pack already knows its pair.
-- The Add words screen shows a four-card teaser below the paste box, so importing is
-  not the only way to get started.
+- The Add words screen shows a five-card teaser (one pack per language) below the paste box, so
+  importing is not the only way to get started.
 
 ### Import and decks
 - **Three ways in:** drag & drop, file picker, or paste text.

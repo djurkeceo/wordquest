@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Deck, LoadedPreset, ParsedPair } from '../types';
 import { normKey } from '../language/normalize';
+import { parseWordList } from '../parser/parseWordList';
 import { normalizeDeck } from '../storage/migration';
 import { clearPresetCache, loadAllPresets, loadPreset, PRESETS } from './index';
 import {
@@ -35,20 +36,31 @@ function packed(pairs: ParsedPair[], id = 'test-pack'): LoadedPreset {
 afterEach(() => clearPresetCache());
 
 describe('ready-made pack registry', () => {
-  it('ships thirteen unique packs: ten German and three English', () => {
-    expect(PRESETS).toHaveLength(13);
-    expect(new Set(PRESETS.map(p => p.id)).size).toBe(13);
+  it('ships 31 unique packs across five languages', () => {
+    expect(PRESETS).toHaveLength(31);
+    expect(new Set(PRESETS.map(p => p.id)).size).toBe(31);
     expect(PRESETS.filter(p => p.foreignLang === 'de' && p.nativeLang === 'sr')).toHaveLength(10);
-    expect(PRESETS.filter(p => p.foreignLang === 'en' && p.nativeLang === 'sr')).toHaveLength(3);
+    expect(PRESETS.filter(p => p.foreignLang === 'en' && p.nativeLang === 'sr')).toHaveLength(6);
+    expect(PRESETS.filter(p => p.foreignLang === 'it' && p.nativeLang === 'sr')).toHaveLength(5);
+    expect(PRESETS.filter(p => p.foreignLang === 'es' && p.nativeLang === 'sr')).toHaveLength(5);
+    expect(PRESETS.filter(p => p.foreignLang === 'fr' && p.nativeLang === 'sr')).toHaveLength(5);
     expect(new Set(PRESETS.map(p => p.category))).toEqual(new Set([
       'top', 'food', 'travel', 'home', 'health', 'nature', 'work', 'city',
       'feelings', 'verbs', 'phrases'
     ]));
   });
 
+  it('covers the core subjects in every advertised language', () => {
+    for (const foreignLang of ['de', 'en', 'it', 'es', 'fr'] as const) {
+      for (const category of ['food', 'travel', 'home', 'verbs'] as const) {
+        expect(PRESETS.some(p => p.foreignLang === foreignLang && p.category === category)).toBe(true);
+      }
+    }
+  });
+
   it('has complete localised metadata for every card', () => {
     for (const meta of PRESETS) {
-      expect(meta.id).toMatch(/^(de|en)-sr-[a-z0-9-]+$/);
+      expect(meta.id).toMatch(/^(de|en|it|es|fr)-sr-[a-z0-9-]+$/);
       expect(meta.title.en.length).toBeGreaterThan(0);
       expect(meta.title.sr.length).toBeGreaterThan(0);
       expect(meta.description.en.length).toBeGreaterThan(0);
@@ -60,7 +72,7 @@ describe('ready-made pack registry', () => {
 
   it('loads every pack, computes counts from text and has no duplicate words', async () => {
     const loaded = await loadAllPresets();
-    expect(loaded).toHaveLength(13);
+    expect(loaded).toHaveLength(31);
     for (const pack of loaded) {
       expect(pack.text.length).toBeGreaterThan(0);
       expect(pack.wordCount).toBe(pack.pairs.length);
@@ -68,12 +80,13 @@ describe('ready-made pack registry', () => {
       expect(pack.pairs.every(p => p.f.length > 0 && p.n.length > 0)).toBe(true);
       const keys = pack.pairs.map(p => normKey(p.f));
       expect(new Set(keys).size).toBe(keys.length);
+      expect(parseWordList(pack.text).errors).toHaveLength(0);
     }
     const top = loaded.filter(p => p.meta.category === 'top');
     expect(top).toHaveLength(2);
     for (const pack of top) expect(pack.wordCount).toBe(300);
     const themes = loaded.filter(p => p.meta.category !== 'top');
-    expect(themes).toHaveLength(11);
+    expect(themes).toHaveLength(29);
     for (const pack of themes) {
       expect(pack.wordCount).toBeGreaterThanOrEqual(40);
       expect(pack.wordCount).toBeLessThanOrEqual(80);

@@ -1,0 +1,43 @@
+# Spanish - Serbian: Everyday phrases
+# One pair per line.
+hola - zdravo
+buenas - cao
+buenos días - dobro jutro
+buenas tardes - dobar dan
+buenas noches - dobro vece
+que descanses - laku noc
+adiós - dovidenja
+hasta luego - vidimo se kasnije
+hasta mañana - vidimo se sutra
+cómo estás - kako si
+estoy bien - dobro sam
+gracias - hvala
+por favor - molim te
+de nada - nema na cemu
+perdón - izvini
+lo siento - zao mi je
+cómo te llamas - kako se zoves
+me llamo - zovem se
+mucho gusto - drago mi je
+de dónde eres - odakle si
+soy de Serbia - ja sam iz Srbije
+hablas inglés - govoris li engleski
+no entiendo - ne razumem
+puedes repetir - mozes li da ponovis
+cuánto cuesta - koliko kosta
+quisiera esto - zeleo bih ovo
+la cuenta por favor - racun molim
+dónde está el baño - gde je kupatilo
+ayúdame - pomozi mi
+necesito un médico - treba mi lekar
+llama a la policía - pozovi policiju
+estoy perdido - izgubio sam se
+gira a la izquierda - skreni levo
+gira a la derecha - skreni desno
+sigue recto - idi pravo
+cuánto falta - koliko je daleko
+qué hora es - koliko je sati
+tengo hambre - gladan sam
+tengo sed - zedan sam
+buena suerte - srecno
+salud - ziveli

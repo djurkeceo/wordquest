@@ -146,6 +146,8 @@ export const sr: I18nDict = {
     'preset.importSub': 'Ne znaš odakle da počneš? Dodaj jednu od ovih špilja jednim dodirom.',
     'preset.browseAll': 'Pogledaj sve',
     'preset.search': 'Pretraži pakete',
+    'preset.languages': 'Jezici paketa',
+    'preset.langAll': 'Svi jezici',
     'preset.categories': 'Kategorije paketa',
     'preset.loading': 'Učitavanje paketa…',
     'preset.noMatch': 'Nijedan paket ne odgovara pretrazi.',

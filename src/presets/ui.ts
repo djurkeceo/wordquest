@@ -6,7 +6,7 @@
  * in-memory list, so they stay instant after the first load.
  */
 
-import type { LoadedPreset, PresetCategory } from '../types';
+import type { LanguageCode, LoadedPreset, PresetCategory } from '../types';
 import { checkAchievements } from '../gamification/achievements';
 import type { MascotState } from '../gamification/mascot';
 import { getMascotState, setState as setMascotState } from '../gamification/mascot';
@@ -35,12 +35,17 @@ import {
 } from './merge';
 
 type CategoryFilter = PresetCategory | 'all';
+type LanguageFilter = LanguageCode | 'all';
+
+/** Preferred chip order; other languages are appended after these. */
+const LANGUAGE_ORDER: readonly LanguageCode[] = ['de', 'en', 'it', 'es', 'fr'];
 
 let loaded: LoadedPreset[] | null = null;
 let loadingPromise: Promise<LoadedPreset[]> | null = null;
 let homeLoading = false;
 let query = '';
 let category: CategoryFilter = 'all';
+let language: LanguageFilter = 'all';
 let preview: LoadedPreset | null = null;
 let lastFocused: HTMLElement | null = null;
 let loadingResumeState: MascotState | null = null;
@@ -100,7 +105,16 @@ export function renderImportPacks(): void {
   if (!grid) return;
   const paint = (list: LoadedPreset[]): void => {
     grid.innerHTML = '';
-    list.slice(0, 4).forEach(entry => grid.appendChild(packCard(entry)));
+    // Show one pack per language so the teaser advertises the full catalogue.
+    const seen = new Set<string>();
+    const featured: LoadedPreset[] = [];
+    for (const entry of list) {
+      if (seen.has(entry.meta.foreignLang)) continue;
+      seen.add(entry.meta.foreignLang);
+      featured.push(entry);
+      if (featured.length === 5) break;
+    }
+    featured.forEach(entry => grid.appendChild(packCard(entry)));
     $('#importPresetLoading')?.classList.add('hidden');
   };
   if (loaded) { paint(loaded); return; }
@@ -108,12 +122,40 @@ export function renderImportPacks(): void {
   void ensurePresetsLoaded().then(paint);
 }
 
-/** Category chips, limited to categories that actually exist. */
+/** Languages that actually have at least one pack, in a stable order. */
+function presentLanguages(): LanguageCode[] {
+  if (!loaded) return [];
+  const present = new Set(loaded.map(entry => entry.meta.foreignLang));
+  const ordered = LANGUAGE_ORDER.filter(code => present.has(code));
+  const extra = Array.from(present)
+    .filter(code => !LANGUAGE_ORDER.includes(code))
+    .sort((a, b) => langName(a, uiLang()).localeCompare(langName(b, uiLang())));
+  return ordered.concat(extra);
+}
+
+/** Language chips (All + every language with a pack). */
+function renderLanguageChips(): void {
+  const host = $('#presetLangChips');
+  if (!host || !loaded) return;
+  const mkChip = (value: LanguageFilter, label: string): string =>
+    `<button class="chip${language === value ? ' is-on' : ''}" data-lang="${value}" role="tab" aria-selected="${language === value ? 'true' : 'false'}">${esc(label)}</button>`;
+  host.innerHTML = mkChip('all', t('preset.langAll')) +
+    presentLanguages().map(code => mkChip(code, langName(code, uiLang()))).join('');
+}
+
+/** Language and category chips, limited to combinations that actually exist. */
 function renderChips(): void {
   const host = $('#presetChips');
   if (!host || !loaded) return;
+  renderLanguageChips();
+  const pool = language === 'all'
+    ? loaded
+    : loaded.filter(entry => entry.meta.foreignLang === language);
   const present = CATEGORY_ORDER.filter(cat =>
-    loaded!.some(entry => entry.meta.category === cat));
+    pool.some(entry => entry.meta.category === cat));
+  // Switching to a language without the selected subject should not leave an
+  // invisible filter active: fall back to "All" for that language.
+  if (category !== 'all' && !present.includes(category)) category = 'all';
   const mkChip = (value: CategoryFilter, label: string): string =>
     `<button class="chip${category === value ? ' is-on' : ''}" data-cat="${value}" role="tab" aria-selected="${category === value ? 'true' : 'false'}">${esc(label)}</button>`;
   host.innerHTML = mkChip('all', t('preset.category.all')) +
@@ -122,6 +164,7 @@ function renderChips(): void {
 
 /** Does one pack match the current search text? */
 function matches(entry: LoadedPreset): boolean {
+  if (language !== 'all' && entry.meta.foreignLang !== language) return false;
   if (category !== 'all' && entry.meta.category !== category) return false;
   const q = query.trim().toLowerCase();
   if (!q) return true;
@@ -297,6 +340,14 @@ export function bindPresets(): void {
     query = (e.target as HTMLInputElement).value;
     renderGrid();
   }, 120));
+
+  $('#presetLangChips')?.addEventListener('click', e => {
+    const btn = (e.target as Element).closest<HTMLElement>('[data-lang]');
+    if (!btn) return;
+    language = (btn.getAttribute('data-lang') || 'all') as LanguageFilter;
+    renderChips();
+    renderGrid();
+  });
 
   $('#presetChips')?.addEventListener('click', e => {
     const btn = (e.target as Element).closest<HTMLElement>('[data-cat]');

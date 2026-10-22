@@ -1,0 +1,47 @@
+# French - Serbian: Home & furniture
+# One pair per line.
+maison - kuca
+appartement - stan
+chambre - soba
+cuisine - kuhinja
+salle de bain - kupatilo
+chambre à coucher - spavaca soba
+salon - dnevna soba
+porte - vrata
+fenêtre - prozor
+mur - zid
+sol - pod
+plafond - plafon
+toit - krov
+jardin - basta
+garage - garaza
+table - sto
+chaise - stolica
+lit - krevet
+canapé - sofa
+lampe - lampa
+miroir - ogledalo
+tapis - tepih
+placard - ormar
+réfrigérateur - frizider
+four - rerna
+évier - sudopera
+douche - tus
+toilettes - toalet
+serviette - peskir
+couverture - cebe
+oreiller - jastuk
+clé - kljuc
+horloge - sat
+tableau - slika
+plante - biljka
+télévision - televizor
+téléphone - telefon
+ordinateur - racunar
+lave-linge - ves masina
+radiateur - grejalica
+escalier - stepenice
+balcon - balkon
+étagère - polica
+tiroir - fioka
+balai - metla

@@ -1,0 +1,43 @@
+# French - Serbian: Everyday phrases
+# One pair per line.
+bonjour - dobro jutro
+salut - zdravo
+coucou - cao
+bon après-midi - dobar dan
+bonsoir - dobro vece
+bonne nuit - laku noc
+au revoir - dovidenja
+à plus tard - vidimo se kasnije
+à demain - vidimo se sutra
+comment ça va - kako si
+ça va bien - dobro sam
+merci - hvala
+s'il vous plaît - molim te
+de rien - nema na cemu
+excusez-moi - izvini
+désolé - zao mi je
+comment tu t'appelles - kako se zoves
+je m'appelle - zovem se
+enchanté - drago mi je
+tu viens d'où - odakle si
+je viens de Serbie - ja sam iz Srbije
+parles-tu anglais - govoris li engleski
+je ne comprends pas - ne razumem
+peux-tu répéter - mozes li da ponovis
+combien ça coûte - koliko kosta
+je voudrais ceci - zeleo bih ovo
+l'addition s'il vous plaît - racun molim
+où sont les toilettes - gde je kupatilo
+aide-moi - pomozi mi
+j'ai besoin d'un médecin - treba mi lekar
+appelle la police - pozovi policiju
+je suis perdu - izgubio sam se
+tourne à gauche - skreni levo
+tourne à droite - skreni desno
+va tout droit - idi pravo
+c'est loin - koliko je daleko
+quelle heure est-il - koliko je sati
+j'ai faim - gladan sam
+j'ai soif - zedan sam
+bonne chance - srecno
+santé - ziveli

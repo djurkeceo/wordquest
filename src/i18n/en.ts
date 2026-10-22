@@ -146,6 +146,8 @@ export const en: I18nDict = {
     'preset.importSub': 'Not sure where to start? Add one of these decks in a tap.',
     'preset.browseAll': 'Browse all',
     'preset.search': 'Search packs',
+    'preset.languages': 'Pack languages',
+    'preset.langAll': 'All languages',
     'preset.categories': 'Pack categories',
     'preset.loading': 'Loading packs…',
     'preset.noMatch': 'No packs match that search.',

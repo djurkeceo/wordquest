@@ -1,0 +1,52 @@
+# French - Serbian: Food & drink
+# One pair per line.
+pain - hleb
+eau - voda
+lait - mleko
+café - kafa
+thé - caj
+vin - vino
+bière - pivo
+jus - sok
+fromage - sir
+beurre - puter
+œuf - jaje
+viande - meso
+poulet - piletina
+poisson - riba
+riz - pirinac
+pâtes - testenina
+pomme de terre - krompir
+tomate - paradajz
+oignon - crni luk
+ail - beli luk
+sel - so
+poivre - biber
+sucre - secer
+miel - med
+pomme - jabuka
+banane - banana
+orange - pomorandza
+citron - limun
+fraise - jagoda
+gâteau - torta
+chocolat - cokolada
+glace - sladoled
+soupe - supa
+salade - salata
+sandwich - sendvic
+pizza - pizza
+petit déjeuner - dorucak
+déjeuner - rucak
+dîner - vecera
+restaurant - restoran
+menu - jelovnik
+addition - racun
+serveur - konobar
+fourchette - viljuska
+couteau - noz
+cuillère - kasika
+verre - casa
+bouteille - flasa
+marché - pijaca
+délicieux - ukusno

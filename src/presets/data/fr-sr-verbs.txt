@@ -1,0 +1,52 @@
+# French - Serbian: Everyday verbs
+# One pair per line.
+être - biti
+avoir - imati
+faire - raditi
+aller - ici
+venir - doci
+voir - videti
+regarder - gledati
+entendre - cuti
+parler - govoriti
+demander - pitati
+répondre - odgovoriti
+lire - citati
+écrire - pisati
+apprendre - uciti
+enseigner - poducavati
+comprendre - razumeti
+savoir - znati
+penser - misliti
+vouloir - zeleti
+nécessiter - trebati
+aimer - voleti
+adorer - obozavati
+manger - jesti
+boire - piti
+dormir - spavati
+se réveiller - probuditi se
+travailler - raditi
+jouer - igrati se
+acheter - kupovati
+vendre - prodavati
+payer - placati
+ouvrir - otvoriti
+fermer - zatvoriti
+commencer - poceti
+finir - zavrsiti
+aider - pomoci
+attendre - cekati
+trouver - naci
+perdre - izgubiti
+donner - dati
+prendre - uzeti
+apporter - doneti
+partir - otici
+arriver - stici
+retourner - vratiti se
+marcher - setati
+courir - trcati
+conduire - voziti
+voyager - putovati
+vivre - ziveti

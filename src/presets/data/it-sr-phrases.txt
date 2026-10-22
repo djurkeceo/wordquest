@@ -1,0 +1,43 @@
+# Italian - Serbian: Everyday phrases
+# One pair per line.
+salve - zdravo
+ciao - cao
+buongiorno - dobro jutro
+buon pomeriggio - dobar dan
+buonasera - dobro vece
+buonanotte - laku noc
+arrivederci - dovidenja
+a dopo - vidimo se kasnije
+a domani - vidimo se sutra
+come stai - kako si
+sto bene - dobro sam
+grazie - hvala
+per favore - molim te
+prego - nema na cemu
+scusi - izvini
+mi dispiace - zao mi je
+come ti chiami - kako se zoves
+mi chiamo - zovem se
+piacere - drago mi je
+di dove sei - odakle si
+sono della Serbia - ja sam iz Srbije
+parli inglese - govoris li engleski
+non capisco - ne razumem
+puoi ripetere - mozes li da ponovis
+quanto costa - koliko kosta
+vorrei questo - zeleo bih ovo
+il conto per favore - racun molim
+dov'è il bagno - gde je kupatilo
+aiutami - pomozi mi
+ho bisogno di un medico - treba mi lekar
+chiama la polizia - pozovi policiju
+mi sono perso - izgubio sam se
+gira a sinistra - skreni levo
+gira a destra - skreni desno
+vai dritto - idi pravo
+quanto è lontano - koliko je daleko
+che ore sono - koliko je sati
+ho fame - gladan sam
+ho sete - zedan sam
+buona fortuna - srecno
+salute - ziveli
