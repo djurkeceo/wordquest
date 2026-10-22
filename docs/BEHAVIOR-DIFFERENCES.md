@@ -92,9 +92,9 @@ New files under `public/` and new `<head>` links:
 - `icon-192.png` / `icon-512.png` → manifest `any`
 - `icon-maskable.svg` / `icon-maskable-512.png` → manifest `maskable`
 
-All icon artwork is generated from the same fox mascot used in the app, so
-browser chrome, install prompts and bookmark/home-screen icons match the
-product. This changes only browser chrome, install prompts and
+All icon artwork uses the same purple-and-white WordQuest "W" card mark as the
+header brand, so browser chrome, install prompts and bookmark/home-screen icons
+match the product. This changes only browser chrome, install prompts and
 bookmark/home-screen icons. It adds no service worker and no offline cache; the
 app remains offline-first in the sense that all data stays local and no runtime
 API is needed, not in the sense of a cached installable PWA.

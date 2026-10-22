@@ -183,7 +183,7 @@ This gives a clean before/after comparison and keeps every phase runnable.
 
 - 10 screens: login, home, import, lang, preview, deck, session, summary,
   achievements, settings.
-- Topbar: back button, fox-badge logo/wordmark (always Home, quit prompt in a
+- Topbar: back button, app-mark logo/wordmark (always Home, quit prompt in a
   session), streak/XP pills.
 - Tabbar: Home, Badges, Settings; hidden in session/login; Home is highlighted
   for deck/import/lang/preview.

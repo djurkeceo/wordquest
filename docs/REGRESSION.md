@@ -172,8 +172,8 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 - [x] Lesson, deck, feedback and login mascots are decorative (`aria-hidden`,
       no `tabindex`, no key handler); Home and Summary give the fox an
       accessible name.
-- [x] The icon set is generated from the same fox artwork: `icon.svg`,
-      `icon-maskable.svg`, `icon-192.png`, `icon-512.png`,
+- [x] The icon set uses the same purple-and-white "W" card mark as the header
+      brand: `icon.svg`, `icon-maskable.svg`, `icon-192.png`, `icon-512.png`,
       `icon-maskable-512.png`, `apple-touch-icon.png`, `favicon-32.png`.
 
 ### Icons, manifest and deployment
