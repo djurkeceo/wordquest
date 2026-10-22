@@ -7,6 +7,7 @@ import { play } from './sfx';
 import {
   canSpeak,
   hasLocalVoice,
+  hasNaturalLocalVoice,
   loadVoices,
   resetCloud,
   speak,
@@ -20,6 +21,7 @@ export const sound = {
   stopSpeaking,
   canSpeak,
   hasLocalVoice,
+  hasNaturalLocalVoice,
   resetCloud,
   ttsAvailable,
   loadVoices

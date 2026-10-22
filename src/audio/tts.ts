@@ -140,17 +140,40 @@ if (ttsAvailable()) {
   window.speechSynthesis.onvoiceschanged = loadVoices;
 }
 
+/**
+ * Installed voices are not equally good. Windows ships old concatenative
+ * voices that sound robotic, while Edge/Android may expose Natural/Neural or
+ * network voices. Rank them so Auto does not pick eSpeak or a desktop voice
+ * over a clearly better one.
+ */
+function localVoiceScore(voice: SpeechSynthesisVoice): number {
+  let score = voice.localService === false ? 8 : 0;
+  if (/natural|neural|online|premium|enhanced|studio|siri/i.test(voice.name)) score += 20;
+  if (/espeak|compact|pico|robotic|festival|mbrola/i.test(voice.name)) score -= 30;
+  if (voice.default) score += 1;
+  return score;
+}
+
 /** Best installed voice for a language code, or null when there is none. */
 function localVoice(code: LanguageCode): SpeechSynthesisVoice | null {
+  if (ttsAvailable()) loadVoices();
   const tag = ttsTag(code).toLowerCase().replace('_', '-');
   const two = tag.slice(0, 2);
-  return voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-') === tag)
-      || voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').slice(0, 2) === two)
-      || null;
+  const exact = voices.filter(v => v.lang && v.lang.toLowerCase().replace('_', '-') === tag);
+  const prefix = voices.filter(v => v.lang && v.lang.toLowerCase().replace('_', '-').slice(0, 2) === two);
+  const matches = exact.length ? exact : prefix;
+  if (!matches.length) return null;
+  return matches.reduce((best, v) => localVoiceScore(v) > localVoiceScore(best) ? v : best, matches[0]);
 }
 
 export function hasLocalVoice(code: LanguageCode): boolean {
   return !!localVoice(code);
+}
+
+/** True when the installed voice is likely natural rather than a legacy synth. */
+export function hasNaturalLocalVoice(code: LanguageCode): boolean {
+  const voice = localVoice(code);
+  return !!voice && localVoiceScore(voice) >= 8;
 }
 
 function onlineReachable(): boolean {
@@ -163,7 +186,9 @@ function onlineReachable(): boolean {
  */
 export function canSpeak(code: LanguageCode): boolean {
   const engine = getState().settings.ttsEngine || 'auto';
-  if (engine === 'browser') return ttsAvailable();
+  // Browser mode cannot pronounce a language when no matching voice exists;
+  // Chrome would otherwise read it with the default English voice.
+  if (engine === 'browser') return hasLocalVoice(code);
   if (cloudKey() && !cloudBroken) return onlineReachable();
   if (engine === 'online') return onlineReachable();
   return hasLocalVoice(code) || onlineReachable();
@@ -179,6 +204,11 @@ export function resetCloud(): void {
 /** Offline path: Web Speech API. */
 function speakLocal(text: string, code: LanguageCode, rate?: number): boolean {
   if (!ttsAvailable()) return false;
+  const v = localVoice(code);
+  // Never hand Hungarian (or any other non-English word) to an unrelated
+  // default voice: that is the "machine" reading users hear on PCs without
+  // the matching speech pack. English may use the browser's default voice.
+  if (!v && code !== 'en') return false;
   try {
     const synth = window.speechSynthesis;
     synth.cancel();
@@ -186,12 +216,37 @@ function speakLocal(text: string, code: LanguageCode, rate?: number): boolean {
     u.lang = ttsTag(code);
     u.rate = rate || 0.92;
     u.pitch = 1;
-    const v = localVoice(code);
     if (v) u.voice = v;
     synth.speak(u);
     return true;
   } catch {
     return false;
+  }
+}
+
+/**
+ * Google's keyless endpoint returns HTTP 404 when a non-Google Referer is
+ * sent. Audio elements inherit the document referrer policy, so apply a
+ * no-referrer policy just while the request is created and then restore it.
+ * This keeps HTTP-referrer-restricted Cloud API keys working.
+ */
+function withNoReferrer<T>(fn: () => T): T {
+  const head = document.head;
+  const existing = head.querySelector<HTMLMetaElement>('meta[name="referrer"]');
+  const previous = existing ? existing.getAttribute('content') : null;
+  let meta = existing;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'referrer';
+    head.appendChild(meta);
+  }
+  meta.content = 'no-referrer';
+  try {
+    return fn();
+  } finally {
+    if (!existing) meta.remove();
+    else if (previous === null) meta.removeAttribute('content');
+    else meta.content = previous;
   }
 }
 
@@ -206,12 +261,7 @@ function speakOnline(
 ): boolean {
   try {
     const el = ensureEl();
-    el.pause();
     const tl = ONLINE_LANG[code] || String(code || 'en').split('-')[0];
-    el.src = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob'
-      + '&tl=' + encodeURIComponent(tl)
-      + '&q=' + encodeURIComponent(String(text).slice(0, ONLINE_MAX));
-    el.playbackRate = 1;
     let settled = false;
     const fail = (err: unknown): void => {
       if (settled) return;
@@ -219,7 +269,15 @@ function speakOnline(
       onFail(err);
     };
     el.onerror = () => fail(new Error('tts-error'));
-    const p = el.play();
+    const p = withNoReferrer(() => {
+      el.pause();
+      el.src = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob'
+        + '&tl=' + encodeURIComponent(tl)
+        + '&q=' + encodeURIComponent(String(text).slice(0, ONLINE_MAX));
+      el.playbackRate = 1;
+      el.load();
+      return el.play();
+    });
     if (p && p.catch) p.catch(err => fail(err));
     return true;
   } catch (err) {
@@ -246,7 +304,9 @@ export function speak(text: string, langCode: LanguageCode, rate?: number): bool
   const settings = getState().settings;
   if (!settings.tts || !text) return false;
   const engine = settings.ttsEngine || 'auto';
-  const localFirst = engine === 'browser' || (engine === 'auto' && hasLocalVoice(langCode));
+  // Auto prefers a natural installed voice, otherwise the online voice. Old
+  // desktop voices stay available as the offline fallback and in Browser mode.
+  const localFirst = engine === 'browser' || (engine === 'auto' && hasNaturalLocalVoice(langCode));
   if (localFirst && speakLocal(text, langCode, rate)) return true;
   if (engine !== 'browser') {
     const fallback = (): boolean => speakLocal(text, langCode, rate);
@@ -259,6 +319,8 @@ export function speak(text: string, langCode: LanguageCode, rate?: number): bool
       return true;
     }
     const started = speakOnline(text, langCode, err => {
+      // A new word interrupted the old clip; that is not a broken voice.
+      if (errorName(err) === 'AbortError') return;
       // A blocked autoplay is a browser policy, not a broken voice — stay quiet
       // rather than jumping to a second, worse reading of the same word.
       if (errorName(err) === 'NotAllowedError') return;

@@ -71,11 +71,14 @@ A lesson is 10–15 exercises, so it fits in a coffee break.
 
 ### Pronunciation that actually sounds right
 Three selectable engines:
-- **Auto** — uses an installed system voice when one exists for that language, otherwise falls back
-  to an online voice. This is the default, and it fixes languages your OS has no voice for.
-- **Browser** — offline Web Speech only.
-- **Online** — Google Cloud Text-to-Speech with your own API key, with a keyless fallback when no
-  key is set.
+- **Auto** — prefers a natural installed system voice, otherwise uses the online voice. If the
+  network is unavailable it falls back to an installed voice in the right language. This is the
+  default, and it fixes languages your OS has no voice for (for example Hungarian on a PC that only
+  ships English voices).
+- **Browser** — offline Web Speech only. If the language has no installed voice, playback is skipped
+  instead of reading the word with an unrelated English voice.
+- **Online** — Google Cloud Text-to-Speech with your own API key, with a keyless Google Translate
+  fallback when no key is set.
 
 The API key is stored only in your browser's `localStorage`; it is never sent anywhere except to
 Google. Synthesised audio is cached in memory so repeated words do not hit the network twice.

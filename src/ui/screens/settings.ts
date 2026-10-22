@@ -106,8 +106,9 @@ function renderVoiceInfo(): void {
   const engine = state.settings.ttsEngine || 'auto';
   const name = langName(lang, state.settings.uiLang || 'en');
   const hasKey = !!(state.settings.ttsKey || '').trim();
+  const hasLocal = sound.hasLocalVoice(lang as LanguageCode);
   if (engine === 'browser') {
-    el.textContent = t(sound.hasLocalVoice(lang as LanguageCode) ? 'settings.voiceInfoLocal' : 'settings.voiceInfoNoLocal', { lang: name });
+    el.textContent = t(hasLocal ? 'settings.voiceInfoLocal' : 'settings.voiceInfoNoLocal', { lang: name });
     return;
   }
   if (hasKey) {
@@ -121,11 +122,17 @@ function renderVoiceInfo(): void {
       ? t('settings.voiceInfoOffline') : t('settings.voiceInfoOnline');
     return;
   }
-  el.textContent = sound.hasLocalVoice(lang as LanguageCode)
-    ? t('settings.voiceInfoLocal', { lang: name })
-    : (navigator.onLine === false
-      ? t('settings.voiceInfoOffline')
-      : t('settings.voiceInfoNone', { lang: name }));
+  if (navigator.onLine === false) {
+    el.textContent = hasLocal
+      ? t('settings.voiceInfoLocal', { lang: name })
+      : t('settings.voiceInfoOffline');
+  } else if (sound.hasNaturalLocalVoice(lang as LanguageCode)) {
+    el.textContent = t('settings.voiceInfoLocal', { lang: name });
+  } else if (hasLocal) {
+    el.textContent = t('settings.voiceInfoAutoOnline', { lang: name });
+  } else {
+    el.textContent = t('settings.voiceInfoNone', { lang: name });
+  }
 }
 
 type ToggleKey = 'sound' | 'tts' | 'strictAccents' | 'hearts' | 'calmMotion';

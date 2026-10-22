@@ -101,6 +101,11 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 - [x] UI language switch EN ↔ SR updates static labels and `document.lang` (P7).
 - [x] Sound, TTS, strict accents, hearts, calm motion and daily goal controls
       (P5; storage shape pinned by tests).
+- [x] Hungarian on a PC without a Hungarian system voice: Auto uses the keyless
+      online voice (HTTP 200 `audio/mpeg`, no Referer), and Browser mode refuses
+      to read it with an unrelated English default voice.
+- [x] The temporary no-referrer meta used for the keyless endpoint is removed
+      after the request, so a referrer-restricted Google Cloud key still works.
 - [x] Export JSON produces a download without console errors (P7 click path).
 - [x] Import JSON replaces the active profile state after confirmation (P5).
 - [x] Reset clears decks/progress and keeps the profile (P5).

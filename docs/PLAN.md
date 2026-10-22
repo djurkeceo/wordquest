@@ -169,10 +169,11 @@ This gives a clean before/after comparison and keeps every phase runnable.
 - Web Audio SFX generated in code: correct, wrong, flip, tap, combo, win, lose,
   hint. AudioContext created on demand after a gesture; suspended contexts
   resumed.
-- TTS engines: `auto` (local voice when installed, then online), `browser`
-  (Web Speech only), `online` (keyless Google Translate endpoint), plus an
-  optional Google Cloud key (voice discovery, quality ranking, MP3 data cache,
-  abort handling, broken-key flag).
+- TTS engines: `auto` (natural local voice when installed, otherwise online,
+  then local fallback), `browser` (Web Speech only, matching language voice
+  required), `online` (keyless Google Translate endpoint), plus an optional
+  Google Cloud key (voice discovery, quality ranking, MP3 data cache, abort
+  handling, broken-key flag).
 - TTS mute is independent of SFX; speech stops on every screen change.
 - Settings shows the effective engine for the first deck’s foreign language,
   a test button, and a key field; key rejection toasts.

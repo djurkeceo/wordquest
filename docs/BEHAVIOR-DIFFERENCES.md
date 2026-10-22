@@ -119,10 +119,12 @@ API is needed, not in the sense of a cached installable PWA.
 - All storage keys, defaults, save debounce (220 ms), feedback timings, keyboard
   shortcuts, mode composition, SRS maths, XP curve, hearts and streak rules are
   unchanged and pinned by characterisation tests.
-- The legacy UI copy, emoji choices, sounds and TTS engines are unchanged. The
-  mascot artwork and animation now come from the supplied animated fox and use
-  the additive states `idle`, `happy`, `celebrate`, `sad` and `thinking`; no
-  saved-data shape changes.
+- The legacy UI copy, emoji choices and sounds are unchanged. TTS now ranks
+  installed voices, prefers a natural local voice or the online voice, refuses
+  to read a non-English word with an unrelated default voice, and works around
+  Google's keyless-endpoint Referer check. The mascot artwork and animation now
+  come from the supplied animated fox and use the additive states `idle`,
+  `happy`, `celebrate`, `sad` and `thinking`; no saved-data shape changes.
 
 ## 8. Verification
 

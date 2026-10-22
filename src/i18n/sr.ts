@@ -89,6 +89,7 @@ export const sr: I18nDict = {
     'settings.voiceOnline': 'Online (bolji akcenat)',
     'settings.voiceTest': 'Testiraj glas',
     'settings.voiceInfoLocal': '{lang}: pronađen lokalni glas.',
+    'settings.voiceInfoAutoOnline': '{lang}: online glas za jasniji akcenat.',
     'settings.voiceInfoNone': '{lang}: nema lokalnog glasa — koristi se online glas.',
     'settings.voiceInfoNoLocal': '{lang}: nema instaliran lokalni glas.',
     'settings.voiceInfoOnline': 'Online glas (potreban internet).',

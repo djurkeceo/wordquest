@@ -89,6 +89,7 @@ export const en: I18nDict = {
     'settings.voiceOnline': 'Online (better accent)',
     'settings.voiceTest': 'Test voice',
     'settings.voiceInfoLocal': '{lang}: local voice found.',
+    'settings.voiceInfoAutoOnline': '{lang}: online voice for a clearer accent.',
     'settings.voiceInfoNone': '{lang}: no local voice — the online voice will be used.',
     'settings.voiceInfoNoLocal': '{lang}: no local voice installed.',
     'settings.voiceInfoOnline': 'Online voice (needs internet).',
