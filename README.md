@@ -96,7 +96,8 @@ Google. Synthesised audio is cached in memory so repeated words do not hit the n
 - Respects `prefers-reduced-motion`, visible focus rings, ARIA labels, and a skip link.
 - UI available in English and Serbian (Latin); it can default to the language you are learning from.
 - Works on a phone — the layout is mobile-first, not a shrunken desktop page.
-- App icons and a web app manifest for favicons, home-screen shortcuts and installable windows.
+- App icons use the purple-and-white **W** card mark, with a web app manifest for
+  favicons, home-screen shortcuts and installable windows.
 
 ## Run it
 
