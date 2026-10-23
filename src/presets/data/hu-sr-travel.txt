@@ -1,0 +1,52 @@
+# Hungarian - Serbian: Travel & transport
+# One pair per line.
+vonat - voz
+busz - autobus
+repülőgép - avion
+autó - auto
+taxi - taksi
+bicikli - bicikl
+hajó - brod
+jegy - karta
+repülőtér - aerodrom
+pályaudvar - zeleznicka stanica
+megálló - stanica
+út - put
+utca - ulica
+tér - trg
+híd - most
+szálloda - hotel
+szoba - soba
+foglalás - rezervacija
+útlevél - pasos
+poggyász - prtljag
+bőrönd - kofer
+térkép - mapa
+idegenvezető - vodic
+nyaralás - odmor
+tenger - more
+strand - plaza
+hegy - planina
+tó - jezero
+város - grad
+falu - selo
+határ - granica
+vám - carina
+balra - levo
+jobbra - desno
+egyenesen - pravo
+közel - blizu
+messze - daleko
+gyors - brz
+lassú - spor
+korán - rano
+késő - kasno
+nyitva - otvoreno
+zárva - zatvoreno
+jegyiroda - biletarnica
+információ - informacije
+segítség - pomoc
+vészhelyzet - hitan slucaj
+útiterv - plan puta
+kirándulás - izlet
+vissza - nazad

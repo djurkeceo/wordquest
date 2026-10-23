@@ -343,6 +343,56 @@ export const PRESETS: readonly PresetMeta[] = [
     category: 'phrases',
     level: 'A1',
     load: () => import('./data/fr-sr-phrases.txt?raw')
+  },
+  {
+    id: 'hu-sr-food',
+    title: text('Hungarian food & drink', 'Madarski: hrana i pice'),
+    description: text('Shopping, cooking and ordering food.', 'Kupovina, kuvanje i narucivanje hrane.'),
+    foreignLang: 'hu',
+    nativeLang: 'sr',
+    category: 'food',
+    level: 'A1',
+    load: () => import('./data/hu-sr-food.txt?raw')
+  },
+  {
+    id: 'hu-sr-travel',
+    title: text('Hungarian travel & transport', 'Madarski: putovanje i prevoz'),
+    description: text('Tickets, directions and holidays.', 'Karte, snalazenje i odmor.'),
+    foreignLang: 'hu',
+    nativeLang: 'sr',
+    category: 'travel',
+    level: 'A2',
+    load: () => import('./data/hu-sr-travel.txt?raw')
+  },
+  {
+    id: 'hu-sr-home',
+    title: text('Hungarian home & furniture', 'Madarski: kuca i namestaj'),
+    description: text('Rooms, furniture and everyday objects.', 'Sobe, namestaj i predmeti za svaki dan.'),
+    foreignLang: 'hu',
+    nativeLang: 'sr',
+    category: 'home',
+    level: 'A1',
+    load: () => import('./data/hu-sr-home.txt?raw')
+  },
+  {
+    id: 'hu-sr-verbs',
+    title: text('Hungarian everyday verbs', 'Madarski: svakodnevni glagoli'),
+    description: text('The Hungarian verbs you use all day long.', 'Madarski glagoli koje koristis svakog dana.'),
+    foreignLang: 'hu',
+    nativeLang: 'sr',
+    category: 'verbs',
+    level: 'A2',
+    load: () => import('./data/hu-sr-verbs.txt?raw')
+  },
+  {
+    id: 'hu-sr-phrases',
+    title: text('Hungarian everyday phrases', 'Madarski: svakodnevne fraze'),
+    description: text('Greetings, polite phrases and small talk.', 'Pozdravi, uctive fraze i mali razgovori.'),
+    foreignLang: 'hu',
+    nativeLang: 'sr',
+    category: 'phrases',
+    level: 'A1',
+    load: () => import('./data/hu-sr-phrases.txt?raw')
   }
 ];
 

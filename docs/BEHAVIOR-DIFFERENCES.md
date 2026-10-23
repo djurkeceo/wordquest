@@ -36,22 +36,23 @@ This is the one new product surface, requested after the refactor:
   category chips, debounced search, pack cards, an "Already added" state, and
   the new empty-state copy "No decks yet. Pick a ready-made pack or upload your
   own."
-- **Import screen:** a compact "Ready-made packs" section with five featured
+- **Import screen:** a compact "Ready-made packs" section with six featured
   cards (one per language), plus a "Browse all" button that returns Home,
   scrolls to the full section and focuses search. Upload/import behaviour is
   unchanged.
 - **Preview dialog:** first 10 pairs, total count, pair, level, "Add as a new
   deck", and a same-pair deck picker plus "Add to this deck". Escape, backdrop
   and the close button dismiss it.
-- **31 packs:** 10 German→Serbian (top 300 + nine themes), 6
+- **36 packs:** 10 German→Serbian (top 300 + nine themes), 6
   English→Serbian (top 300 + phrases + verbs + food + travel + home), and
-  5 each Italian→Serbian, Spanish→Serbian and French→Serbian (food, travel,
-  home, verbs, phrases), all authored data in `src/presets/data/*.txt`.
+  5 each Italian→Serbian, Spanish→Serbian, French→Serbian and
+  Hungarian→Serbian (food, travel, home, verbs, phrases), all authored data in
+  `src/presets/data/*.txt`.
 - **One registry entry per pack.** Adding a pack means one `.txt` plus one
   `PRESETS` entry; the count is parsed from the file, not hardcoded.
 - **Lazy loading:** the registry and cards ship in the main bundle, while each
   pack's text is a separate `?raw` chunk fetched only when its metadata is
-  needed. This is visible in DevTools as 31 additional chunks after browsing
+  needed. This is visible in DevTools as 36 additional chunks after browsing
   the section, never on first load.
 
 Preset merges are additive and never replace user words. They skip duplicates

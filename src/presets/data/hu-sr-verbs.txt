@@ -1,0 +1,54 @@
+# Hungarian - Serbian: Everyday verbs
+# One pair per line.
+lenni - biti
+birtokolni - imati
+csinálni - raditi
+menni - ici
+jönni - doci
+látni - videti
+nézni - gledati
+hallani - cuti
+beszélni - govoriti
+kérdezni - pitati
+válaszolni - odgovoriti
+olvasni - citati
+írni - pisati
+tanulni - uciti
+tanítani - poducavati
+érteni - razumeti
+tudni - znati
+gondolni - misliti
+akarni - zeleti
+szeretni - voleti
+imádni - obozavati
+enni - jesti
+inni - piti
+aludni - spavati
+felébredni - probuditi se
+dolgozni - raditi
+játszani - igrati se
+venni - kupovati
+eladni - prodavati
+fizetni - placati
+nyitni - otvoriti
+zárni - zatvoriti
+kezdeni - poceti
+befejezni - zavrsiti
+segíteni - pomoci
+várni - cekati
+találni - naci
+elveszíteni - izgubiti
+adni - dati
+megfogni - uzeti
+hozni - doneti
+elmenni - otici
+megérkezni - stici
+visszatérni - vratiti se
+sétálni - setati
+futni - trcati
+vezetni - voziti
+utazni - putovati
+élni - ziveti
+főzni - kuvati
+mosni - prati
+takarítani - cistiti

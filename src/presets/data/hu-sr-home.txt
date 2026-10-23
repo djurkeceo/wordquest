@@ -1,0 +1,52 @@
+# Hungarian - Serbian: Home & furniture
+# One pair per line.
+ház - kuca
+lakás - stan
+szoba - soba
+konyha - kuhinja
+fürdőszoba - kupatilo
+hálószoba - spavaca soba
+nappali - dnevna soba
+ajtó - vrata
+ablak - prozor
+fal - zid
+padló - pod
+mennyezet - plafon
+tető - krov
+kert - basta
+garázs - garaza
+asztal - sto
+szék - stolica
+ágy - krevet
+kanapé - sofa
+szekrény - ormar
+polc - polica
+lámpa - lampa
+szőnyeg - tepih
+tükör - ogledalo
+mosogató - sudopera
+hűtőszekrény - frizider
+tűzhely - sporet
+mikrohullámú sütő - mikrotalasna
+mosógép - ves masina
+porszívó - usisivac
+televízió - televizor
+rádió - radio
+telefon - telefon
+kulcs - kljuc
+zár - brava
+villanykapcsoló - prekidac
+konnektor - uticnica
+vízcsap - slavina
+zuhany - tus
+törölköző - peskir
+szappan - sapun
+fogkefe - cetkica za zube
+wc - toalet
+szemetes - kanta za smece
+seprű - metla
+felmosó - krpa za pranje
+ruhaszárító - stalak za ves
+erkély - balkon
+lépcső - stepenice
+lift - lift

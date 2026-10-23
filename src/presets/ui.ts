@@ -38,7 +38,7 @@ type CategoryFilter = PresetCategory | 'all';
 type LanguageFilter = LanguageCode | 'all';
 
 /** Preferred chip order; other languages are appended after these. */
-const LANGUAGE_ORDER: readonly LanguageCode[] = ['de', 'en', 'it', 'es', 'fr'];
+const LANGUAGE_ORDER: readonly LanguageCode[] = ['de', 'en', 'it', 'es', 'fr', 'hu'];
 
 let loaded: LoadedPreset[] | null = null;
 let loadingPromise: Promise<LoadedPreset[]> | null = null;
@@ -112,7 +112,6 @@ export function renderImportPacks(): void {
       if (seen.has(entry.meta.foreignLang)) continue;
       seen.add(entry.meta.foreignLang);
       featured.push(entry);
-      if (featured.length === 5) break;
     }
     featured.forEach(entry => grid.appendChild(packCard(entry)));
     $('#importPresetLoading')?.classList.add('hidden');

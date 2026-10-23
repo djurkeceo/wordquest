@@ -1,0 +1,52 @@
+# Hungarian - Serbian: Everyday phrases
+# One pair per line.
+szia - cao
+jó reggelt - dobro jutro
+jó napot - dobar dan
+jó estét - dobro vece
+jó éjszakát - laku noc
+viszlát - dovidenja
+később találkozunk - vidimo se kasnije
+holnap találkozunk - vidimo se sutra
+hogy vagy - kako si
+jól vagyok - dobro sam
+köszönöm - hvala
+kérem - molim te
+szívesen - nema na cemu
+bocsánat - izvini
+sajnálom - zao mi je
+hogy hívnak - kako se zoves
+a nevem - zovem se
+örülök a találkozásnak - drago mi je
+beszélsz angolul - govoris li engleski
+nem értek - ne razumem
+megismételnéd - mozes li ponoviti
+lassabban kérlek - polako molim te
+mennyibe kerül - koliko kosta
+hol van - gde je
+merre van - kuda je
+segíts kérlek - pomozi molim te
+hívj fel - pozovi me
+mi újság - sta ima novo
+minden rendben - sve je u redu
+persze - naravno
+talán - mozda
+nem - ne
+igen - da
+ma - danas
+holnap - sutra
+tegnap - juce
+most - sada
+később - kasnije
+reggel - ujutro
+este - uvece
+éjszaka - nocu
+jó étvágyat - prijatno
+egészségedre - ziveli
+boldog születésnapot - srecan rodjendan
+boldog új évet - srecna nova godina
+karácsony - bozic
+köszönöm szépen - hvala lepo
+nincs mit - nema na cemu
+viszontlátásra - dovidenja
+jó utat - srecan put

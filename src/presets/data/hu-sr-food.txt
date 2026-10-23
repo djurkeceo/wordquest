@@ -1,0 +1,52 @@
+# Hungarian - Serbian: Food & drink
+# One pair per line.
+kenyér - hleb
+víz - voda
+tej - mleko
+kávé - kafa
+tea - caj
+bor - vino
+sör - pivo
+gyümölcslé - sok
+sajt - sir
+vaj - puter
+tojás - jaje
+hús - meso
+csirke - piletina
+hal - riba
+rizs - pirinac
+tészta - testenina
+burgonya - krompir
+paradicsom - paradajz
+hagyma - crni luk
+fokhagyma - beli luk
+só - so
+bors - biber
+cukor - secer
+méz - med
+alma - jabuka
+banán - banana
+narancs - pomorandza
+citrom - limun
+eper - jagoda
+torta - torta
+csokoládé - cokolada
+fagylalt - sladoled
+leves - supa
+saláta - salata
+szendvics - sendvic
+pizza - pizza
+reggeli - dorucak
+ebéd - rucak
+vacsora - vecera
+étterem - restoran
+étlap - jelovnik
+számla - racun
+pincér - konobar
+villa - viljuska
+kés - noz
+kanál - kasika
+pohár - casa
+üveg - flasa
+piac - pijaca
+finom - ukusno

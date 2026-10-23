@@ -23,13 +23,13 @@ preset flows and a nine-mode browser smoke test.
 | `npm ci` | Pass, 43 packages, 0 vulnerabilities, lockfile honoured |
 | `npm run typecheck` | Pass, strict mode, no `any` added |
 | `npm test` | Pass: 11 files, 79 tests |
-| `npm run build` | Pass: 105 modules, `dist/index.html`, one CSS file, main JS, lazy emoji lexicon, 31 lazy pack chunks |
+| `npm run build` | Pass: 110 modules, `dist/index.html`, one CSS file, main JS, lazy emoji lexicon, 36 lazy pack chunks |
 | `npm run preview` | Pass: production build served and exercised over HTTP |
 
 Preset data tests pin:
 
-- 31 registry entries, unique ids, 10 German→Serbian + 6 English→Serbian +
-  5 each Italian→Serbian, Spanish→Serbian and French→Serbian.
+- 36 registry entries, unique ids, 10 German→Serbian + 6 English→Serbian +
+  5 each Italian→Serbian, Spanish→Serbian, French→Serbian and Hungarian→Serbian.
 - Food, travel, home and verb packs exist for every advertised language.
 - Both starter packs parse to exactly 300 pairs; every themed pack is 40–80 pairs.
 - No duplicate normalised foreign keys inside a pack; every pack parses with no
@@ -117,9 +117,10 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
 
 ### Ready-made packs (new)
 
-- [x] All 31 cards render with computed counts, pair, level and category (P8).
-- [x] Language chips list German, English, Italian, Spanish and French; selecting
-      one limits the category chips to subjects that language actually has (P8).
+- [x] All 36 cards render with computed counts, pair, level and category (P8).
+- [x] Language chips list German, English, Italian, Spanish, French and
+      Hungarian; selecting one limits the category chips to subjects that
+      language actually has (P8).
 - [x] Switching from German + Health to Spanish resets the hidden category to
       All instead of showing a misleading empty grid (P8).
 - [x] Category and search filters still combine with the selected language; search
@@ -141,7 +142,7 @@ comparison covered it, and `P3` when the behaviour is pinned by engine tests.
       Serbian when the native side is Serbian (P7).
 - [x] Import screen shortcut returns Home, scrolls to the section and focuses
       search (P7).
-- [x] Import screen teaser shows one featured pack per language (five cards)
+- [x] Import screen teaser shows one featured pack per language (six cards)
       instead of four German cards (P8).
 - [x] Modal closes via the close button, backdrop and Escape; focus returns to
       the opener (P7).
